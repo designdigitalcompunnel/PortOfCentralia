@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Industrial Park I | Port of Centralia</title>
+<meta content="Industrial Park I, part of the Port of Centralia’s industrial property portfolio. Business opportunities, infrastructure and regional access in Centralia, Washington." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Fraunces:ital,opsz,wght@1,9..144,300..600&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   Visit Centralia, WA — Colour Palette
+   PRIMARY    Heritage Navy #263A4A · Columbia Orange #C6532F (logo dome)
+   SECONDARY  River Teal #477C78 · Brick Heritage #A95C3F · Golden Ochre #D6A64F
+   TERTIARY   Warm Ivory #F5F0E6 · Soft Sage #A8B5A0 · Mist Blue #B9CED0
+              Slate Gray #6D777C · Charcoal #303638 · Muted Rose #C58C80
+   Layout, type and component language follow the de Beaumont homepage.
+   ══════════════════════════════════════════════════════════════ */
+:root{
+  --navy:#263A4A; --navy-d:#1B2A36; --navy-dd:#121D26; --navy-l:#34505F;
+  --orange:#C6532F; --orange-d:#B4492A; --orange-dd:#9A3D22; --orange-lt:#E8875F; --orange-wash:#FBEDE7;
+  --teal:#477C78; --teal-d:#3B6B67; --brick:var(--orange); --brick-d:var(--orange-d); --ochre:#D6A64F; --ochre-lt:#FAF0DA;
+  --ivory:#F5F0E6; --sage:#A8B5A0; --sage-lt:#E9EDE4; --mist:#B9CED0; --mist-lt:#E7EFF0;
+  --slate:#6D777C; --slate-d:#5E676C; --charcoal:#303638; --rose:#C58C80; --rose-lt:#F3E4E0;
+  --white:#fff;
+
+  --text:var(--charcoal);
+  --line:rgba(38,58,74,.14);
+  --line-lt:rgba(255,255,255,.24);
+  --r-lg:32px; --r-md:22px; --r-sm:14px;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --accent-font:'Fraunces',Georgia,serif;
+  --body:'Open Sans',system-ui,-apple-system,sans-serif;
+  --pad:clamp(16px,5vw,72px); --gap:clamp(14px,1.6vw,22px);
+  --navh:78px;
+  --ease:cubic-bezier(.2,.8,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+input,select{font:inherit}
+:focus-visible{outline:3px solid var(--orange-lt);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:#fff;color:var(--navy);padding:10px 16px;border-radius:999px;font-weight:700}
+.skip:focus{top:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:var(--pad)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.99;margin:0;color:var(--navy)}
+.it{font-family:var(--accent-font);font-style:italic;font-weight:300;letter-spacing:-.02em}
+.lede{font-size:clamp(16px,1.3vw,19px);color:var(--slate-d);max-width:56ch;line-height:1.65;font-weight:300}
+.n{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-d)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:8px 15px 8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--ivory);color:var(--navy)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brick)}
+.on-dark .eyebrow{border-color:var(--line-lt);background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(6px)}
+.on-dark .eyebrow::before{background:var(--orange-lt)}
+.on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:#fff}
+.on-dark .lede{color:#D3DEE2}
+.on-dark .n{color:rgba(255,255,255,.75)}
+
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--teal))}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ── Buttons ───────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:13px 17px 13px 24px;border-radius:999px;font-weight:600;font-size:15.5px;
+  background:var(--orange-d);color:#fff;transition:transform .28s var(--ease),background .28s;min-height:48px}
+.btn .dot{width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;transition:transform .28s var(--ease);flex:none}
+.btn:hover{transform:translateY(-2px);background:var(--orange-dd)}
+.btn--navy{background:var(--navy)}.btn--navy .dot{background:var(--orange)}.btn--navy:hover{background:var(--navy-l)}
+.btn:hover .dot{transform:translateX(3px) rotate(45deg)}
+.btn--ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+.btn--ghost .dot{background:var(--navy);color:#fff}
+.btn--ghost:hover{background:var(--ivory)}
+.btn--white{background:#fff;color:var(--navy)}
+.btn--white .dot{background:var(--orange);color:#fff}
+.btn--white:hover{background:var(--ivory)}
+.btn--glass{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.45);backdrop-filter:blur(8px)}
+.btn--glass .dot{background:#fff;color:var(--navy)}
+.btn--glass:hover{background:rgba(255,255,255,.26)}
+.btn--ochre{background:var(--ochre);color:var(--navy-dd)}
+.btn--ochre .dot{background:var(--navy);color:#fff}
+.btn--ochre:hover{background:#E2B663}
+
+/* ── HEADER: utility bar + pill nav ───────── */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;background:linear-gradient(90deg,var(--orange-lt),var(--orange));transition:width .12s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;padding:8px 0 10px;background:#000;border-bottom:1px solid rgba(255,255,255,.08);transition:transform .35s var(--ease),box-shadow .35s}
+.nav.solid{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.utility{display:flex;justify-content:flex-end;gap:4px;align-items:center;font-size:13px;color:rgba(255,255,255,.82);padding:0 12px 8px;
+  transition:opacity .3s,max-height .3s;max-height:40px;overflow:hidden}
+.utility a{padding:4px 10px;border-radius:99px}
+.utility a:hover{background:rgba(255,255,255,.14);color:#fff}
+.utility .open{display:inline-flex;align-items:center;gap:7px;margin-right:auto;padding-left:10px}
+.utility .open i{width:7px;height:7px;border-radius:50%;background:var(--sage)}
+.utility .open.closed i{background:var(--rose)}
+.nav.solid .utility{opacity:0;max-height:0;padding-bottom:0}
+.nav-inner{position:relative;display:flex;align-items:center;gap:14px;border-radius:999px;padding:6px 8px 6px 22px;
+  background:#000;border:1px solid rgba(255,255,255,.18);
+  transition:background .35s,border-color .35s,box-shadow .35s}
+.nav.solid .nav-inner,.nav.menu-open .nav-inner{background:#000;border-color:rgba(255,255,255,.14)}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:48px;width:auto}
+.nav-links{display:flex;gap:2px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+.nav-links>li>a:hover{background:rgba(255,255,255,.14);color:#fff}
+.nav-links>li>button,.nav-links>li>a{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.92);transition:background .2s,color .2s}
+.nav-links>li>button svg{transition:transform .25s}
+.nav-links>li>button:hover,.nav-links>li>button[aria-expanded="true"]{background:rgba(255,255,255,.16);color:#fff}
+.nav-links>li>button[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-cta{display:flex;gap:8px;align-items:center}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.42);display:grid;place-items:center;color:#fff;transition:all .25s;flex:none}
+.icon-btn:hover{background:rgba(255,255,255,.2)}
+.nav .btn{padding:10px 12px 10px 19px;font-size:14.5px;background:var(--orange);color:#fff;min-height:44px}
+.nav .btn .dot{width:26px;height:26px}
+.nav .btn:hover{background:var(--orange-d)}
+.burger{display:none}
+/* mega panels */
+.mega{position:absolute;left:0;right:0;top:calc(100% + 10px);border-radius:var(--r-lg);background:#fff;color:var(--charcoal);
+  box-shadow:0 30px 70px -20px rgba(18,29,38,.45);padding:clamp(20px,2.4vw,32px);display:grid;grid-template-columns:1.3fr .7fr;gap:28px;
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s var(--ease),visibility .25s}
+.mega.open{opacity:1;visibility:visible;transform:none}
+.mega h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-family:var(--body);font-weight:700;color:var(--orange-d);margin-bottom:14px}
+.mega ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
+.mega li a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:14px;font-weight:600;font-size:15px;color:var(--navy);transition:background .2s,transform .2s}
+.mega li a:hover{background:var(--orange-wash);transform:translateX(3px)}
+.mega li a span{font-weight:400;font-size:12.5px;color:var(--slate-d)}
+.mega-feature{position:relative;border-radius:var(--r-md);overflow:hidden;min-height:220px;display:flex;align-items:flex-end;isolation:isolate;color:#fff}
+.mega-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.mega-feature::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,29,38,0) 30%,rgba(18,29,38,.92))}
+.mega-feature div{padding:20px}
+.mega-feature b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.03em;line-height:1.05}
+.mega-feature small{display:block;margin-top:6px;font-size:13.5px;color:#D3DEE2}
+@media(max-width:1080px){.nav-links{display:none}.burger{display:grid;margin-left:auto}}
+@media(max-width:600px){.nav .btn span{display:none}.nav .btn{padding:9px}.brand img{height:38px}.utility{display:none}.nav-inner{padding-left:16px;gap:8px}.icon-btn{width:42px;height:42px}}
+
+/* mobile drawer */
+.drawer{position:fixed;inset:0;z-index:90;background:var(--navy-d);color:#fff;padding:calc(var(--navh) + 30px) var(--pad) 40px;overflow-y:auto;
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.drawer.open{opacity:1;visibility:visible}
+.drawer details{border-bottom:1px solid var(--line-lt)}
+.drawer summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:18px 4px;font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.03em;cursor:pointer;min-height:48px}
+.drawer summary::-webkit-details-marker{display:none}
+.drawer summary svg{transition:transform .25s}
+.drawer details[open] summary svg{transform:rotate(45deg)}
+.drawer ul{list-style:none;margin:0;padding:0 0 18px;display:grid;gap:2px}
+.drawer ul a{display:block;padding:11px 6px;color:#D3DEE2;font-size:16px}
+.drawer-links{list-style:none;margin:0;padding:0}
+.drawer-links a{display:block;padding:16px 4px;border-bottom:1px solid var(--line-lt);font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;color:#fff}
+.drawer .drawer-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+
+/* ── 03 HERO ───────────────────────────────── */
+.topshell{position:relative;isolation:isolate;padding-top:calc(var(--navh) + clamp(64px,8vw,120px));padding-bottom:clamp(30px,4vw,54px);overflow:hidden;background:var(--navy-d)}
+.topshell-bg{position:absolute;inset:0;z-index:-2}
+.topshell-bg video,.topshell-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.topshell-bg img{z-index:0}.topshell-bg video{z-index:1}
+.motion-btn{display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:9px 16px 9px 13px;border-radius:999px;font-size:13.5px;font-weight:600;color:#fff;
+  border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);min-height:40px;transition:background .2s}
+.motion-btn:hover{background:rgba(0,0,0,.5)}
+.topshell-bg::after{content:"";position:absolute;inset:0;z-index:2;
+  background:
+    radial-gradient(85% 85% at 12% 55%, rgba(10,16,22,.82) 0%, rgba(14,22,30,.5) 50%, rgba(18,29,38,.08) 85%),
+    linear-gradient(90deg, rgba(10,16,22,.45) 0%, rgba(10,16,22,0) 60%),
+    radial-gradient(60% 50% at 92% 8%, rgba(198,83,47,.22), transparent 70%),
+    linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(18,29,38,.05) 35%, rgba(18,29,38,.25) 70%, rgba(12,20,27,.95) 100%)}
+.topshell-grain{position:absolute;inset:0;z-index:-1;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:26px 26px;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 55%);mask-image:linear-gradient(180deg,transparent 0%,#000 55%)}
+.river-art{position:absolute;inset:auto 0 0 0;z-index:-1;width:100%;height:60%;opacity:.5;pointer-events:none}
+.river-art path{fill:none;stroke:rgba(232,135,95,.42);stroke-width:1.2}
+.river-art .draw{stroke-dasharray:2200;stroke-dashoffset:2200;animation:draw 7s cubic-bezier(.4,0,.2,1) .5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero{position:relative;z-index:4}
+.hero h1,.hero .lede{text-shadow:0 2px 18px rgba(18,29,38,.7),0 1px 3px rgba(18,29,38,.5)}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap}
+.livepill{display:inline-flex;align-items:center;gap:9px;padding:7px 15px 7px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(198,83,47,.22);border:1px solid rgba(232,135,95,.6);color:#F8D2C1}
+.livepill i{width:8px;height:8px;border-radius:50%;background:var(--orange-lt);box-shadow:0 0 0 0 rgba(232,135,95,.7);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(232,135,95,0)}100%{box-shadow:0 0 0 0 rgba(232,135,95,0)}}
+.hero h1{font-size:clamp(46px,8vw,128px);letter-spacing:-.05em;margin:22px 0 0;max-width:13ch;color:#fff;line-height:.94}
+.hero h1 .it{color:var(--orange-lt);display:inline-block;padding-right:.08em}
+.hero-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:clamp(24px,4vw,60px);align-items:end;margin-top:26px}
+.hero .lede{color:#E2E9EC;font-size:clamp(17px,1.45vw,21px);max-width:46ch}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-side{border:1px solid rgba(255,255,255,.16);border-radius:var(--r-md);background:#000;overflow:hidden;color:#fff;box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
+.hero-side .ph{height:150px}
+.hero-side .ph img{object-position:center 35%}
+.hero-side .in{padding:20px}
+.hero-side .n{color:var(--orange-lt)}
+.hero-side .k{font-family:var(--display);font-weight:700;font-size:clamp(28px,2.8vw,40px);line-height:1;letter-spacing:-.05em;margin-top:6px}
+.hero-side .k span{color:var(--orange-lt)}
+.hero-side p{margin:10px 0 0;font-size:14px;color:#C9CDD0;line-height:1.55;font-weight:300}
+.hero-side a{display:inline-flex;gap:9px;align-items:center;margin-top:14px;font-weight:600;font-size:14.5px;color:var(--orange-lt)}
+.hero-side a:hover{text-decoration:underline;text-underline-offset:4px}
+.float-pill{position:absolute;z-index:5;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-size:13.5px;color:#fff;
+  background:rgba(27,42,54,.55);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:drift 9s ease-in-out infinite}
+.float-pill b{font-family:var(--display);font-size:16px;letter-spacing:-.02em}
+.float-pill i{width:7px;height:7px;border-radius:50%;background:var(--orange-lt)}
+.fp1{right:clamp(16px,6vw,96px);top:calc(var(--navh) + 110px)}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* 04 Quick-start strip lives in the first screen */
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:clamp(34px,4vw,56px)}
+.qcard{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(150px,14vw,196px);border-radius:var(--r-md);overflow:hidden;isolation:isolate;
+  border:1px solid rgba(255,255,255,.26);color:#fff;padding:18px;transition:transform .35s var(--ease),border-color .35s}
+.qcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s var(--ease)}
+.qcard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,29,38,.08) 15%,rgba(18,29,38,.9) 100%)}
+.qcard:hover{transform:translateY(-6px);border-color:rgba(232,135,95,.9)}
+.qcard:hover img{transform:scale(1.07)}
+.qcard .num{position:absolute;top:14px;left:14px;font-size:11px;font-weight:700;letter-spacing:.12em;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.92);color:var(--navy)}
+.qcard .arrow{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:var(--orange);display:grid;place-items:center;transition:transform .35s var(--ease)}
+.qcard:hover .arrow{transform:rotate(-45deg)}
+.qcard b{font-family:var(--display);font-size:clamp(19px,1.7vw,24px);letter-spacing:-.03em;line-height:1.05}
+.qcard small{font-size:13px;color:#D3DEE2;margin-top:4px}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.fp1{display:none}}
+@media(max-width:420px){.qcard{min-height:140px;padding:14px}.qcard b{font-size:18px}}
+
+/* marquee */
+.marquee{border-bottom:1px solid var(--line);padding:4px 0 20px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--slate-d);border-top:1px solid var(--line);padding-top:20px;margin-bottom:10px}
+.marquee-track{display:flex;gap:44px;width:max-content;animation:slide 52s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track .mq{font-family:var(--display);font-size:clamp(17px,1.6vw,22px);font-weight:600;letter-spacing:-.03em;color:var(--teal-d);white-space:nowrap;display:inline-flex;align-items:center;gap:44px;padding:6px 0;transition:color .2s}
+.marquee-track .mq::after{content:"✦";font-size:.6em;color:var(--orange)}
+.marquee-track .mq:hover,.marquee-track .mq:focus-visible{color:var(--orange-d)}
+.marquee-track .mq span{background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;transition:background-size .35s var(--ease)}
+.marquee-track .mq:hover span,.marquee-track .mq:focus-visible span{background-size:100% 2px}
+.marquee:focus-within .marquee-track{animation-play-state:paused}
+/* hover preview — a picture in the shape of a CTA pill, slightly larger than a button */
+.mq-pop{position:fixed;z-index:95;left:0;top:0;width:236px;height:88px;border-radius:999px;overflow:hidden;pointer-events:none;
+  border:3px solid #fff;box-shadow:0 22px 44px -16px rgba(18,29,38,.55),0 0 0 1px rgba(198,83,47,.35);background:var(--navy);
+  opacity:0;transform:translate(-50%,-100%) translateY(6px) scale(.86);transform-origin:50% 100%;transition:opacity .22s,transform .3s var(--ease)}
+.mq-pop.show{opacity:1;transform:translate(-50%,-100%) translateY(-12px) scale(1)}
+.mq-pop img{width:100%;height:100%;object-fit:cover}
+.mq-pop b{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center}
+.mq-pop::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(18,29,38,.45))}
+@media (hover:none){.mq-pop{display:none}}
+@keyframes slide{to{transform:translateX(-50%)}}
+.rule{height:3px;border-radius:9px;background:linear-gradient(90deg,var(--orange),var(--ochre) 50%,transparent);margin-top:clamp(28px,3vw,48px);opacity:.75}
+
+.sec{padding:clamp(52px,6.6vw,110px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(26px,3.2vw,48px)}
+.sec-head h2{font-size:clamp(34px,4.6vw,70px);max-width:15ch;margin-top:14px}
+.sec-head h2 .it{color:var(--brick)}
+.u{position:relative;display:inline-block}
+.u::after{content:"";position:absolute;left:0;right:0;bottom:-.04em;height:.07em;border-radius:9px;background:linear-gradient(90deg,var(--orange),var(--ochre));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .3s}
+.in-view .u::after,.no-js .u::after{transform:scaleX(1)}
+.sec-head .lede{margin-top:0}
+.head-r{display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:46ch}
+
+/* ── 05 WHAT'S HAPPENING ───────────────────── */
+.bg-ivory{background:var(--ivory)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.path{padding:11px 20px;border-radius:999px;border:1.5px solid var(--line);font-weight:600;font-size:15px;color:var(--charcoal);background:#fff;min-height:44px;
+  transition:all .25s var(--ease)}
+.path:hover{border-color:var(--brick);color:var(--brick-d);transform:translateY(-2px)}
+.path[aria-pressed="true"]{background:var(--orange-d);border-color:var(--orange-d);color:#fff}
+.events{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-auto-rows:auto;gap:var(--gap)}
+.ev{border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
+.ev:hover{transform:translateY(-6px);box-shadow:0 22px 46px -26px rgba(18,29,38,.5)}
+.ev .thumb{height:clamp(170px,15vw,210px)}
+.ev .thumb img{transition:transform .7s var(--ease)}
+.ev:hover .thumb img{transform:scale(1.06)}
+.ev .kind{position:absolute;z-index:3;left:14px;top:14px;padding:6px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#fff;color:var(--navy)}
+.ev .kind.rec{background:var(--teal);color:#fff}
+.ev .kind.ongo{background:var(--ochre);color:var(--navy-dd)}
+.ev .body{padding:20px 22px 22px;display:flex;gap:18px;flex:1}
+.date{flex:none;width:64px;text-align:center;border-radius:16px;background:var(--orange-wash);padding:10px 4px 9px;align-self:flex-start}
+.date .d{display:block;font-family:var(--display);font-weight:800;font-size:31px;line-height:1;letter-spacing:-.04em;color:var(--navy)}
+.date .m{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brick-d);margin-top:4px}
+.date .w{display:block;font-size:11.5px;color:var(--slate-d);margin-top:2px}
+.ev .meta{display:flex;flex-direction:column;flex:1;min-width:0}
+.ev h3{font-size:clamp(19px,1.55vw,23px);line-height:1.1}
+.ev .when{font-size:14px;font-weight:600;color:var(--navy);margin-top:8px}
+.ev .where{display:flex;gap:6px;align-items:center;font-size:13.5px;color:var(--slate-d);margin-top:2px}
+.ev p{font-size:14px;color:var(--slate-d);margin:10px 0 0;font-weight:400}
+.ev .go{margin-top:auto;padding-top:14px;font-weight:600;font-size:14.5px;display:inline-flex;gap:9px;align-items:center;color:var(--brick-d)}
+.ev .go svg{transition:transform .3s}
+.ev:hover .go svg{transform:translateX(5px)}
+.ev.feature{grid-row:span 2;background:var(--navy);border-color:var(--navy);box-shadow:inset 0 -6px 0 var(--orange)}
+.ev.feature .thumb{height:auto;flex:1;min-height:clamp(220px,22vw,320px)}
+.ev.feature .body{flex:0 0 auto}
+.ev.feature h3{color:#fff;font-size:clamp(24px,2.3vw,34px)}
+.ev.feature .when{color:var(--orange-lt)}
+.ev.feature .where,.ev.feature p{color:#C9D6DB}
+.ev.feature .go{color:var(--orange-lt)}
+.ev.feature .date{background:rgba(255,255,255,.1)}
+.ev.feature .date .d{color:#fff}.ev.feature .date .m{color:var(--orange-lt)}.ev.feature .date .w{color:#C9D6DB}
+.events-empty{grid-column:1/-1;padding:40px;border-radius:var(--r-lg);border:1.5px dashed var(--line);text-align:center;color:var(--slate-d)}
+.events-foot{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.events-foot small{color:var(--slate-d);font-size:13.5px}
+@media(max-width:1080px){.events{grid-template-columns:1fr 1fr}.ev.feature{grid-row:auto;grid-column:1/-1}}
+@media(max-width:680px){.events{grid-template-columns:1fr}}
+
+/* ── 06 FIND YOUR COLUMBIA (interest tiles) ── */
+.inits{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+.init{grid-column:span 3;border-radius:var(--r-lg);overflow:hidden;background:var(--ivory);border:1px solid var(--line);display:flex;flex-direction:column;
+  min-height:250px;transition:transform .3s var(--ease),box-shadow .3s}
+.init:hover{transform:translateY(-6px);box-shadow:0 20px 44px -24px rgba(18,29,38,.55)}
+.init.wide{grid-column:span 6}
+.init .pic{height:clamp(160px,14vw,200px)}
+.init.wide .pic{height:clamp(190px,17vw,250px)}
+.init .pic img{transition:transform .7s var(--ease)}
+.init:hover .pic img{transform:scale(1.06)}
+.init .pic .tag{position:absolute;z-index:2;left:14px;top:14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:99px;color:#fff;background:var(--navy)}
+.init .in{padding:22px;display:flex;flex-direction:column;flex:1}
+.init h3{font-size:clamp(20px,1.8vw,27px)}
+.init p{font-size:14.5px;color:var(--slate-d);margin:9px 0 0;font-weight:400}
+.init .go{display:inline-flex;align-items:center;gap:9px;margin-top:auto;padding-top:18px;font-weight:600;font-size:14.5px;color:var(--brick-d)}
+.init .go svg{transition:transform .3s}
+.init:hover .go svg{transform:translateX(5px)}
+.init.feature{background:var(--navy);border-color:var(--navy)}
+.init.feature h3{color:#fff}.init.feature p{color:#C9D6DB}.init.feature .go{color:var(--orange-lt)}
+.init.feature .pic .tag{background:var(--orange);color:#fff}
+.init.accent{background:var(--brick);border-color:var(--brick)}
+.init.accent h3{color:#fff}.init.accent p{color:#F6E6DF}.init.accent .go{color:#fff}
+.init.accent .pic .tag{background:#fff;color:var(--brick-d)}
+.init .pic .tag.teal{background:var(--teal)}
+.init .pic .tag.rose{background:var(--rose);color:var(--navy-dd)}
+@media(max-width:1080px){.init{grid-column:span 6}.init.wide{grid-column:span 6}}
+@media(max-width:680px){.init,.init.wide{grid-column:1/-1}}
+
+/* ── 07 BUILD YOUR GETAWAY (itinerary track) ─ */
+.evidence{background:var(--ochre-lt);border-radius:var(--r-lg);padding:clamp(30px,4vw,64px) clamp(18px,3vw,48px)}
+.evidence .sec-head h2 .it{color:var(--teal-d)}
+.daytabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.track{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap);align-items:start}
+.track::before{content:"";position:absolute;left:5%;right:5%;top:58px;height:2px;
+  background-image:linear-gradient(90deg,rgba(38,58,74,.25) 0 12px,transparent 12px 22px);background-size:22px 2px}
+.stage{position:relative;text-align:left;display:flex;flex-direction:column;align-items:flex-start;padding:0;border-radius:18px}
+.stage .tick{font-family:var(--display);font-size:11.5px;letter-spacing:.14em;color:var(--slate-d);margin-bottom:12px;display:block;text-transform:uppercase;font-weight:700}
+.stage .bulb{width:92px;height:92px;border-radius:50%;overflow:hidden;position:relative;z-index:2;border:3px solid #fff;background:var(--navy);
+  transition:all .4s var(--ease);flex:none}
+.stage .bulb img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.75;transition:opacity .4s,filter .4s}
+.stage .bulb::after{content:"";position:absolute;inset:0;background:rgba(38,58,74,.38);transition:background .4s}
+.stage[aria-selected="true"] .bulb{border-color:var(--brick);transform:scale(1.07)}
+.stage[aria-selected="true"] .bulb img{opacity:1;filter:none}
+.stage[aria-selected="true"] .bulb::after{background:transparent}
+.stage:hover .bulb{border-color:var(--orange-lt)}
+.stage h4{font-size:clamp(17px,1.4vw,21px);margin-top:16px;line-height:1.08}
+.stage p{font-size:13.5px;color:var(--slate-d);margin:6px 0 0;font-weight:400;line-height:1.45}
+.case{margin-top:clamp(26px,3vw,44px);border-radius:var(--r-lg);overflow:hidden;background:#fff;display:grid;grid-template-columns:.5fr 1.5fr}
+.case-tag{position:relative;isolation:isolate;padding:clamp(22px,2.6vw,34px);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:280px}
+.case-tag .bg{position:absolute;inset:0;z-index:-2;background:var(--navy)}
+.case-tag .bg img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.case-tag::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(38,58,74,.35),rgba(18,29,38,.94))}
+.case-tag .p{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--orange-lt)}
+.case-tag h3{font-size:clamp(23px,2.3vw,34px);margin-top:10px;color:#fff}
+.case-tag .prog{display:flex;gap:6px}
+.case-tag .prog i{height:4px;flex:1;border-radius:99px;background:rgba(255,255,255,.26)}
+.case-tag .prog i.on{background:var(--orange)}
+.case-body{padding:clamp(22px,2.8vw,40px);display:flex;flex-direction:column}
+.case-body .quote{font-family:var(--display);font-size:clamp(20px,2.1vw,30px);letter-spacing:-.035em;line-height:1.16;max-width:30ch;color:var(--navy);margin:0;font-weight:600}
+.case-body .detail{margin-top:14px;color:var(--slate-d);font-size:15px;max-width:60ch}
+.case-body .also{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;padding-top:20px;border-top:1px dashed var(--line)}
+.case-body .also span{font-size:13px;padding:6px 12px;border-radius:99px;background:var(--sage-lt);color:var(--charcoal);font-weight:600}
+.case-body .nextprev{display:flex;gap:8px;margin-top:auto;padding-top:22px}
+.case-body .nextprev button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--navy);transition:all .2s}
+.case-body .nextprev button:hover{background:var(--navy);color:#fff}
+.itins{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:clamp(26px,3vw,40px)}
+.itins .lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--slate-d);margin-right:6px}
+.chip{padding:9px 16px;border-radius:999px;border:1.5px solid rgba(38,58,74,.2);color:var(--navy);font-size:14px;font-weight:600;background:rgba(255,255,255,.7);transition:all .22s;min-height:40px;display:inline-flex;align-items:center}
+.chip:hover{background:var(--orange-d);color:#fff;border-color:var(--orange-d)}
+@media(max-width:1080px){.track{grid-template-columns:repeat(3,1fr);row-gap:30px}.track::before{display:none}}
+@media(max-width:860px){.case{grid-template-columns:1fr}.case-tag{min-height:220px}}
+@media(max-width:560px){.track{grid-template-columns:repeat(2,1fr)}.stage .bulb{width:76px;height:76px}}
+
+/* stories */
+.stories-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin:clamp(48px,6vw,84px) 0 clamp(20px,2.4vw,30px)}
+.stories-head h3{font-size:clamp(26px,2.8vw,40px)}
+.stories-head h3 .it{color:var(--brick)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.post{border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease)}
+.post:hover{transform:translateY(-6px)}
+.post .thumb{height:clamp(170px,16vw,210px)}
+.post .thumb img{transition:transform .7s var(--ease)}
+.post:hover .thumb img{transform:scale(1.06)}
+.post .thumb .kicker{position:absolute;z-index:3;left:14px;bottom:14px;padding:7px 13px;border-radius:99px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--navy)}
+.post .body{padding:22px;display:flex;flex-direction:column;flex:1}
+.post time{font-size:13px;color:var(--slate-d);font-weight:600}
+.post h4{font-size:clamp(18px,1.5vw,23px);margin-top:10px;line-height:1.12}
+.post .go{margin-top:auto;padding-top:20px;font-weight:600;font-size:14.5px;display:inline-flex;gap:9px;align-items:center;color:var(--brick-d)}
+.post .go svg{transition:transform .3s}
+.post:hover .go svg{transform:translateX(5px)}
+@media(max-width:980px){.posts{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.posts{grid-template-columns:1fr}}
+
+/* ── 08 SIGNATURE EVENTS (dark band) ───────── */
+.impact{position:relative;isolation:isolate;color:#fff;padding:clamp(52px,6.6vw,110px) 0;overflow:hidden}
+.impact-bg{position:absolute;inset:0;z-index:-2;background:var(--navy)}
+.impact-bg img{width:100%;height:100%;object-fit:cover;opacity:.18;filter:grayscale(1)}
+.impact-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(27,42,54,.96),rgba(38,58,74,.93) 60%,rgba(59,107,103,.9))}
+.impact .sec-head h2 .it{color:var(--orange-lt)}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-lt)}
+.stat{padding:clamp(24px,2.6vw,38px) clamp(16px,2vw,28px);border-right:1px solid var(--line-lt);border-bottom:1px solid var(--line-lt)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-size:clamp(44px,5.4vw,82px);letter-spacing:-.055em;line-height:.9;color:#fff;font-variant-numeric:tabular-nums}
+.stat b .suf{display:inline;margin-top:0;font-size:.42em;color:var(--orange-lt);letter-spacing:-.02em;margin-left:4px}
+.stat>span{display:block;margin-top:14px;font-size:14.5px;color:#C9D6DB;max-width:24ch;font-weight:300}
+.rail-wrap{margin-top:clamp(34px,4vw,60px)}
+.rail-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:22px;flex-wrap:wrap}
+.rail-top h3{color:#fff;font-size:clamp(24px,2.6vw,38px)}
+.rail-top h3 .it{color:var(--mist)}
+.rail-nav{display:flex;gap:8px}
+.people-rail{display:flex;gap:var(--gap);overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.people-rail::-webkit-scrollbar{display:none}
+.person{flex:0 0 clamp(250px,26vw,330px);scroll-snap-align:start;border-radius:var(--r-lg);overflow:hidden;position:relative;
+  min-height:clamp(360px,34vw,440px);display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;transition:transform .35s var(--ease)}
+.person .bg{position:absolute;inset:0;z-index:-2;background:var(--navy-d)}
+.person .bg img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.person::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,29,38,0) 18%,rgba(18,29,38,.78) 52%,rgba(18,29,38,.97) 100%)}
+.person:hover{transform:translateY(-6px)}
+.person:hover .bg img{transform:scale(1.05)}
+.person .in{padding:22px;color:#fff}
+.person .season{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:var(--ochre);color:var(--navy-dd)}
+.person .season.teal{background:var(--mist);color:var(--navy-dd)}
+.person .season.rose{background:var(--rose);color:var(--navy-dd)}
+.person h4{font-size:clamp(22px,2vw,28px);color:#fff;margin-top:12px}
+.person .dt{display:block;margin-top:6px;font-weight:600;font-size:14.5px;color:var(--orange-lt)}
+.person p{margin:8px 0 0;font-size:14px;color:#C9D6DB;font-weight:300}
+.person .go{display:inline-flex;gap:8px;align-items:center;margin-top:14px;font-weight:600;font-size:14px;color:#fff}
+.impact .icon-btn{border-color:rgba(255,255,255,.4)}
+@media(max-width:1080px){.impact-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}}
+@media(max-width:520px){.impact-grid{grid-template-columns:1fr}.stat{border-right:0}}
+
+/* ── 09 EAT · SHOP · STAY ──────────────────── */
+.pillars{display:grid;gap:var(--gap);grid-template-columns:repeat(3,1fr)}
+.pillar{display:flex;flex-direction:column;border-radius:var(--r-lg);overflow:hidden;background:var(--white);border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.pillar:hover{transform:translateY(-8px);box-shadow:0 24px 50px -26px rgba(18,29,38,.5);border-color:var(--slate)}
+.pillar .pic{position:relative;height:clamp(200px,18vw,250px);overflow:hidden;background:var(--navy)}
+.pillar .pic img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.pillar:hover .pic img{transform:scale(1.06)}
+.pillar .no{position:absolute;left:14px;top:14px;z-index:2;background:#fff;color:var(--navy);padding:6px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.pillar .bar{height:5px;width:100%;flex:none}
+.pillar .in{padding:24px;display:flex;flex-direction:column;flex:1}
+.pillar h3{font-size:clamp(24px,2.2vw,32px)}
+.pillar h3 .it{color:var(--brick)}
+.pillar>.in>p{font-size:15px;color:var(--slate-d);margin:10px 0 0;line-height:1.55}
+.listing{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:2px}
+.listing a{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px dashed var(--line);transition:padding .2s}
+.listing a:hover{padding-left:10px}
+.listing strong{font-size:15px;color:var(--navy);font-weight:700}
+.listing em{display:block;font-style:normal;font-size:13px;color:var(--slate-d)}
+.listing svg{margin-left:auto;color:var(--brick);flex:none}
+.cats{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.cats span{font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:99px;background:var(--ivory);color:var(--charcoal)}
+.pillar .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:22px;font-weight:700;font-size:14.5px;color:var(--navy)}
+.pillar .foot .arrow{width:40px;height:40px;border-radius:50%;background:var(--ivory);color:var(--navy);display:grid;place-items:center;flex:none;transition:all .35s}
+.pillar:hover .foot .arrow{background:var(--orange);color:#fff;transform:rotate(-45deg)}
+@media(max-width:1000px){.pillars{grid-template-columns:1fr 1fr}.pillar:last-child{grid-column:1/-1}}
+@media(max-width:640px){.pillars{grid-template-columns:1fr}}
+
+/* ── 10 PLAN THE PRACTICAL DETAILS ─────────── */
+.plan-tabs{display:flex;gap:10px;flex-wrap:wrap}
+.plan-panel{margin-top:22px;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:var(--mist-lt);display:grid;grid-template-columns:.85fr 1.15fr}
+.plan-media{position:relative;min-height:380px;background:var(--navy)}
+.plan-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.plan-media .cop{position:absolute;inset:auto 0 0 0;z-index:2;padding:26px;background:linear-gradient(180deg,transparent,rgba(18,29,38,.95))}
+.plan-media .who{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.2vw,32px);letter-spacing:-.035em;line-height:1.05;color:#fff}
+.plan-media p{margin:10px 0 0;color:#D3DEE2;font-size:14.5px;font-weight:300}
+.plan-body{padding:clamp(18px,2.4vw,32px);display:grid;gap:10px;align-content:center}
+.fact{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border-radius:var(--r-md);background:#fff;border:1px solid transparent}
+.fact .ic{width:44px;height:44px;border-radius:14px;background:var(--orange);color:#fff;display:grid;place-items:center;flex:none}
+.fact strong{display:block;font-family:var(--display);font-size:clamp(19px,1.7vw,24px);letter-spacing:-.03em;color:var(--navy);line-height:1.1}
+.fact span{display:block;font-size:14.5px;color:var(--slate-d);margin-top:4px}
+.fact a{color:var(--brick-d);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.hours{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:8px}
+.hours td{padding:7px 0;border-bottom:1px dashed var(--line)}
+.hours td:last-child{text-align:right;font-weight:600;color:var(--navy)}
+.hours tr.today td{color:var(--brick-d);font-weight:700}
+.fact .status,.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px;background:var(--sage-lt);color:#2F5A35;margin-top:10px}
+.status i{width:8px;height:8px;border-radius:50%;background:#4E8A57}
+.status.closed{background:var(--rose-lt);color:var(--brick-d)}
+.status.closed i{background:var(--brick)}
+.faq{display:grid;gap:8px}
+.faq details{background:#fff;border-radius:var(--r-md);border:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 20px;font-weight:700;color:var(--navy);font-size:15.5px;min-height:52px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary span{width:30px;height:30px;border-radius:50%;background:var(--ivory);display:grid;place-items:center;flex:none;transition:transform .25s}
+.faq details[open] summary span{transform:rotate(45deg);background:var(--navy);color:#fff}
+.faq details p{margin:0;padding:0 20px 18px;color:var(--slate-d);font-size:15px}
+@media(max-width:860px){.plan-panel{grid-template-columns:1fr}.plan-media{min-height:240px}}
+
+/* ── 11 VISITOR GUIDE + APP ────────────────── */
+.press{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--gap)}
+.press-card{border-radius:var(--r-lg);padding:clamp(26px,3.2vw,52px);display:flex;flex-direction:column;justify-content:space-between;min-height:380px;position:relative;overflow:hidden;isolation:isolate}
+.press-card.a{color:#fff}
+.press-card.a .bg{position:absolute;inset:0;z-index:-2;background:var(--brick)}
+.press-card.a .bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.35}
+.press-card.a::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(125deg,rgba(198,83,47,.96) 15%,rgba(154,61,34,.94) 55%,rgba(38,58,74,.93) 100%)}
+.press-card.a h2{color:#fff;font-size:clamp(30px,3.6vw,54px);max-width:14ch}
+.press-card.a h2 .it{color:var(--ochre)}
+.press-card.a p{color:#F3E7E1}
+.press-card.a .n{color:rgba(255,255,255,.88)}
+.press-card.b{background:var(--ivory);border:1px solid var(--line)}
+.press-card h3{font-size:clamp(25px,2.6vw,38px);max-width:16ch}
+.press-card h3 .it{color:var(--teal-d)}
+.press-card p{font-size:15.5px;margin:14px 0 0;max-width:46ch;color:var(--slate-d)}
+.press-card .btn{align-self:flex-start;margin-top:28px}
+.guide-form{display:flex;gap:10px;background:#fff;border-radius:999px;padding:7px 7px 7px 22px;align-items:center;max-width:560px;margin-top:28px}
+.guide-form input{flex:1;min-width:0;border:0;background:none;outline:none;padding:12px 0;font-size:16px;color:var(--navy)}
+.guide-form .btn{margin:0}
+.guide-ok{display:none;margin-top:16px;font-weight:700}
+.guide-ok.show{display:block}
+.mini{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.mini span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#fff;padding:7px 13px;border-radius:99px;border:1px solid rgba(255,255,255,.35)}
+.app-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.app-badges a{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:14px;background:var(--navy);color:#fff;font-size:13px;line-height:1.15;min-height:48px}
+.app-badges a b{display:block;font-size:15.5px}
+.app-badges a:hover{background:var(--navy-l)}
+@media(max-width:860px){.press{grid-template-columns:1fr}.press-card{min-height:0}}
+@media(max-width:480px){.guide-form{border-radius:22px;flex-direction:column;align-items:stretch;padding:10px}.guide-form input{padding:12px 10px}.guide-form .btn{justify-content:space-between}}
+
+/* ── 12 NEWSLETTER ─────────────────────────── */
+.news{border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-columns:1.25fr .75fr;background:var(--sage-lt)}
+.news .in{padding:clamp(26px,3.6vw,58px)}
+.news h2{font-size:clamp(30px,3.6vw,54px);max-width:15ch;color:var(--navy);margin-top:14px}
+.news h2 .it{color:var(--teal-d)}
+.news .lede{color:var(--charcoal);margin-top:14px}
+.news-media{position:relative;min-height:300px;background:var(--navy)}
+.news-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.news-form{margin-top:26px;max-width:640px}
+.interests{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px;border:0;padding:0;margin-inline:0}
+.interests legend{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--slate-d);margin-bottom:10px;padding:0}
+.int{padding:10px 17px;border-radius:999px;border:1.5px solid rgba(38,58,74,.24);font-size:14px;font-weight:600;transition:all .22s;color:var(--navy);background:rgba(255,255,255,.65);min-height:44px}
+.int[aria-pressed="true"]{background:var(--orange-d);color:#fff;border-color:var(--orange-d)}
+.int:hover{border-color:var(--navy)}
+.news-row{display:flex;gap:10px;background:#fff;border-radius:999px;padding:7px 7px 7px 22px;align-items:center;flex-wrap:wrap}
+.news-row input{flex:1;min-width:170px;border:0;background:none;outline:none;padding:12px 0;font-size:16px;color:var(--navy)}
+.news-note{margin-top:14px;font-size:13px;color:var(--slate-d)}
+.news-ok{display:none;margin-top:16px;font-weight:700;color:var(--navy)}
+.news-ok.show{display:block}
+.socials{display:flex;gap:8px}
+@media(max-width:860px){.news{grid-template-columns:1fr}.news-media{min-height:220px;order:-1}}
+@media(max-width:480px){.news-row{border-radius:22px;padding:10px}.news-row .btn{width:100%;justify-content:space-between}}
+
+/* ── 13 FOOTER ─────────────────────────────── */
+footer{position:relative;isolation:isolate;color:#fff;margin-top:clamp(48px,6vw,88px);border-radius:var(--r-lg) var(--r-lg) 0 0;
+  padding:clamp(40px,5vw,82px) 0 24px;overflow:hidden;background:#000}
+.foot-art{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:.5;pointer-events:none}
+.foot-art path{fill:none;stroke:rgba(232,135,95,.16);stroke-width:1.2}
+.foot-top{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:clamp(20px,3vw,40px)}
+.foot-brand img{height:52px;width:auto}
+.foot-brand p{color:#C9D6DB;font-size:14.5px;margin:20px 0 0;max-width:34ch;font-weight:300}
+.foot-brand address{font-style:normal;color:#C9D6DB;font-size:14px;margin-top:20px;line-height:1.75;font-weight:300}
+.foot-brand address b{color:#fff;font-weight:700}
+.foot-brand address a{color:var(--orange-lt)}
+.foot-col h2{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-lt);margin:0 0 16px;font-weight:700}
+.foot-col ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.foot-col a{font-size:14.5px;color:#fff;opacity:.88;transition:opacity .2s,color .2s}
+.foot-col a:hover{opacity:1;color:var(--ochre)}
+.foot-bottom{margin-top:clamp(32px,4vw,58px);padding-top:24px;border-top:1px solid var(--line-lt);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;font-size:13.5px;color:#C9D6DB}
+.socials a{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-lt);display:grid;place-items:center;transition:all .22s}
+.socials a:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.foot-legal{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.foot-legal a:hover{color:#fff;text-decoration:underline}
+.designed{display:flex;justify-content:flex-end;align-items:center;gap:14px;margin-top:22px;padding-top:22px;border-top:1px solid var(--line-lt);font-size:13px;font-weight:600;color:#fff;text-align:right;line-height:1.2}
+.designed img{height:34px;width:auto;filter:brightness(0) invert(1)}
+.wordmark{margin-top:clamp(18px,2.4vw,36px)}
+.wordmark svg{width:100%;height:auto;display:block;overflow:visible}
+.wordmark text{font-family:var(--display);font-weight:800;fill:#fff;opacity:.09;letter-spacing:-.04em}
+@media(max-width:980px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media(max-width:480px){.foot-top{grid-template-columns:1fr}.designed{justify-content:flex-start;text-align:left}}
+.credit{font-size:12px;color:#9AA3A7;text-align:center;padding:0 var(--pad) 26px;margin:0;background:#000}
+.credit span{display:block;max-width:900px;margin:0 auto;padding-top:4px}
+
+/* ── SEARCH OVERLAY ────────────────────────── */
+.search{position:fixed;inset:0;z-index:150;background:rgba(18,29,38,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;padding:clamp(70px,10vh,120px) var(--pad) 30px;overflow-y:auto}
+.search.open{display:block}
+.search-box{max-width:860px;margin:0 auto;background:#fff;border-radius:var(--r-lg);padding:clamp(18px,2.6vw,32px);box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}
+.searchbar{display:flex;align-items:center;gap:10px;background:var(--ivory);border-radius:999px;padding:7px 7px 7px 22px}
+.searchbar svg{flex:none;color:var(--slate-d)}
+.searchbar input{flex:1;min-width:0;border:0;background:none;outline:none;font-size:clamp(16px,1.5vw,19px);color:var(--navy);padding:12px 0}
+.searchbar input::placeholder{color:var(--slate-d)}
+.search .pops{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.search .pops .lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--slate-d);margin-right:4px}
+.results{margin-top:18px;display:grid;gap:18px}
+.rgroup h3{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brick-d);margin-bottom:8px}
+.rgroup ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.rgroup a{display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:14px;transition:background .2s}
+.rgroup a:hover,.rgroup a:focus-visible{background:var(--ivory)}
+.rgroup img{width:52px;height:52px;border-radius:12px;object-fit:cover;flex:none}
+.rgroup strong{display:block;color:var(--navy);font-size:15.5px}
+.rgroup small{display:block;color:var(--slate-d);font-size:13px}
+.r-empty{padding:26px;border-radius:var(--r-md);background:var(--ivory);color:var(--slate-d);text-align:center}
+.r-empty b{color:var(--navy)}
+.search-close{position:absolute;top:20px;right:20px;background:#fff;color:var(--navy);border:0}
+.search-close:hover{background:var(--ivory)}
+
+/* reveal */
+.js .rv{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv.in-view{opacity:1;transform:none}
+.to-top{position:fixed;right:18px;bottom:18px;z-index:70;width:50px;height:50px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;
+  box-shadow:0 12px 30px -10px rgba(18,29,38,.6);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .3s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .js .rv{opacity:1;transform:none}
+  .river-art .draw{stroke-dashoffset:0}
+}
+
+/* Homepage concept: remove unsupported travel-oriented controls without changing section containers */
+
+</style>
+<link href="assets/img/favicon-32.png" rel="icon" type="image/png"/><style>
+:root{--navy:#455766;--navy-d:#344553;--navy-dd:#263845;--navy-l:#596d7c;--orange:#FF8B2B;--orange-d:#B94D00;--orange-dd:#A84600;--orange-lt:#FFB16D;--orange-wash:#FFF1E5;--teal:#607b8a;--teal-d:#455766;--brick:#B94D00;--brick-d:#963E00;--ochre:#F6AC62;--ochre-lt:#FFF1E5;--ivory:#F5F8FA;--sage:#CBD8DE;--sage-lt:#E9EFF3;--mist:#C7D6DE;--mist-lt:#E9EFF3;--slate:#596B78;--slate-d:#455766;--charcoal:#263845;--rose:#E9B79B;--rose-lt:#FFF1E5}
+.topshell-bg img{display:block!important;width:100%;height:100%;object-fit:cover}.brand img{object-fit:contain;max-height:58px;width:auto}.nav .brand{min-width:190px}.on-dark .brand img{filter:none} .hero-side .k{font-size:clamp(28px,3vw,44px)} .float-pill{display:none!important}
+</style><style id="centralia-repair">
+/* Accessibility and resilient visibility fallback */
+.js .rv:not(.in-view){visibility:visible} .js .rv.in-view{visibility:visible}
+.centralia-hero-video,.centralia-hero-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.centralia-hero-video{z-index:1}.centralia-hero-fallback{z-index:0}
+.plan-media{background:#455766}.plan-media img{min-height:100%;object-fit:cover}.brand img,footer img[src*="port-centralia-white"]{object-fit:contain!important;object-position:left center}
+img{color:transparent}
+.designer-credit{display:inline-flex;align-items:center;gap:16px;color:#fff}.designer-credit img{display:inline-block;max-width:200px;width:200px;height:auto}.credit{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.app-badges{display:flex!important}.news-form .interests{display:flex!important;flex-wrap:wrap}.events{grid-template-columns:1.25fr 1fr 1fr}.ev.feature{grid-row:span 2}.centralia-hero-video{display:block;opacity:1;visibility:visible} @media(max-width:1080px){.events{grid-template-columns:1fr 1fr}.ev.feature{grid-row:auto;grid-column:1/-1}}@media(max-width:680px){.events{grid-template-columns:1fr}}
+</style><style>
+.topshell-bg .port-hero-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.topshell-bg{overflow:hidden}
+.hero-side .ph>img{display:block;width:100%;height:100%;object-fit:cover}
+</style><style>
+/* ── Industrial Park I inner page (v3) ── */
+.ip-page{overflow:hidden}
+.ip-page a:focus-visible,.ip-page button:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+
+/* hero with breadcrumb inside */
+.ip-hero{position:relative;color:#fff;background:#263845;padding-top:clamp(132px,14vh,140px);padding-bottom:clamp(36px,4vw,44px);overflow:hidden;isolation:isolate}
+.ip-hero-art{display:none}.ip-hero{background:#263845 url("assets/img/industrial-park-i/hero-industrial.webp") center 46%/cover no-repeat}.ip-hero-art{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.ip-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(38,56,69,.97) 0%,rgba(38,56,69,.9) 45%,rgba(38,56,69,.55) 100%)}
+.ip-crumb{margin-top:6px}
+.ip-crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;font-size:15px;color:#E6EDF2}
+.ip-crumb li+li::before{content:"/";margin-right:8px;color:#AFC3CE}
+.ip-crumb a{color:#FFD2AA;text-decoration:underline;text-underline-offset:3px}
+.ip-crumb a:hover{color:#fff}
+.ip-crumb [aria-current]{color:#fff;font-weight:600}
+.ip-hero-body{margin-top:clamp(18px,2.4vw,28px);display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,4vw,56px);align-items:end}
+.ip-eyebrow{display:inline-block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#FFC48A;margin-bottom:10px}
+.ip-hero h1{font-size:clamp(40px,5vw,68px);white-space:nowrap;line-height:1;margin:0;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.ip-intro{font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:#F2F6F8;margin:0;max-width:52ch}
+.ip-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:clamp(20px,3vw,30px) 0 0;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.28);border-radius:14px;overflow:hidden;grid-column:1/-1}
+.ip-facts div{background:rgba(29,42,52,.88);padding:14px 18px}
+.ip-facts dt{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#FFC48A;font-weight:700}
+.ip-facts dd{margin:4px 0 0;font-size:16px;color:#fff;font-weight:600}
+
+/* shared sections */
+.ip-sec{padding:clamp(60px,8vw,108px) 0}
+.ip-tint{background:#F5F8FA}
+.ip-kicker{display:inline-block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#8A3F00;margin-bottom:12px}
+.ip-sec h2{font-size:clamp(30px,4vw,50px);line-height:1.08;margin:0 0 16px;color:#1F2E38;max-width:24ch}
+.ip-lede{font-size:clamp(17px,1.3vw,18px);line-height:1.6;color:#1F2E38;margin:0;max-width:60ch}
+.ip-lede+.ip-lede{margin-top:14px}
+.ip-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.ip-split>*{min-width:0}
+.ip-art{margin:0}
+.ip-art svg{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 22px 48px rgba(38,56,69,.14)}
+.ip-art figcaption{font-size:13px;color:#3D5260;margin-top:10px}
+
+/* about: definition list aligned under text */
+.ip-points{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:0}
+.ip-points li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-top:1px solid #C9D6DE;color:#1F2E38}
+.ip-points li:last-child{border-bottom:1px solid #C9D6DE}
+.ip-points .ic{width:44px;height:44px;border-radius:12px;background:#E9EFF3;display:grid;place-items:center;color:#344553}
+.ip-points strong{display:block;color:#1F2E38;font-size:17px;margin-bottom:2px}
+.ip-points span{color:#2B3D49;font-size:16px}
+
+/* opportunities cards: equal height, aligned */
+.ip-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(30px,4vw,48px)}
+.ip-card{display:flex;flex-direction:column;padding:30px;border-radius:20px;background:#fff;border:1px solid #C9D6DE;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.ip-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(38,56,69,.12);border-color:#FF8B2B}
+.ip-card .n{font-size:14px;font-weight:700;color:#8A3F00;letter-spacing:.08em}
+.ip-card h3{font-size:22px;line-height:1.2;margin:10px 0 10px;color:#1F2E38}
+.ip-card p{margin:0;color:#2B3D49;font-size:16px;line-height:1.55}
+
+/* infrastructure tabs */
+.ip-tablist{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:0;list-style:none}
+.ip-tab{font:inherit;font-size:15px;font-weight:600;padding:10px 16px;border-radius:999px;border:1px solid #9FB3BF;background:#fff;color:#1F2E38;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.ip-tab:hover{border-color:#455766}
+.ip-tab[aria-selected="true"]{background:#263845;border-color:#263845;color:#fff}
+.ip-panel{padding:clamp(22px,2.6vw,30px);background:#fff;border-radius:20px;border:1px solid #C9D6DE;min-height:150px}
+.ip-panel h3{margin:0 0 8px;font-size:23px;color:#1F2E38}
+.ip-panel p{margin:0;color:#1F2E38;font-size:16px;line-height:1.6}
+.ip-topic-art{margin:0 0 20px;border-radius:24px;overflow:hidden}
+.ip-topic-art img{display:block;width:100%;border-radius:24px;object-fit:cover}
+.ip-topic-art svg{display:block;width:100%;height:auto;border-radius:20px}
+.ip-swap{animation:ipFade .45s ease}
+@keyframes ipFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* location steps */
+.ip-steps{list-style:none;margin:24px 0 0;padding:0}
+.ip-steps li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-top:1px solid #C9D6DE;color:#1F2E38;font-size:16px}
+.ip-steps li:last-child{border-bottom:1px solid #C9D6DE}
+.ip-steps b{display:block;font-size:17px;color:#1F2E38}
+.ip-num{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#E9EFF3;color:#263845;font-weight:700;font-size:15px}
+.ip-cta-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+
+/* buttons with strong contrast */
+.ip-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:700;text-decoration:none;font-size:16px;line-height:1;transition:transform .25s,background .25s,color .25s}
+.ip-btn:hover{transform:translateY(-2px)}
+.ip-btn--dark{background:#263845;color:#fff}
+.ip-btn--dark:hover{background:#1A2935}
+.ip-btn--line{border:2px solid #263845;color:#1F2E38}
+.ip-btn--line:hover{background:#263845;color:#fff}
+.ip-btn--orange{background:#FF8B2B;color:#1F2E38}
+.ip-btn--orange:hover{background:#FFB16D}
+.ip-btn--ghost{border:2px solid #fff;color:#fff}
+.ip-btn--ghost:hover{background:#fff;color:#1F2E38}
+
+/* property band */
+.ip-band{position:relative;overflow:hidden;color:#fff;background:#263845 url("assets/img/industrial-park-i/property-information-background.webp") center/cover no-repeat}
+.ip-band-art{display:none}
+.ip-band::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(38,56,69,.98) 0%,rgba(38,56,69,.92) 50%,rgba(38,56,69,.7) 100%)}
+.ip-band-in{position:relative;z-index:2;padding-top:clamp(64px,8vw,104px);padding-bottom:clamp(64px,8vw,104px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center}
+.ip-band h2{color:#fff;margin:0 0 16px;max-width:18ch;font-size:clamp(30px,4vw,50px);line-height:1.08}
+.ip-band .ip-kicker{color:#FFC48A}
+.ip-band p{color:#EEF3F6;font-size:17px;line-height:1.6;margin:0 0 24px;max-width:52ch}
+.ip-band-side{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:clamp(22px,2.6vw,30px)}
+.ip-band-side h3{margin:0 0 12px;font-size:20px;color:#fff}
+.ip-band-side ul{list-style:none;margin:0;padding:0}
+.ip-band-side li{padding:12px 0;border-top:1px solid rgba(255,255,255,.2);color:#EEF3F6;font-size:16px}
+.ip-band-side li:first-child{border-top:0;padding-top:0}
+.ip-band-side small{display:block;color:#D5E0E7;font-size:14px}
+
+/* contact */
+.ip-contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.ip-contact-card{display:grid;gap:0;background:#fff;border:1px solid #C9D6DE;border-radius:20px;overflow:hidden}
+.ip-row{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px 24px;border-top:1px solid #C9D6DE;align-items:start}
+.ip-row:first-child{border-top:0}
+.ip-row .ic{width:44px;height:44px;border-radius:12px;background:#E9EFF3;display:grid;place-items:center;color:#263845}
+.ip-row b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#3D5260;margin-bottom:4px}
+.ip-row span,.ip-row a{font-size:17px;color:#1F2E38;line-height:1.5}
+.ip-row a{text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.ip-related{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.ip-contact>*{min-width:0}
+.ip-row a,.ip-row span{overflow-wrap:anywhere}
+.ip-related a{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 22px;border-radius:16px;background:#F5F8FA;border:1px solid #C9D6DE;color:#1F2E38;text-decoration:none;font-weight:700;transition:background .25s,border-color .25s,transform .25s}
+.ip-related a:hover{background:#fff;border-color:#FF8B2B;transform:translateX(4px)}
+.ip-related small{display:block;font-weight:400;color:#2B3D49;font-size:14px;margin-top:2px}
+
+/* reveal */
+.js .ip-rv{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.js .ip-rv.in{opacity:1;transform:none}
+
+@media(max-width:1080px){
+  .ip-cards{grid-template-columns:1fr 1fr}
+  .ip-facts{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .ip-hero-body,.ip-split,.ip-band-in,.ip-contact{grid-template-columns:1fr}
+  .ip-art{max-width:640px}
+}
+@media(max-width:600px){
+  .ip-hero h1{white-space:normal}
+  .ip-cards{grid-template-columns:1fr}
+  .ip-facts{grid-template-columns:1fr 1fr}
+  .ip-tab{font-size:14px;padding:9px 13px}
+  .ip-related{grid-template-columns:1fr}
+  .ip-hero{padding-top:124px}
+}
+@media (prefers-reduced-motion: reduce){
+  .js .ip-rv{opacity:1;transform:none;transition:none}
+  .ip-card,.ip-btn,.ip-related a{transition:none}
+  .ip-swap{animation:none}
+}
+</style>
+<style>
+/* ── Static map image (Location & regional access) ── */
+.ip-staticmap{margin:0;position:relative}
+.ip-staticmap img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:22px;box-shadow:0 22px 48px rgba(38,56,69,.16);background:#E9EEF1}
+.ip-staticmap figcaption{font-size:14px;color:#3D5260;margin-top:12px;line-height:1.5}
+.ip-staticmap figcaption a{color:#1F5FA8;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.ip-staticmap.no-img img{display:none}
+.ip-staticmap.no-img{min-height:240px;background:#E9EEF1;border-radius:22px;display:flex;align-items:flex-end;padding:20px}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<a class="skip" href="#main">Skip to content</a>
+<!-- SVG sprite -->
+<svg aria-hidden="true" height="0" style="position:absolute" width="0">
+<symbol id="i-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-arrow-l" viewbox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-chev" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-plus" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-search" viewbox="0 0 24 24"><circle cx="11" cy="11" fill="none" r="7" stroke="currentColor" stroke-width="2"></circle><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></symbol>
+<symbol id="i-pin" viewbox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" fill="none" r="2.5" stroke="currentColor" stroke-width="2"></circle></symbol>
+<symbol id="i-car" viewbox="0 0 24 24"><path d="M5 16V11l2-5h10l2 5v5M3 16h18v3H3zM7 19v1M17 19v1M5 11h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-walk" viewbox="0 0 24 24"><circle cx="13" cy="4.5" fill="none" r="2" stroke="currentColor" stroke-width="1.9"></circle><path d="M10 21l2-6 3 3v3M12 15l-1-5 4 2 2 3M11 10l-3 2v3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-clock" viewbox="0 0 24 24"><circle cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="1.9"></circle><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-book" viewbox="0 0 24 24"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 5v16M8 7h7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></symbol>
+<symbol id="i-x" viewbox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-pause" viewbox="0 0 24 24"><rect fill="currentColor" height="14" rx="1" width="4" x="6" y="5"></rect><rect fill="currentColor" height="14" rx="1" width="4" x="14" y="5"></rect></symbol>
+<symbol id="i-play" viewbox="0 0 24 24"><path d="M7 5l12 7-12 7z" fill="currentColor"></path></symbol>
+<symbol id="i-up" viewbox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-fb" viewbox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z" fill="currentColor"></path></symbol>
+<symbol id="i-ig" viewbox="0 0 24 24"><rect fill="none" height="17" rx="5" stroke="currentColor" stroke-width="2" width="17" x="3.5" y="3.5"></rect><circle cx="12" cy="12" fill="none" r="4" stroke="currentColor" stroke-width="2"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r="1.2"></circle></symbol>
+<symbol id="i-yt" viewbox="0 0 24 24"><rect fill="none" height="13" rx="4" stroke="currentColor" stroke-width="2" width="19" x="2.5" y="5.5"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"></path></symbol>
+<symbol id="i-tt" viewbox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 11-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></symbol>
+</svg>
+<!-- 01 + 02 HEADER -->
+<header class="nav" id="nav">
+<div class="wrap">
+<nav aria-label="Utility" class="utility">
+<span class="open" id="utilOpen"><i></i><span>Port Office · 3508 Galvin Road</span></span>
+<a href="index.html#events">Meetings</a>
+<a href="index.html#guide">Resources</a>
+<a href="index.html#plan">Contact</a>
+</nav>
+<div class="nav-inner">
+<a aria-label="Port of Centralia — home" class="brand" href="index.html#top"><img alt="Port of Centralia" height="123" src="assets/img/port-centralia-white.png" width="376"/></a>
+<ul class="nav-links" id="navLinks"><li><a href="index.html#interests">About</a></li><li><a href="index.html#local">Properties</a></li><li><a href="index.html#events">Meetings</a></li><li><a href="index.html#signature">Documents</a></li><li><a href="index.html#getaway">News</a></li><li><a href="index.html#plan">Contact</a></li></ul>
+<div class="nav-cta">
+<button aria-label="Search Port information" class="icon-btn" id="openSearch"><svg height="18" width="18"><use href="#i-search"></use></svg></button>
+<a class="btn" href="index.html#guide">Contact</a>
+<button aria-controls="drawer" aria-expanded="false" aria-label="Open menu" class="icon-btn burger" id="burger"><svg height="20" width="20"><use href="#i-menu"></use></svg></button>
+</div>
+</div>
+</div>
+</header>
+<!-- Mobile drawer: same hierarchy -->
+<div aria-hidden="true" aria-label="Menu" class="drawer" id="drawer">
+<ul class="drawer-links"><li><a href="index.html#interests">About</a></li><li><a href="index.html#local">Properties</a></li><li><a href="index.html#events">Meetings</a></li><li><a href="index.html#signature">Documents</a></li><li><a href="index.html#getaway">News</a></li><li><a href="index.html#plan">Contact</a></li></ul>
+<div class="drawer-cta">
+<a class="btn" href="index.html#guide">Contact</a>
+<a class="btn btn--glass" href="index.html#plan">Port Office<i class="dot"><svg height="14" width="14"><use href="#i-arrow"></use></svg></i></a>
+</div>
+</div>
+<div aria-labelledby="search-h" aria-modal="true" class="search" id="search" role="dialog">
+<button aria-label="Close search" class="icon-btn search-close" id="closeSearch"><svg height="18" width="18"><use href="#i-x"></use></svg></button>
+<div class="search-box">
+<h2 class="sr-only" id="search-h">Search Port of Centralia</h2>
+<div class="searchbar"><svg height="20" width="20"><use href="#i-search"></use></svg><label class="sr-only" for="q">Search Port information</label><input autocomplete="off" id="q" placeholder="Search Port projects, meetings, documents…" type="search"/></div>
+<div class="pops"><span class="lbl">Popular</span><button class="chip" data-q="Industrial Parks">Industrial Parks</button><button class="chip" data-q="Centralia Station">Centralia Station</button><button class="chip" data-q="Commission Meetings">Commission Meetings</button><button class="chip" data-q="Meeting Minutes">Meeting Minutes</button><button class="chip" data-q="Public Documents">Public Documents</button><button class="chip" data-q="Contact">Contact</button></div>
+<div aria-live="polite" class="results" id="results"></div>
+</div>
+</div>
+
+<main class="ip-page" id="main">
+
+<section aria-labelledby="ip-h" class="ip-hero">
+<svg class="ip-hero-art" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs><linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#263845"/><stop offset=".55" stop-color="#344553"/><stop offset="1" stop-color="#455766"/></linearGradient></defs>
+<rect width="1600" height="520" fill="url(#hg)"/>
+<g fill="#3F5263" stroke="#5B7080" stroke-width="2">
+<rect x="860" y="70" width="170" height="110" rx="10"/><rect x="1050" y="70" width="220" height="110" rx="10"/><rect x="1290" y="70" width="230" height="110" rx="10"/>
+<rect x="860" y="200" width="250" height="120" rx="10"/><rect x="1130" y="200" width="150" height="120" rx="10"/><rect x="1300" y="200" width="220" height="120" rx="10"/>
+<rect x="860" y="340" width="130" height="120" rx="10"/><rect x="1010" y="340" width="260" height="120" rx="10"/><rect x="1290" y="340" width="230" height="120" rx="10"/>
+</g>
+<g fill="none" stroke="#596D7C" stroke-width="2" opacity=".7"><path d="M860 450 H1600"/><path d="M1040 40 V520"/></g>
+<path d="M700 520 C 900 430, 980 300, 1180 250 S 1480 120, 1600 90" fill="none" stroke="#6E8493" stroke-width="30" stroke-linecap="round"/>
+<path d="M700 520 C 900 430, 980 300, 1180 250 S 1480 120, 1600 90" fill="none" stroke="#FF8B2B" stroke-width="3" stroke-dasharray="14 14" opacity=".85"/>
+<g fill="none" stroke="#9FB3BF" stroke-width="3" opacity=".55"><path d="M760 40 L1600 40"/><path d="M760 486 L1600 486"/></g>
+<circle cx="1180" cy="250" r="9" fill="#FFB16D"/><circle cx="1180" cy="250" r="22" fill="none" stroke="#FFB16D" stroke-width="2" opacity=".6"/>
+</svg>
+<div class="wrap">
+<nav aria-label="Breadcrumb" class="ip-crumb">
+<ol>
+<li><a href="index.html#top">Home</a></li>
+<li><a href="index.html#local">Business &amp; Properties</a></li>
+<li><span aria-current="page">Industrial Park I</span></li>
+</ol>
+</nav>
+<div class="ip-hero-body">
+<div>
+<span class="ip-eyebrow">Industrial development · Port of Centralia</span>
+<h1 id="ip-h">Industrial Park I</h1>
+</div>
+<p class="ip-intro">Discover Industrial Park I, part of the Port of Centralia’s commitment to supporting business growth, industrial development, and economic opportunity in Centralia and Lewis County, Washington.</p>
+<dl class="ip-facts">
+<div><dt>Location</dt><dd>Centralia, WA</dd></div>
+<div><dt>Region</dt><dd>Lewis County</dd></div>
+<div><dt>Development</dt><dd>Established industrial</dd></div>
+<div><dt>Access</dt><dd>Regional connections</dd></div>
+</dl>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="about-h" class="ip-sec">
+<div class="wrap ip-split">
+<div class="ip-rv">
+<span class="ip-kicker">About the park</span>
+<h2 id="about-h">Part of the Port’s industrial portfolio.</h2>
+<p class="ip-lede">Industrial Park I is part of the Port of Centralia’s industrial property portfolio. The Port supports industrial development, business investment, and opportunities that contribute to the regional economy.</p>
+<p class="ip-lede">This page helps prospective businesses, developers, and other visitors understand the park and find the right next step.</p>
+<ul class="ip-points">
+<li><span class="ic"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-pin"></use></svg></span><div><strong>Industrial property</strong><span>Sites planned for industrial use.</span></div></li>
+<li><span class="ic"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-book"></use></svg></span><div><strong>Local employment</strong><span>Opportunities that support jobs in Lewis County.</span></div></li>
+</ul>
+</div>
+<figure class="ip-art ip-rv"><img src="assets/img/industrial-park-i/about-the-park.webp" alt="Container handling crane at a logistics terminal, illustrating industrial development" width="1600" height="1050" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;object-fit:cover;border-radius:20px"/><figcaption>Illustrative industrial and logistics photography.</figcaption></figure>
+</div>
+</section>
+
+<section aria-labelledby="opp-h" class="ip-sec ip-tint">
+<div class="wrap">
+<div class="ip-rv">
+<span class="ip-kicker">Industrial development &amp; business opportunities</span>
+<h2 id="opp-h">Built to support business activity.</h2>
+<p class="ip-lede">The Port works to support a strong environment for business and industrial activity. Explore property information, development opportunities, and how to connect with the Port for further help.</p>
+</div>
+<div class="ip-cards">
+<article class="ip-card ip-rv"><span class="n">01</span><h3>Industrial property and site development</h3><p>Sites planned for industrial activity, with the Port’s development guidance for the park.</p></article>
+<article class="ip-card ip-rv"><span class="n">02</span><h3>Business accessibility</h3><p>Access for employees, suppliers and visitors, an important factor for industrial tenants.</p></article>
+<article class="ip-card ip-rv"><span class="n">03</span><h3>Regional economic development</h3><p>Opportunities that contribute to employment and investment across Lewis County.</p></article>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="infra-h" class="ip-sec">
+<div class="wrap ip-split">
+<div class="ip-rv">
+<span class="ip-kicker">Infrastructure &amp; connectivity</span>
+<h2 id="infra-h">Connected to the region.</h2>
+<p class="ip-lede" style="margin-bottom:22px">Transportation access, infrastructure and regional connectivity matter to industrial businesses. Select a topic to explore.</p>
+<div aria-label="Infrastructure topics" class="ip-tablist" role="tablist" id="infraTabs">
+<button aria-controls="infraPanel" aria-selected="true" class="ip-tab" id="tab-0" role="tab" tabindex="0" type="button">Site development</button>
+<button aria-controls="infraPanel" aria-selected="false" class="ip-tab" id="tab-1" role="tab" tabindex="-1" type="button">Freight &amp; transportation</button>
+<button aria-controls="infraPanel" aria-selected="false" class="ip-tab" id="tab-2" role="tab" tabindex="-1" type="button">Business access</button>
+<button aria-controls="infraPanel" aria-selected="false" class="ip-tab" id="tab-3" role="tab" tabindex="-1" type="button">Regional growth</button>
+<button aria-controls="infraPanel" aria-selected="false" class="ip-tab" id="tab-4" role="tab" tabindex="-1" type="button">Supporting infrastructure</button>
+</div>
+</div>
+<div class="ip-rv">
+<figure class="ip-topic-art" id="topicArt"><img src="assets/img/industrial-park-i/infrastructure-connectivity.webp" alt="Industrial facility and electrical infrastructure illustrating industrial site development" width="1600" height="900" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover"/></figure>
+<div aria-live="polite" class="ip-panel" id="infraPanel" role="tabpanel" aria-labelledby="tab-0">
+<h3 id="infraTitle">Industrial property and site development</h3>
+<p id="infraText">The Port plans and promotes industrial property within the park for businesses seeking room to build and operate. For current site details, contact the Port.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="loc-h" class="ip-sec ip-tint">
+<div class="wrap ip-split">
+<div class="ip-rv">
+<span class="ip-kicker">Location &amp; regional access</span>
+<h2 id="loc-h">Centralia, at the heart of Lewis County.</h2>
+<p class="ip-lede">Industrial Park I sits in the Centralia, Washington region, with access to the business and transportation networks that serve local industry.</p>
+<ol class="ip-steps">
+<li><span class="ip-num">01</span><div><b>Centralia region</b>Connected to communities across Lewis County.</div></li>
+<li><span class="ip-num">02</span><div><b>Transportation network</b>Regional road and freight connections for industrial users.</div></li>
+<li><span class="ip-num">03</span><div><b>Port office</b>Staff can confirm directions and arrange a site visit.</div></li>
+</ol>
+</div>
+<figure class="ip-staticmap ip-rv">
+<img src="assets/img/industrial-park-i/centralia-regional-map.webp" alt="Conceptual map of Centralia, Interstate 5 and a suggested Industrial Park I marker; not a verified site boundary or navigational map" width="1200" height="900" loading="lazy" onerror="this.closest('.ip-staticmap').classList.add('no-img')"/>
+<figcaption>Conceptual map only; the depicted Industrial Park I boundary and scale have not been geographically verified. <a href="https://www.google.com/maps/search/?api=1&query=3508+Galvin+Road+Centralia+WA+98531" target="_blank" rel="noopener noreferrer">Open the Port office in Google Maps</a> for directions.</figcaption>
+</figure>
+</div>
+</section>
+
+<section aria-labelledby="prop-h" class="ip-band">
+<svg class="ip-band-art" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g fill="none" stroke="#596D7C" stroke-width="2" opacity=".7">
+<rect x="980" y="40" width="200" height="150" rx="10"/><rect x="1200" y="40" width="200" height="150" rx="10"/><rect x="1420" y="40" width="160" height="150" rx="10"/>
+<rect x="980" y="210" width="260" height="170" rx="10"/><rect x="1260" y="210" width="150" height="170" rx="10"/><rect x="1430" y="210" width="150" height="170" rx="10"/>
+<rect x="980" y="400" width="140" height="160" rx="10"/><rect x="1140" y="400" width="250" height="160" rx="10"/><rect x="1410" y="400" width="170" height="160" rx="10"/></g>
+<rect x="1200" y="210" width="60" height="170" fill="#FF8B2B" opacity=".18"/></svg>
+<div class="wrap ip-band-in">
+<div class="ip-rv">
+<span class="ip-kicker">Property information</span>
+<h2 id="prop-h">Find your next site.</h2>
+<p>Looking for industrial property or a development opportunity? Tell the Port what you need, and staff will follow up with the most current information.</p>
+<div class="ip-cta-row" style="margin-top:0">
+<a class="ip-btn ip-btn--orange" href="mailto:emaloney@portofcentralia.com?subject=Industrial%20Park%20I%20property%20inquiry">Inquire About Property Opportunities</a>
+<a class="ip-btn ip-btn--ghost" href="index.html#plan">Contact the Port</a>
+</div>
+</div>
+<aside class="ip-band-side ip-rv" aria-labelledby="side-h">
+<h3 id="side-h">What to ask the Port</h3>
+<ul>
+<li>Current availability and site details</li>
+<li>Lease or sale terms</li>
+<li>Utilities and access for your operation</li>
+<li>Next steps for developers and tenants<small>Property availability and terms are confirmed directly by the Port.</small></li>
+</ul>
+</aside>
+</div>
+</section>
+
+<section aria-labelledby="contact-h" class="ip-sec">
+<div class="wrap ip-contact">
+<div class="ip-rv">
+<span class="ip-kicker">Contact the Port</span>
+<h2 id="contact-h">Talk with the Port about Industrial Park I.</h2>
+<p class="ip-lede">Prospective businesses and developers are encouraged to reach out for more information and help with next steps.</p>
+</div>
+<div class="ip-rv">
+<div class="ip-contact-card">
+<div class="ip-row"><span class="ic"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-pin"></use></svg></span><div><b>Address</b><span>Port of Centralia<br/>3508 Galvin Road<br/>Centralia, WA 98531</span></div></div>
+<div class="ip-row"><span class="ic"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg></span><div><b>Phone</b><a href="tel:+13607363527">(360) 736-3527</a></div></div>
+<div class="ip-row"><span class="ic"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span><div><b>Email</b><a href="mailto:emaloney@portofcentralia.com">emaloney@portofcentralia.com</a></div></div>
+</div>
+</div>
+</div>
+<div class="wrap" style="margin-top:clamp(36px,5vw,56px)">
+<span class="ip-kicker">Related Port information</span>
+<ul class="ip-related">
+<li><a href="index.html#local"><span>Industrial properties<small>Industrial Park I, Industrial Park II and Centralia Station</small></span><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="index.html#getaway"><span>Explore Port priorities<small>Mission, development and public information</small></span><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="index.html#signature"><span>Public documents<small>Reports, plans and notices</small></span><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="index.html#events"><span>Commission meetings<small>Agendas, minutes and recordings</small></span><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a></li>
+</ul>
+</div>
+</section>
+
+</main>
+
+<footer class="on-dark" id="footer">
+<svg aria-hidden="true" class="foot-art" preserveaspectratio="none" viewbox="0 0 1440 600">
+<path d="M-20 120 C 220 60, 380 200, 620 140 S 1000 40, 1200 120 S 1400 220, 1470 160"></path>
+<path d="M-20 150 C 220 90, 380 230, 620 170 S 1000 70, 1200 150 S 1400 250, 1470 190"></path>
+<path d="M-20 180 C 220 120, 380 260, 620 200 S 1000 100, 1200 180 S 1400 280, 1470 220"></path>
+<path d="M-20 520 C 260 470, 420 580, 700 520 S 1080 440, 1470 520"></path>
+</svg>
+<div class="wrap">
+<div class="foot-top">
+<div class="foot-brand">
+<img alt="Port of Centralia" height="123" loading="lazy" src="assets/img/port-centralia-white.png" width="376"/>
+<p>Supporting economic development, public transparency and the Centralia community.</p>
+<address><b>Centralia Port Office</b><br/>3508 Galvin Road<br/>Centralia, WA 98531<br/><a href="tel:+13607363527">(360) 736-3527</a></address>
+</div>
+<nav aria-labelledby="f1" class="foot-col"><h2 id="f1">About the Port</h2><ul>
+<li><a href="index.html#interests">Properties</a></li><li><a href="index.html#interests">Industrial Park II</a></li><li><a href="index.html#interests">Centralia Station</a></li><li><a href="index.html#interests">Business updates</a></li><li><a href="index.html#interests">Documents</a></li><li><a href="index.html#getaway">News</a></li></ul></nav>
+<nav aria-labelledby="f2" class="foot-col"><h2 id="f2">Meetings</h2><ul>
+<li><a href="index.html#events">Upcoming Meetings</a></li><li><a href="index.html#signature">Centralia Station</a></li><li><a href="index.html#signature">Commission Meetings</a></li><li><a href="index.html#events">Farmers Market</a></li><li><a href="index.html#events">Submit an Event</a></li></ul></nav>
+<nav aria-labelledby="f3" class="foot-col"><h2 id="f3">Industrial Parks</h2><ul>
+<li><a href="index.html#local">Documents</a></li><li><a href="index.html#local">Properties</a></li><li><a href="index.html#local">Business Resources</a></li><li><a href="index.html#events">Commission Records</a></li><li><a href="index.html#events">Public Notices</a></li></ul></nav>
+<nav aria-labelledby="f4" class="foot-col"><h2 id="f4">Contact</h2><ul>
+<li><a href="index.html#getaway">Trip Itineraries</a></li><li><a href="index.html#guide">Port Resources</a></li><li><a href="index.html#plan">Getting Here</a></li><li><a href="index.html#plan">Port Office</a></li><li><a href="index.html#plan">FAQs</a></li></ul></nav>
+</div>
+<div class="foot-bottom">
+<div class="socials">
+<a aria-label="Facebook" href="index.html#footer"><svg height="17" width="17"><use href="#i-fb"></use></svg></a>
+<a aria-label="Instagram" href="index.html#footer"><svg height="17" width="17"><use href="#i-ig"></use></svg></a>
+<a aria-label="YouTube" href="index.html#footer"><svg height="17" width="17"><use href="#i-yt"></use></svg></a>
+<a aria-label="TikTok" href="index.html#footer"><svg height="17" width="17"><use href="#i-tt"></use></svg></a>
+</div>
+<div class="foot-legal"><a href="index.html#footer">Accessibility</a><a href="index.html#footer">Privacy policy</a><a href="index.html#footer">Terms of use</a><span>© 2026 Port of Centralia, WA</span></div>
+</div>
+<div aria-hidden="true" class="wordmark"><svg viewbox="0 0 1200 210"><text font-size="236" lengthadjust="spacingAndGlyphs" text-anchor="middle" textlength="1190" x="600" y="178">Centralia</text></svg></div>
+</div>
+</footer>
+<p class="credit"><span>Port of Centralia website redesign concept. Stock imagery is illustrative. Verify official content, links and accessibility before publication.</span><span class="designer-credit"><img alt="Website designed by Compunnel Digital" height="40" src="assets/img/compunnel-digital.svg" width="200"/></span></p>
+
+<button aria-label="Back to top" class="to-top" id="toTop"><svg height="18" width="18"><use href="#i-up"></use></svg></button>
+<script>window.__TOPIC_ART=["<svg viewBox=\"0 0 600 380\" role=\"img\" aria-label=\"Illustrative parcel layout diagram\"><rect width=\"600\" height=\"380\" rx=\"20\" fill=\"#E9EFF3\"/>\n<g stroke=\"#8BA3B0\" stroke-width=\"2\" fill=\"#F7FAFB\"><rect x=\"40\" y=\"40\" width=\"160\" height=\"110\" rx=\"6\"/><rect x=\"220\" y=\"40\" width=\"160\" height=\"110\" rx=\"6\"/><rect x=\"400\" y=\"40\" width=\"160\" height=\"110\" rx=\"6\"/>\n<rect x=\"40\" y=\"170\" width=\"160\" height=\"110\" rx=\"6\"/><rect x=\"220\" y=\"170\" width=\"160\" height=\"110\" rx=\"6\" fill=\"#FFE4CC\" stroke=\"#FF8B2B\" stroke-width=\"3\"/><rect x=\"400\" y=\"170\" width=\"160\" height=\"110\" rx=\"6\"/>\n<rect x=\"40\" y=\"300\" width=\"520\" height=\"50\" rx=\"6\" fill=\"#DDE7EC\"/></g>\n<text x=\"300\" y=\"232\" text-anchor=\"middle\" font-family=\"Open Sans, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#263845\">Illustrative parcel</text>\n<text x=\"300\" y=\"331\" text-anchor=\"middle\" font-family=\"Open Sans, sans-serif\" font-size=\"14\" fill=\"#263845\">Access road</text></svg>", "<svg viewBox=\"0 0 600 380\" role=\"img\" aria-label=\"Illustrative freight route diagram\"><rect width=\"600\" height=\"380\" rx=\"20\" fill=\"#E9EFF3\"/>\n<path d=\"M60 250 C 180 250, 220 120, 340 120 S 480 200, 540 150\" fill=\"none\" stroke=\"#596D7C\" stroke-width=\"40\" stroke-linecap=\"round\"/>\n<path d=\"M60 250 C 180 250, 220 120, 340 120 S 480 200, 540 150\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3\" stroke-dasharray=\"16 14\"/>\n<g fill=\"#263845\"><rect x=\"150\" y=\"70\" width=\"70\" height=\"38\" rx=\"6\"/><rect x=\"222\" y=\"82\" width=\"34\" height=\"26\" rx=\"4\"/><circle cx=\"165\" cy=\"112\" r=\"7\"/><circle cx=\"235\" cy=\"112\" r=\"7\"/></g>\n<g fill=\"#FF8B2B\"><rect x=\"380\" y=\"200\" width=\"70\" height=\"38\" rx=\"6\"/><rect x=\"452\" y=\"212\" width=\"34\" height=\"26\" rx=\"4\"/><circle cx=\"395\" cy=\"242\" r=\"7\"/><circle cx=\"465\" cy=\"242\" r=\"7\"/></g>\n<text x=\"300\" y=\"330\" text-anchor=\"middle\" font-family=\"Open Sans, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#263845\">Freight and truck routes (illustrative)</text></svg>", "<svg viewBox=\"0 0 600 380\" role=\"img\" aria-label=\"Illustrative business access network diagram\"><rect width=\"600\" height=\"380\" rx=\"20\" fill=\"#E9EFF3\"/>\n<g stroke=\"#9FB3BF\" stroke-width=\"10\" stroke-linecap=\"round\"><path d=\"M60 90 H540\"/><path d=\"M60 290 H540\"/><path d=\"M180 50 V330\"/><path d=\"M420 50 V330\"/></g>\n<g fill=\"#FF8B2B\" stroke=\"#263845\" stroke-width=\"3\"><circle cx=\"180\" cy=\"90\" r=\"14\"/><circle cx=\"420\" cy=\"290\" r=\"14\"/><circle cx=\"420\" cy=\"90\" r=\"14\"/><circle cx=\"180\" cy=\"290\" r=\"14\"/></g>\n<circle cx=\"300\" cy=\"190\" r=\"26\" fill=\"#263845\"/><circle cx=\"300\" cy=\"190\" r=\"10\" fill=\"#FFB16D\"/>\n<text x=\"300\" y=\"350\" text-anchor=\"middle\" font-family=\"Open Sans, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#263845\">Business access points (illustrative)</text></svg>", "<svg viewBox=\"0 0 600 380\" role=\"img\" aria-label=\"Illustrative regional growth diagram\"><rect width=\"600\" height=\"380\" rx=\"20\" fill=\"#E9EFF3\"/>\n<g fill=\"#8BA3B0\"><rect x=\"90\" y=\"250\" width=\"70\" height=\"90\" rx=\"6\"/><rect x=\"190\" y=\"210\" width=\"70\" height=\"130\" rx=\"6\"/><rect x=\"290\" y=\"170\" width=\"70\" height=\"170\" rx=\"6\"/><rect x=\"390\" y=\"130\" width=\"70\" height=\"210\" rx=\"6\" fill=\"#455766\"/></g>\n<path d=\"M100 200 L250 150 L360 110 L490 60\" fill=\"none\" stroke=\"#FF8B2B\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M455 58 L492 58 L490 94\" fill=\"none\" stroke=\"#FF8B2B\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<text x=\"300\" y=\"352\" text-anchor=\"middle\" font-family=\"Open Sans, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#263845\">Regional economic activity (illustrative)</text></svg>", "<svg viewBox=\"0 0 600 380\" role=\"img\" aria-label=\"Illustrative supporting infrastructure diagram\"><rect width=\"600\" height=\"380\" rx=\"20\" fill=\"#E9EFF3\"/>\n<g stroke=\"#455766\" stroke-width=\"4\" fill=\"none\"><path d=\"M40 110 H560\"/><path d=\"M40 200 H560\"/><path d=\"M40 290 H560\"/></g>\n<g fill=\"#263845\"><rect x=\"60\" y=\"80\" width=\"14\" height=\"60\"/><rect x=\"200\" y=\"80\" width=\"14\" height=\"60\"/><rect x=\"340\" y=\"80\" width=\"14\" height=\"60\"/><rect x=\"480\" y=\"80\" width=\"14\" height=\"60\"/></g>\n<g fill=\"#FF8B2B\"><circle cx=\"110\" cy=\"200\" r=\"12\"/><circle cx=\"260\" cy=\"290\" r=\"12\"/><circle cx=\"410\" cy=\"200\" r=\"12\"/><circle cx=\"520\" cy=\"290\" r=\"12\"/></g>\n<text x=\"300\" y=\"352\" text-anchor=\"middle\" font-family=\"Open Sans, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#263845\">Services that support industry (illustrative)</text></svg>"];</script>
+<script>
+// Only Industrial Park I imagery is customized; the homepage is untouched.
+(function(){
+  const image = (file, alt) => '<img src="assets/img/industrial-park-i/'+file+'" alt="'+alt+'" width="600" height="380" loading="lazy" style="width:100%;height:auto;aspect-ratio:600/380;object-fit:cover;border-radius:20px;display:block">';
+  if (Array.isArray(window.__TOPIC_ART)) {
+    window.__TOPIC_ART[1] = image('rail-transport.webp','Rail infrastructure representing regional freight and transportation connections');
+    window.__TOPIC_ART[2] = image('site-access.webp','Access gate and roadway representing managed site entry');
+  }
+})();
+</script>
+
+<script>
+(function(){
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var svgUse=function(id,s){s=s||16;return '<svg width="'+s+'" height="'+s+'" aria-hidden="true"><use href="#'+id+'"></use></svg>'};
+  var nav=$('#nav'), drawer=$('#drawer'), burger=$('#burger'), toTop=$('#toTop');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onScroll(){ if(nav) nav.classList.toggle('solid', scrollY>40); if(toTop) toTop.classList.toggle('show', scrollY>900); }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  if(toTop) toTop.addEventListener('click', function(){ scrollTo({top:0, behavior: reduce?'auto':'smooth'}); });
+
+  function toggleDrawer(on){
+    drawer.classList.toggle('open', on);
+    drawer.setAttribute('aria-hidden', !on);
+    burger.setAttribute('aria-expanded', on);
+    nav.classList.toggle('menu-open', on);
+    burger.innerHTML = svgUse(on?'i-x':'i-menu',20);
+    burger.setAttribute('aria-label', on?'Close menu':'Open menu');
+    document.body.style.overflow = on ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ toggleDrawer(!drawer.classList.contains('open')); });
+  $$('a', drawer).forEach(function(a){ a.addEventListener('click', function(){ toggleDrawer(false); }); });
+
+  var SEARCH = [
+    {type:'Places', t:'Industrial Park I', s:'Established industrial development', href:'industrial-park-i.html', k:'industrial park business property'},
+    {type:'Places', t:'Industrial Park II', s:'Industrial and business opportunities', href:'index.html#local', k:'industrial park I-5'},
+    {type:'Places', t:'Centralia Station', s:'Mixed-use development initiative', href:'index.html#signature', k:'development project'},
+    {type:'Events', t:'Commission Meeting Agendas', s:'Published meeting materials', href:'index.html#events', k:'meetings public'},
+    {type:'Visitor info', t:'Contact the Port', s:'(360) 736-3527 · 3508 Galvin Road', href:'index.html#plan', k:'office phone address'},
+    {type:'Articles', t:'Public documents', s:'Notices, reports and forms', href:'index.html#signature', k:'records notices reports'}
+  ];
+  var sOv=$('#search'), q=$('#q'), res=$('#results'), lastFocus;
+  function esc(v){return v.replace(/[<>&"]/g,'')}
+  function runSearch(v){
+    v=v.trim().toLowerCase();
+    if(!v){res.innerHTML='';return;}
+    var terms=v.split(/\s+/);
+    var hits=SEARCH.filter(function(it){var hay=(it.t+' '+it.s+' '+(it.k||'')+' '+it.type).toLowerCase();return terms.every(function(t){return hay.indexOf(t)>-1;});});
+    if(!hits.length){res.innerHTML='<div class="r-empty"><b>No results for “'+esc(v)+'”.</b><br>Try “industrial”, “meetings” or “documents”.</div>';return;}
+    var groups=['Places','Events','Articles','Visitor info'];
+    res.innerHTML=groups.map(function(g){
+      var h=hits.filter(function(x){return x.type===g}); if(!h.length) return '';
+      return '<div class="rgroup"><h3>'+g+' <span style="color:var(--slate-d)">('+h.length+')</span></h3><ul>'+h.map(function(x){return '<li><a href="'+x.href+'"><span><strong>'+x.t+'</strong><small>'+x.s+'</small></span></a></li>'}).join('')+'</ul></div>';
+    }).join('');
+  }
+  function openSearch(){lastFocus=document.activeElement;sOv.classList.add('open');document.body.style.overflow='hidden';q.value='';runSearch('');setTimeout(function(){q.focus()},30);}
+  function closeSearch(){if(!sOv.classList.contains('open'))return;sOv.classList.remove('open');document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
+  $('#openSearch').addEventListener('click',openSearch);
+  $('#closeSearch').addEventListener('click',closeSearch);
+  sOv.addEventListener('click',function(e){if(e.target===sOv)closeSearch();});
+  q.addEventListener('input',function(){runSearch(q.value)});
+  $$('.pops .chip', sOv).forEach(function(b){ b.addEventListener('click',function(){ q.value=b.getAttribute('data-q')||''; runSearch(q.value); q.focus(); }); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){closeSearch();toggleDrawer(false);}
+    if(e.key==='/' && !/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();openSearch();}
+  });
+
+  var TOPICS=[
+    {t:'Site development', h:'Industrial property and site development', p:'The Port plans and promotes industrial property within the park for businesses seeking room to build and operate. For current site details, contact the Port.'},
+    {t:'Freight & transportation', h:'Freight and transportation', p:'Regional road and freight connections help industrial users move materials and products. Ask the Port about the routes that serve the park.'},
+    {t:'Business access', h:'Business accessibility', p:'Access for employees, suppliers and customers is a key consideration for industrial tenants and developers evaluating the park.'},
+    {t:'Regional growth', h:'Regional economic development', p:'The Port supports economic development in Centralia and Lewis County, with industrial parks as a focus for local jobs and investment.'},
+    {t:'Supporting infrastructure', h:'Infrastructure supporting industry', p:'Infrastructure that supports industrial activity is central to the Port’s planning. Contact the Port for information about services available at a site.'}
+  ];
+  var ART=window.__TOPIC_ART||[];
+  var tabs=$$('#infraTabs [role="tab"]'), panel=$('#infraPanel'), ttl=$('#infraTitle'), txt=$('#infraText'), art=$('#topicArt');
+  function selectTab(i, focus){
+    tabs.forEach(function(b,j){ b.setAttribute('aria-selected', j===i); b.tabIndex = j===i ? 0 : -1; });
+    ttl.textContent=TOPICS[i].h; txt.textContent=TOPICS[i].p;
+    if(art && ART[i]) art.innerHTML=ART[i];
+    panel.setAttribute('aria-labelledby','tab-'+i);
+    if(!reduce){ panel.classList.remove('ip-swap'); void panel.offsetWidth; panel.classList.add('ip-swap'); }
+    if(focus) tabs[i].focus();
+  }
+  tabs.forEach(function(b,i){
+    b.addEventListener('click',function(){selectTab(i,false)});
+    b.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowRight') n=(i+1)%tabs.length;
+      if(e.key==='ArrowLeft') n=(i-1+tabs.length)%tabs.length;
+      if(e.key==='Home') n=0;
+      if(e.key==='End') n=tabs.length-1;
+      if(n!==null){ e.preventDefault(); selectTab(n,true); }
+    });
+  });
+
+  var rv=$$('.ip-rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    rv.forEach(function(el){io.observe(el)});
+  } else { rv.forEach(function(el){el.classList.add('in')}); }
+})();
+</script>
+</body>
+</html>

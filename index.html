@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Port of Centralia | Economic Development, Public Meetings &amp; Resources</title>
+<meta content="Explore Port of Centralia industrial parks, business opportunities, public commission meetings, agendas, minutes, and community resources." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Fraunces:ital,opsz,wght@1,9..144,300..600&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="assets/img/hero-river-poster.jpg" rel="preload"/>
+<style>
+/* ══════════════════════════════════════════════════════════════
+   Visit Centralia, WA — Colour Palette
+   PRIMARY    Heritage Navy #263A4A · Columbia Orange #C6532F (logo dome)
+   SECONDARY  River Teal #477C78 · Brick Heritage #A95C3F · Golden Ochre #D6A64F
+   TERTIARY   Warm Ivory #F5F0E6 · Soft Sage #A8B5A0 · Mist Blue #B9CED0
+              Slate Gray #6D777C · Charcoal #303638 · Muted Rose #C58C80
+   Layout, type and component language follow the de Beaumont homepage.
+   ══════════════════════════════════════════════════════════════ */
+:root{
+  --navy:#263A4A; --navy-d:#1B2A36; --navy-dd:#121D26; --navy-l:#34505F;
+  --orange:#C6532F; --orange-d:#B4492A; --orange-dd:#9A3D22; --orange-lt:#E8875F; --orange-wash:#FBEDE7;
+  --teal:#477C78; --teal-d:#3B6B67; --brick:var(--orange); --brick-d:var(--orange-d); --ochre:#D6A64F; --ochre-lt:#FAF0DA;
+  --ivory:#F5F0E6; --sage:#A8B5A0; --sage-lt:#E9EDE4; --mist:#B9CED0; --mist-lt:#E7EFF0;
+  --slate:#6D777C; --slate-d:#5E676C; --charcoal:#303638; --rose:#C58C80; --rose-lt:#F3E4E0;
+  --white:#fff;
+
+  --text:var(--charcoal);
+  --line:rgba(38,58,74,.14);
+  --line-lt:rgba(255,255,255,.24);
+  --r-lg:32px; --r-md:22px; --r-sm:14px;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --accent-font:'Fraunces',Georgia,serif;
+  --body:'Open Sans',system-ui,-apple-system,sans-serif;
+  --pad:clamp(16px,5vw,72px); --gap:clamp(14px,1.6vw,22px);
+  --navh:78px;
+  --ease:cubic-bezier(.2,.8,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+input,select{font:inherit}
+:focus-visible{outline:3px solid var(--orange-lt);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:#fff;color:var(--navy);padding:10px 16px;border-radius:999px;font-weight:700}
+.skip:focus{top:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:var(--pad)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.99;margin:0;color:var(--navy)}
+.it{font-family:var(--accent-font);font-style:italic;font-weight:300;letter-spacing:-.02em}
+.lede{font-size:clamp(16px,1.3vw,19px);color:var(--slate-d);max-width:56ch;line-height:1.65;font-weight:300}
+.n{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-d)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:8px 15px 8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--ivory);color:var(--navy)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brick)}
+.on-dark .eyebrow{border-color:var(--line-lt);background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(6px)}
+.on-dark .eyebrow::before{background:var(--orange-lt)}
+.on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:#fff}
+.on-dark .lede{color:#D3DEE2}
+.on-dark .n{color:rgba(255,255,255,.75)}
+
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--teal))}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ── Buttons ───────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:13px 17px 13px 24px;border-radius:999px;font-weight:600;font-size:15.5px;
+  background:var(--orange-d);color:#fff;transition:transform .28s var(--ease),background .28s;min-height:48px}
+.btn .dot{width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;transition:transform .28s var(--ease);flex:none}
+.btn:hover{transform:translateY(-2px);background:var(--orange-dd)}
+.btn--navy{background:var(--navy)}.btn--navy .dot{background:var(--orange)}.btn--navy:hover{background:var(--navy-l)}
+.btn:hover .dot{transform:translateX(3px) rotate(45deg)}
+.btn--ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+.btn--ghost .dot{background:var(--navy);color:#fff}
+.btn--ghost:hover{background:var(--ivory)}
+.btn--white{background:#fff;color:var(--navy)}
+.btn--white .dot{background:var(--orange);color:#fff}
+.btn--white:hover{background:var(--ivory)}
+.btn--glass{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.45);backdrop-filter:blur(8px)}
+.btn--glass .dot{background:#fff;color:var(--navy)}
+.btn--glass:hover{background:rgba(255,255,255,.26)}
+.btn--ochre{background:var(--ochre);color:var(--navy-dd)}
+.btn--ochre .dot{background:var(--navy);color:#fff}
+.btn--ochre:hover{background:#E2B663}
+
+/* ── HEADER: utility bar + pill nav ───────── */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;background:linear-gradient(90deg,var(--orange-lt),var(--orange));transition:width .12s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;padding:8px 0 10px;background:#000;border-bottom:1px solid rgba(255,255,255,.08);transition:transform .35s var(--ease),box-shadow .35s}
+.nav.solid{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.utility{display:flex;justify-content:flex-end;gap:4px;align-items:center;font-size:13px;color:rgba(255,255,255,.82);padding:0 12px 8px;
+  transition:opacity .3s,max-height .3s;max-height:40px;overflow:hidden}
+.utility a{padding:4px 10px;border-radius:99px}
+.utility a:hover{background:rgba(255,255,255,.14);color:#fff}
+.utility .open{display:inline-flex;align-items:center;gap:7px;margin-right:auto;padding-left:10px}
+.utility .open i{width:7px;height:7px;border-radius:50%;background:var(--sage)}
+.utility .open.closed i{background:var(--rose)}
+.nav.solid .utility{opacity:0;max-height:0;padding-bottom:0}
+.nav-inner{position:relative;display:flex;align-items:center;gap:14px;border-radius:999px;padding:6px 8px 6px 22px;
+  background:#000;border:1px solid rgba(255,255,255,.18);
+  transition:background .35s,border-color .35s,box-shadow .35s}
+.nav.solid .nav-inner,.nav.menu-open .nav-inner{background:#000;border-color:rgba(255,255,255,.14)}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:48px;width:auto}
+.nav-links{display:flex;gap:2px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+.nav-links>li>a:hover{background:rgba(255,255,255,.14);color:#fff}
+.nav-links>li>button,.nav-links>li>a{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.92);transition:background .2s,color .2s}
+.nav-links>li>button svg{transition:transform .25s}
+.nav-links>li>button:hover,.nav-links>li>button[aria-expanded="true"]{background:rgba(255,255,255,.16);color:#fff}
+.nav-links>li>button[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-cta{display:flex;gap:8px;align-items:center}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.42);display:grid;place-items:center;color:#fff;transition:all .25s;flex:none}
+.icon-btn:hover{background:rgba(255,255,255,.2)}
+.nav .btn{padding:10px 12px 10px 19px;font-size:14.5px;background:var(--orange);color:#fff;min-height:44px}
+.nav .btn .dot{width:26px;height:26px}
+.nav .btn:hover{background:var(--orange-d)}
+.burger{display:none}
+/* mega panels */
+.mega{position:absolute;left:0;right:0;top:calc(100% + 10px);border-radius:var(--r-lg);background:#fff;color:var(--charcoal);
+  box-shadow:0 30px 70px -20px rgba(18,29,38,.45);padding:clamp(20px,2.4vw,32px);display:grid;grid-template-columns:1.3fr .7fr;gap:28px;
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s var(--ease),visibility .25s}
+.mega.open{opacity:1;visibility:visible;transform:none}
+.mega h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-family:var(--body);font-weight:700;color:var(--orange-d);margin-bottom:14px}
+.mega ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
+.mega li a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:14px;font-weight:600;font-size:15px;color:var(--navy);transition:background .2s,transform .2s}
+.mega li a:hover{background:var(--orange-wash);transform:translateX(3px)}
+.mega li a span{font-weight:400;font-size:12.5px;color:var(--slate-d)}
+.mega-feature{position:relative;border-radius:var(--r-md);overflow:hidden;min-height:220px;display:flex;align-items:flex-end;isolation:isolate;color:#fff}
+.mega-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.mega-feature::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,29,38,0) 30%,rgba(18,29,38,.92))}
+.mega-feature div{padding:20px}
+.mega-feature b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.03em;line-height:1.05}
+.mega-feature small{display:block;margin-top:6px;font-size:13.5px;color:#D3DEE2}
+@media(max-width:1080px){.nav-links{display:none}.burger{display:grid;margin-left:auto}}
+@media(max-width:600px){.nav .btn span{display:none}.nav .btn{padding:9px}.brand img{height:38px}.utility{display:none}.nav-inner{padding-left:16px;gap:8px}.icon-btn{width:42px;height:42px}}
+
+/* mobile drawer */
+.drawer{position:fixed;inset:0;z-index:90;background:var(--navy-d);color:#fff;padding:calc(var(--navh) + 30px) var(--pad) 40px;overflow-y:auto;
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.drawer.open{opacity:1;visibility:visible}
+.drawer details{border-bottom:1px solid var(--line-lt)}
+.drawer summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:18px 4px;font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.03em;cursor:pointer;min-height:48px}
+.drawer summary::-webkit-details-marker{display:none}
+.drawer summary svg{transition:transform .25s}
+.drawer details[open] summary svg{transform:rotate(45deg)}
+.drawer ul{list-style:none;margin:0;padding:0 0 18px;display:grid;gap:2px}
+.drawer ul a{display:block;padding:11px 6px;color:#D3DEE2;font-size:16px}
+.drawer-links{list-style:none;margin:0;padding:0}
+.drawer-links a{display:block;padding:16px 4px;border-bottom:1px solid var(--line-lt);font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;color:#fff}
+.drawer .drawer-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+
+/* ── 03 HERO ───────────────────────────────── */
+.topshell{position:relative;isolation:isolate;padding-top:calc(var(--navh) + clamp(64px,8vw,120px));padding-bottom:clamp(30px,4vw,54px);overflow:hidden;background:var(--navy-d)}
+.topshell-bg{position:absolute;inset:0;z-index:-2}
+.topshell-bg video,.topshell-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.topshell-bg img{z-index:0}.topshell-bg video{z-index:1}
+.motion-btn{display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:9px 16px 9px 13px;border-radius:999px;font-size:13.5px;font-weight:600;color:#fff;
+  border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);min-height:40px;transition:background .2s}
+.motion-btn:hover{background:rgba(0,0,0,.5)}
+.topshell-bg::after{content:"";position:absolute;inset:0;z-index:2;
+  background:
+    radial-gradient(85% 85% at 12% 55%, rgba(10,16,22,.82) 0%, rgba(14,22,30,.5) 50%, rgba(18,29,38,.08) 85%),
+    linear-gradient(90deg, rgba(10,16,22,.45) 0%, rgba(10,16,22,0) 60%),
+    radial-gradient(60% 50% at 92% 8%, rgba(198,83,47,.22), transparent 70%),
+    linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(18,29,38,.05) 35%, rgba(18,29,38,.25) 70%, rgba(12,20,27,.95) 100%)}
+.topshell-grain{position:absolute;inset:0;z-index:-1;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:26px 26px;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 55%);mask-image:linear-gradient(180deg,transparent 0%,#000 55%)}
+.river-art{position:absolute;inset:auto 0 0 0;z-index:-1;width:100%;height:60%;opacity:.5;pointer-events:none}
+.river-art path{fill:none;stroke:rgba(232,135,95,.42);stroke-width:1.2}
+.river-art .draw{stroke-dasharray:2200;stroke-dashoffset:2200;animation:draw 7s cubic-bezier(.4,0,.2,1) .5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero{position:relative;z-index:4}
+.hero h1,.hero .lede{text-shadow:0 2px 18px rgba(18,29,38,.7),0 1px 3px rgba(18,29,38,.5)}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap}
+.livepill{display:inline-flex;align-items:center;gap:9px;padding:7px 15px 7px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(198,83,47,.22);border:1px solid rgba(232,135,95,.6);color:#F8D2C1}
+.livepill i{width:8px;height:8px;border-radius:50%;background:var(--orange-lt);box-shadow:0 0 0 0 rgba(232,135,95,.7);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(232,135,95,0)}100%{box-shadow:0 0 0 0 rgba(232,135,95,0)}}
+.hero h1{font-size:clamp(46px,8vw,128px);letter-spacing:-.05em;margin:22px 0 0;max-width:13ch;color:#fff;line-height:.94}
+.hero h1 .it{color:var(--orange-lt);display:inline-block;padding-right:.08em}
+.hero-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:clamp(24px,4vw,60px);align-items:end;margin-top:26px}
+.hero .lede{color:#E2E9EC;font-size:clamp(17px,1.45vw,21px);max-width:46ch}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-side{border:1px solid rgba(255,255,255,.16);border-radius:var(--r-md);background:#000;overflow:hidden;color:#fff;box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
+.hero-side .ph{height:150px}
+.hero-side .ph img{object-position:center 35%}
+.hero-side .in{padding:20px}
+.hero-side .n{color:var(--orange-lt)}
+.hero-side .k{font-family:var(--display);font-weight:700;font-size:clamp(28px,2.8vw,40px);line-height:1;letter-spacing:-.05em;margin-top:6px}
+.hero-side .k span{color:var(--orange-lt)}
+.hero-side p{margin:10px 0 0;font-size:14px;color:#C9CDD0;line-height:1.55;font-weight:300}
+.hero-side a{display:inline-flex;gap:9px;align-items:center;margin-top:14px;font-weight:600;font-size:14.5px;color:var(--orange-lt)}
+.hero-side a:hover{text-decoration:underline;text-underline-offset:4px}
+.float-pill{position:absolute;z-index:5;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-size:13.5px;color:#fff;
+  background:rgba(27,42,54,.55);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:drift 9s ease-in-out infinite}
+.float-pill b{font-family:var(--display);font-size:16px;letter-spacing:-.02em}
+.float-pill i{width:7px;height:7px;border-radius:50%;background:var(--orange-lt)}
+.fp1{right:clamp(16px,6vw,96px);top:calc(var(--navh) + 110px)}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* 04 Quick-start strip lives in the first screen */
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:clamp(34px,4vw,56px)}
+.qcard{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(150px,14vw,196px);border-radius:var(--r-md);overflow:hidden;isolation:isolate;
+  border:1px solid rgba(255,255,255,.26);color:#fff;padding:18px;transition:transform .35s var(--ease),border-color .35s}
+.qcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s var(--ease)}
+.qcard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,29,38,.08) 15%,rgba(18,29,38,.9) 100%)}
+.qcard:hover{transform:translateY(-6px);border-color:rgba(232,135,95,.9)}
+.qcard:hover img{transform:scale(1.07)}
+.qcard .num{position:absolute;top:14px;left:14px;font-size:11px;font-weight:700;letter-spacing:.12em;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.92);color:var(--navy)}
+.qcard .arrow{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:var(--orange);display:grid;place-items:center;transition:transform .35s var(--ease)}
+.qcard:hover .arrow{transform:rotate(-45deg)}
+.qcard b{font-family:var(--display);font-size:clamp(19px,1.7vw,24px);letter-spacing:-.03em;line-height:1.05}
+.qcard small{font-size:13px;color:#D3DEE2;margin-top:4px}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.fp1{display:none}}
+@media(max-width:420px){.qcard{min-height:140px;padding:14px}.qcard b{font-size:18px}}
+
+/* marquee */
+.marquee{border-bottom:1px solid var(--line);padding:4px 0 20px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--slate-d);border-top:1px solid var(--line);padding-top:20px;margin-bottom:10px}
+.marquee-track{display:flex;gap:44px;width:max-content;animation:slide 52s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track .mq{font-family:var(--display);font-size:clamp(17px,1.6vw,22px);font-weight:600;letter-spacing:-.03em;color:var(--teal-d);white-space:nowrap;display:inline-flex;align-items:center;gap:44px;padding:6px 0;transition:color .2s}
+.marquee-track .mq::after{content:"✦";font-size:.6em;color:var(--orange)}
+.marquee-track .mq:hover,.marquee-track .mq:focus-visible{color:var(--orange-d)}
+.marquee-track .mq span{background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;transition:background-size .35s var(--ease)}
+.marquee-track .mq:hover span,.marquee-track .mq:focus-visible span{background-size:100% 2px}
+.marquee:focus-within .marquee-track{animation-play-state:paused}
+/* hover preview — a picture in the shape of a CTA pill, slightly larger than a button */
+.mq-pop{position:fixed;z-index:95;left:0;top:0;width:236px;height:88px;border-radius:999px;overflow:hidden;pointer-events:none;
+  border:3px solid #fff;box-shadow:0 22px 44px -16px rgba(18,29,38,.55),0 0 0 1px rgba(198,83,47,.35);background:var(--navy);
+  opacity:0;transform:translate(-50%,-100%) translateY(6px) scale(.86);transform-origin:50% 100%;transition:opacity .22s,transform .3s var(--ease)}
+.mq-pop.show{opacity:1;transform:translate(-50%,-100%) translateY(-12px) scale(1)}
+.mq-pop img{width:100%;height:100%;object-fit:cover}
+.mq-pop b{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center}
+.mq-pop::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(18,29,38,.45))}
+@media (hover:none){.mq-pop{display:none}}
+@keyframes slide{to{transform:translateX(-50%)}}
+.rule{height:3px;border-radius:9px;background:linear-gradient(90deg,var(--orange),var(--ochre) 50%,transparent);margin-top:clamp(28px,3vw,48px);opacity:.75}
+
+.sec{padding:clamp(52px,6.6vw,110px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(26px,3.2vw,48px)}
+.sec-head h2{font-size:clamp(34px,4.6vw,70px);max-width:15ch;margin-top:14px}
+.sec-head h2 .it{color:var(--brick)}
+.u{position:relative;display:inline-block}
+.u::after{content:"";position:absolute;left:0;right:0;bottom:-.04em;height:.07em;border-radius:9px;background:linear-gradient(90deg,var(--orange),var(--ochre));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .3s}
+.in-view .u::after,.no-js .u::after{transform:scaleX(1)}
+.sec-head .lede{margin-top:0}
+.head-r{display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:46ch}
+
+/* ── 05 WHAT'S HAPPENING ───────────────────── */
+.bg-ivory{background:var(--ivory)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.path{padding:11px 20px;border-radius:999px;border:1.5px solid var(--line);font-weight:600;font-size:15px;color:var(--charcoal);background:#fff;min-height:44px;
+  transition:all .25s var(--ease)}
+.path:hover{border-color:var(--brick);color:var(--brick-d);transform:translateY(-2px)}
+.path[aria-pressed="true"]{background:var(--orange-d);border-color:var(--orange-d);color:#fff}
+.events{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-auto-rows:auto;gap:var(--gap)}
+.ev{border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
+.ev:hover{transform:translateY(-6px);box-shadow:0 22px 46px -26px rgba(18,29,38,.5)}
+.ev .thumb{height:clamp(170px,15vw,210px)}
+.ev .thumb img{transition:transform .7s var(--ease)}
+.ev:hover .thumb img{transform:scale(1.06)}
+.ev .kind{position:absolute;z-index:3;left:14px;top:14px;padding:6px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#fff;color:var(--navy)}
+.ev .kind.rec{background:var(--teal);color:#fff}
+.ev .kind.ongo{background:var(--ochre);color:var(--navy-dd)}
+.ev .body{padding:20px 22px 22px;display:flex;gap:18px;flex:1}
+.date{flex:none;width:64px;text-align:center;border-radius:16px;background:var(--orange-wash);padding:10px 4px 9px;align-self:flex-start}
+.date .d{display:block;font-family:var(--display);font-weight:800;font-size:31px;line-height:1;letter-spacing:-.04em;color:var(--navy)}
+.date .m{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brick-d);margin-top:4px}
+.date .w{display:block;font-size:11.5px;color:var(--slate-d);margin-top:2px}
+.ev .meta{display:flex;flex-direction:column;flex:1;min-width:0}
+.ev h3{font-size:clamp(19px,1.55vw,23px);line-height:1.1}
+.ev .when{font-size:14px;font-weight:600;color:var(--navy);margin-top:8px}
+.ev .where{display:flex;gap:6px;align-items:center;font-size:13.5px;color:var(--slate-d);margin-top:2px}
+.ev p{font-size:14px;color:var(--slate-d);margin:10px 0 0;font-weight:400}
+.ev .go{margin-top:auto;padding-top:14px;font-weight:600;font-size:14.5px;display:inline-flex;gap:9px;align-items:center;color:var(--brick-d)}
+.ev .go svg{transition:transform .3s}
+.ev:hover .go svg{transform:translateX(5px)}
+.ev.feature{grid-row:span 2;background:var(--navy);border-color:var(--navy);box-shadow:inset 0 -6px 0 var(--orange)}
+.ev.feature .thumb{height:auto;flex:1;min-height:clamp(220px,22vw,320px)}
+.ev.feature .body{flex:0 0 auto}
+.ev.feature h3{color:#fff;font-size:clamp(24px,2.3vw,34px)}
+.ev.feature .when{color:var(--orange-lt)}
+.ev.feature .where,.ev.feature p{color:#C9D6DB}
+.ev.feature .go{color:var(--orange-lt)}
+.ev.feature .date{background:rgba(255,255,255,.1)}
+.ev.feature .date .d{color:#fff}.ev.feature .date .m{color:var(--orange-lt)}.ev.feature .date .w{color:#C9D6DB}
+.events-empty{grid-column:1/-1;padding:40px;border-radius:var(--r-lg);border:1.5px dashed var(--line);text-align:center;color:var(--slate-d)}
+.events-foot{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.events-foot small{color:var(--slate-d);font-size:13.5px}
+@media(max-width:1080px){.events{grid-template-columns:1fr 1fr}.ev.feature{grid-row:auto;grid-column:1/-1}}
+@media(max-width:680px){.events{grid-template-columns:1fr}}
+
+/* ── 06 FIND YOUR COLUMBIA (interest tiles) ── */
+.inits{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+.init{grid-column:span 3;border-radius:var(--r-lg);overflow:hidden;background:var(--ivory);border:1px solid var(--line);display:flex;flex-direction:column;
+  min-height:250px;transition:transform .3s var(--ease),box-shadow .3s}
+.init:hover{transform:translateY(-6px);box-shadow:0 20px 44px -24px rgba(18,29,38,.55)}
+.init.wide{grid-column:span 6}
+.init .pic{height:clamp(160px,14vw,200px)}
+.init.wide .pic{height:clamp(190px,17vw,250px)}
+.init .pic img{transition:transform .7s var(--ease)}
+.init:hover .pic img{transform:scale(1.06)}
+.init .pic .tag{position:absolute;z-index:2;left:14px;top:14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:99px;color:#fff;background:var(--navy)}
+.init .in{padding:22px;display:flex;flex-direction:column;flex:1}
+.init h3{font-size:clamp(20px,1.8vw,27px)}
+.init p{font-size:14.5px;color:var(--slate-d);margin:9px 0 0;font-weight:400}
+.init .go{display:inline-flex;align-items:center;gap:9px;margin-top:auto;padding-top:18px;font-weight:600;font-size:14.5px;color:var(--brick-d)}
+.init .go svg{transition:transform .3s}
+.init:hover .go svg{transform:translateX(5px)}
+.init.feature{background:var(--navy);border-color:var(--navy)}
+.init.feature h3{color:#fff}.init.feature p{color:#C9D6DB}.init.feature .go{color:var(--orange-lt)}
+.init.feature .pic .tag{background:var(--orange);color:#fff}
+.init.accent{background:var(--brick);border-color:var(--brick)}
+.init.accent h3{color:#fff}.init.accent p{color:#F6E6DF}.init.accent .go{color:#fff}
+.init.accent .pic .tag{background:#fff;color:var(--brick-d)}
+.init .pic .tag.teal{background:var(--teal)}
+.init .pic .tag.rose{background:var(--rose);color:var(--navy-dd)}
+@media(max-width:1080px){.init{grid-column:span 6}.init.wide{grid-column:span 6}}
+@media(max-width:680px){.init,.init.wide{grid-column:1/-1}}
+
+/* ── 07 BUILD YOUR GETAWAY (itinerary track) ─ */
+.evidence{background:var(--ochre-lt);border-radius:var(--r-lg);padding:clamp(30px,4vw,64px) clamp(18px,3vw,48px)}
+.evidence .sec-head h2 .it{color:var(--teal-d)}
+.daytabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.track{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap);align-items:start}
+.track::before{content:"";position:absolute;left:5%;right:5%;top:58px;height:2px;
+  background-image:linear-gradient(90deg,rgba(38,58,74,.25) 0 12px,transparent 12px 22px);background-size:22px 2px}
+.stage{position:relative;text-align:left;display:flex;flex-direction:column;align-items:flex-start;padding:0;border-radius:18px}
+.stage .tick{font-family:var(--display);font-size:11.5px;letter-spacing:.14em;color:var(--slate-d);margin-bottom:12px;display:block;text-transform:uppercase;font-weight:700}
+.stage .bulb{width:92px;height:92px;border-radius:50%;overflow:hidden;position:relative;z-index:2;border:3px solid #fff;background:var(--navy);
+  transition:all .4s var(--ease);flex:none}
+.stage .bulb img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.75;transition:opacity .4s,filter .4s}
+.stage .bulb::after{content:"";position:absolute;inset:0;background:rgba(38,58,74,.38);transition:background .4s}
+.stage[aria-selected="true"] .bulb{border-color:var(--brick);transform:scale(1.07)}
+.stage[aria-selected="true"] .bulb img{opacity:1;filter:none}
+.stage[aria-selected="true"] .bulb::after{background:transparent}
+.stage:hover .bulb{border-color:var(--orange-lt)}
+.stage h4{font-size:clamp(17px,1.4vw,21px);margin-top:16px;line-height:1.08}
+.stage p{font-size:13.5px;color:var(--slate-d);margin:6px 0 0;font-weight:400;line-height:1.45}
+.case{margin-top:clamp(26px,3vw,44px);border-radius:var(--r-lg);overflow:hidden;background:#fff;display:grid;grid-template-columns:.5fr 1.5fr}
+.case-tag{position:relative;isolation:isolate;padding:clamp(22px,2.6vw,34px);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:280px}
+.case-tag .bg{position:absolute;inset:0;z-index:-2;background:var(--navy)}
+.case-tag .bg img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.case-tag::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(38,58,74,.35),rgba(18,29,38,.94))}
+.case-tag .p{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--orange-lt)}
+.case-tag h3{font-size:clamp(23px,2.3vw,34px);margin-top:10px;color:#fff}
+.case-tag .prog{display:flex;gap:6px}
+.case-tag .prog i{height:4px;flex:1;border-radius:99px;background:rgba(255,255,255,.26)}
+.case-tag .prog i.on{background:var(--orange)}
+.case-body{padding:clamp(22px,2.8vw,40px);display:flex;flex-direction:column}
+.case-body .quote{font-family:var(--display);font-size:clamp(20px,2.1vw,30px);letter-spacing:-.035em;line-height:1.16;max-width:30ch;color:var(--navy);margin:0;font-weight:600}
+.case-body .detail{margin-top:14px;color:var(--slate-d);font-size:15px;max-width:60ch}
+.case-body .also{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;padding-top:20px;border-top:1px dashed var(--line)}
+.case-body .also span{font-size:13px;padding:6px 12px;border-radius:99px;background:var(--sage-lt);color:var(--charcoal);font-weight:600}
+.case-body .nextprev{display:flex;gap:8px;margin-top:auto;padding-top:22px}
+.case-body .nextprev button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--navy);transition:all .2s}
+.case-body .nextprev button:hover{background:var(--navy);color:#fff}
+.itins{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:clamp(26px,3vw,40px)}
+.itins .lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--slate-d);margin-right:6px}
+.chip{padding:9px 16px;border-radius:999px;border:1.5px solid rgba(38,58,74,.2);color:var(--navy);font-size:14px;font-weight:600;background:rgba(255,255,255,.7);transition:all .22s;min-height:40px;display:inline-flex;align-items:center}
+.chip:hover{background:var(--orange-d);color:#fff;border-color:var(--orange-d)}
+@media(max-width:1080px){.track{grid-template-columns:repeat(3,1fr);row-gap:30px}.track::before{display:none}}
+@media(max-width:860px){.case{grid-template-columns:1fr}.case-tag{min-height:220px}}
+@media(max-width:560px){.track{grid-template-columns:repeat(2,1fr)}.stage .bulb{width:76px;height:76px}}
+
+/* stories */
+.stories-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin:clamp(48px,6vw,84px) 0 clamp(20px,2.4vw,30px)}
+.stories-head h3{font-size:clamp(26px,2.8vw,40px)}
+.stories-head h3 .it{color:var(--brick)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.post{border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease)}
+.post:hover{transform:translateY(-6px)}
+.post .thumb{height:clamp(170px,16vw,210px)}
+.post .thumb img{transition:transform .7s var(--ease)}
+.post:hover .thumb img{transform:scale(1.06)}
+.post .thumb .kicker{position:absolute;z-index:3;left:14px;bottom:14px;padding:7px 13px;border-radius:99px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--navy)}
+.post .body{padding:22px;display:flex;flex-direction:column;flex:1}
+.post time{font-size:13px;color:var(--slate-d);font-weight:600}
+.post h4{font-size:clamp(18px,1.5vw,23px);margin-top:10px;line-height:1.12}
+.post .go{margin-top:auto;padding-top:20px;font-weight:600;font-size:14.5px;display:inline-flex;gap:9px;align-items:center;color:var(--brick-d)}
+.post .go svg{transition:transform .3s}
+.post:hover .go svg{transform:translateX(5px)}
+@media(max-width:980px){.posts{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.posts{grid-template-columns:1fr}}
+
+/* ── 08 SIGNATURE EVENTS (dark band) ───────── */
+.impact{position:relative;isolation:isolate;color:#fff;padding:clamp(52px,6.6vw,110px) 0;overflow:hidden}
+.impact-bg{position:absolute;inset:0;z-index:-2;background:var(--navy)}
+.impact-bg img{width:100%;height:100%;object-fit:cover;opacity:.18;filter:grayscale(1)}
+.impact-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(27,42,54,.96),rgba(38,58,74,.93) 60%,rgba(59,107,103,.9))}
+.impact .sec-head h2 .it{color:var(--orange-lt)}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-lt)}
+.stat{padding:clamp(24px,2.6vw,38px) clamp(16px,2vw,28px);border-right:1px solid var(--line-lt);border-bottom:1px solid var(--line-lt)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-size:clamp(44px,5.4vw,82px);letter-spacing:-.055em;line-height:.9;color:#fff;font-variant-numeric:tabular-nums}
+.stat b .suf{display:inline;margin-top:0;font-size:.42em;color:var(--orange-lt);letter-spacing:-.02em;margin-left:4px}
+.stat>span{display:block;margin-top:14px;font-size:14.5px;color:#C9D6DB;max-width:24ch;font-weight:300}
+.rail-wrap{margin-top:clamp(34px,4vw,60px)}
+.rail-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:22px;flex-wrap:wrap}
+.rail-top h3{color:#fff;font-size:clamp(24px,2.6vw,38px)}
+.rail-top h3 .it{color:var(--mist)}
+.rail-nav{display:flex;gap:8px}
+.people-rail{display:flex;gap:var(--gap);overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.people-rail::-webkit-scrollbar{display:none}
+.person{flex:0 0 clamp(250px,26vw,330px);scroll-snap-align:start;border-radius:var(--r-lg);overflow:hidden;position:relative;
+  min-height:clamp(360px,34vw,440px);display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;transition:transform .35s var(--ease)}
+.person .bg{position:absolute;inset:0;z-index:-2;background:var(--navy-d)}
+.person .bg img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.person::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,29,38,0) 18%,rgba(18,29,38,.78) 52%,rgba(18,29,38,.97) 100%)}
+.person:hover{transform:translateY(-6px)}
+.person:hover .bg img{transform:scale(1.05)}
+.person .in{padding:22px;color:#fff}
+.person .season{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:var(--ochre);color:var(--navy-dd)}
+.person .season.teal{background:var(--mist);color:var(--navy-dd)}
+.person .season.rose{background:var(--rose);color:var(--navy-dd)}
+.person h4{font-size:clamp(22px,2vw,28px);color:#fff;margin-top:12px}
+.person .dt{display:block;margin-top:6px;font-weight:600;font-size:14.5px;color:var(--orange-lt)}
+.person p{margin:8px 0 0;font-size:14px;color:#C9D6DB;font-weight:300}
+.person .go{display:inline-flex;gap:8px;align-items:center;margin-top:14px;font-weight:600;font-size:14px;color:#fff}
+.impact .icon-btn{border-color:rgba(255,255,255,.4)}
+@media(max-width:1080px){.impact-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}}
+@media(max-width:520px){.impact-grid{grid-template-columns:1fr}.stat{border-right:0}}
+
+/* ── 09 EAT · SHOP · STAY ──────────────────── */
+.pillars{display:grid;gap:var(--gap);grid-template-columns:repeat(3,1fr)}
+.pillar{display:flex;flex-direction:column;border-radius:var(--r-lg);overflow:hidden;background:var(--white);border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.pillar:hover{transform:translateY(-8px);box-shadow:0 24px 50px -26px rgba(18,29,38,.5);border-color:var(--slate)}
+.pillar .pic{position:relative;height:clamp(200px,18vw,250px);overflow:hidden;background:var(--navy)}
+.pillar .pic img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.pillar:hover .pic img{transform:scale(1.06)}
+.pillar .no{position:absolute;left:14px;top:14px;z-index:2;background:#fff;color:var(--navy);padding:6px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.pillar .bar{height:5px;width:100%;flex:none}
+.pillar .in{padding:24px;display:flex;flex-direction:column;flex:1}
+.pillar h3{font-size:clamp(24px,2.2vw,32px)}
+.pillar h3 .it{color:var(--brick)}
+.pillar>.in>p{font-size:15px;color:var(--slate-d);margin:10px 0 0;line-height:1.55}
+.listing{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:2px}
+.listing a{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px dashed var(--line);transition:padding .2s}
+.listing a:hover{padding-left:10px}
+.listing strong{font-size:15px;color:var(--navy);font-weight:700}
+.listing em{display:block;font-style:normal;font-size:13px;color:var(--slate-d)}
+.listing svg{margin-left:auto;color:var(--brick);flex:none}
+.cats{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.cats span{font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:99px;background:var(--ivory);color:var(--charcoal)}
+.pillar .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:22px;font-weight:700;font-size:14.5px;color:var(--navy)}
+.pillar .foot .arrow{width:40px;height:40px;border-radius:50%;background:var(--ivory);color:var(--navy);display:grid;place-items:center;flex:none;transition:all .35s}
+.pillar:hover .foot .arrow{background:var(--orange);color:#fff;transform:rotate(-45deg)}
+@media(max-width:1000px){.pillars{grid-template-columns:1fr 1fr}.pillar:last-child{grid-column:1/-1}}
+@media(max-width:640px){.pillars{grid-template-columns:1fr}}
+
+/* ── 10 PLAN THE PRACTICAL DETAILS ─────────── */
+.plan-tabs{display:flex;gap:10px;flex-wrap:wrap}
+.plan-panel{margin-top:22px;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:var(--mist-lt);display:grid;grid-template-columns:.85fr 1.15fr}
+.plan-media{position:relative;min-height:380px;background:var(--navy)}
+.plan-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.plan-media .cop{position:absolute;inset:auto 0 0 0;z-index:2;padding:26px;background:linear-gradient(180deg,transparent,rgba(18,29,38,.95))}
+.plan-media .who{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.2vw,32px);letter-spacing:-.035em;line-height:1.05;color:#fff}
+.plan-media p{margin:10px 0 0;color:#D3DEE2;font-size:14.5px;font-weight:300}
+.plan-body{padding:clamp(18px,2.4vw,32px);display:grid;gap:10px;align-content:center}
+.fact{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border-radius:var(--r-md);background:#fff;border:1px solid transparent}
+.fact .ic{width:44px;height:44px;border-radius:14px;background:var(--orange);color:#fff;display:grid;place-items:center;flex:none}
+.fact strong{display:block;font-family:var(--display);font-size:clamp(19px,1.7vw,24px);letter-spacing:-.03em;color:var(--navy);line-height:1.1}
+.fact span{display:block;font-size:14.5px;color:var(--slate-d);margin-top:4px}
+.fact a{color:var(--brick-d);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.hours{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:8px}
+.hours td{padding:7px 0;border-bottom:1px dashed var(--line)}
+.hours td:last-child{text-align:right;font-weight:600;color:var(--navy)}
+.hours tr.today td{color:var(--brick-d);font-weight:700}
+.fact .status,.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px;background:var(--sage-lt);color:#2F5A35;margin-top:10px}
+.status i{width:8px;height:8px;border-radius:50%;background:#4E8A57}
+.status.closed{background:var(--rose-lt);color:var(--brick-d)}
+.status.closed i{background:var(--brick)}
+.faq{display:grid;gap:8px}
+.faq details{background:#fff;border-radius:var(--r-md);border:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 20px;font-weight:700;color:var(--navy);font-size:15.5px;min-height:52px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary span{width:30px;height:30px;border-radius:50%;background:var(--ivory);display:grid;place-items:center;flex:none;transition:transform .25s}
+.faq details[open] summary span{transform:rotate(45deg);background:var(--navy);color:#fff}
+.faq details p{margin:0;padding:0 20px 18px;color:var(--slate-d);font-size:15px}
+@media(max-width:860px){.plan-panel{grid-template-columns:1fr}.plan-media{min-height:240px}}
+
+/* ── 11 VISITOR GUIDE + APP ────────────────── */
+.press{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--gap)}
+.press-card{border-radius:var(--r-lg);padding:clamp(26px,3.2vw,52px);display:flex;flex-direction:column;justify-content:space-between;min-height:380px;position:relative;overflow:hidden;isolation:isolate}
+.press-card.a{color:#fff}
+.press-card.a .bg{position:absolute;inset:0;z-index:-2;background:var(--brick)}
+.press-card.a .bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.35}
+.press-card.a::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(125deg,rgba(198,83,47,.96) 15%,rgba(154,61,34,.94) 55%,rgba(38,58,74,.93) 100%)}
+.press-card.a h2{color:#fff;font-size:clamp(30px,3.6vw,54px);max-width:14ch}
+.press-card.a h2 .it{color:var(--ochre)}
+.press-card.a p{color:#F3E7E1}
+.press-card.a .n{color:rgba(255,255,255,.88)}
+.press-card.b{background:var(--ivory);border:1px solid var(--line)}
+.press-card h3{font-size:clamp(25px,2.6vw,38px);max-width:16ch}
+.press-card h3 .it{color:var(--teal-d)}
+.press-card p{font-size:15.5px;margin:14px 0 0;max-width:46ch;color:var(--slate-d)}
+.press-card .btn{align-self:flex-start;margin-top:28px}
+.guide-form{display:flex;gap:10px;background:#fff;border-radius:999px;padding:7px 7px 7px 22px;align-items:center;max-width:560px;margin-top:28px}
+.guide-form input{flex:1;min-width:0;border:0;background:none;outline:none;padding:12px 0;font-size:16px;color:var(--navy)}
+.guide-form .btn{margin:0}
+.guide-ok{display:none;margin-top:16px;font-weight:700}
+.guide-ok.show{display:block}
+.mini{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.mini span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#fff;padding:7px 13px;border-radius:99px;border:1px solid rgba(255,255,255,.35)}
+.app-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.app-badges a{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:14px;background:var(--navy);color:#fff;font-size:13px;line-height:1.15;min-height:48px}
+.app-badges a b{display:block;font-size:15.5px}
+.app-badges a:hover{background:var(--navy-l)}
+@media(max-width:860px){.press{grid-template-columns:1fr}.press-card{min-height:0}}
+@media(max-width:480px){.guide-form{border-radius:22px;flex-direction:column;align-items:stretch;padding:10px}.guide-form input{padding:12px 10px}.guide-form .btn{justify-content:space-between}}
+
+/* ── 12 NEWSLETTER ─────────────────────────── */
+.news{border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-columns:1.25fr .75fr;background:var(--sage-lt)}
+.news .in{padding:clamp(26px,3.6vw,58px)}
+.news h2{font-size:clamp(30px,3.6vw,54px);max-width:15ch;color:var(--navy);margin-top:14px}
+.news h2 .it{color:var(--teal-d)}
+.news .lede{color:var(--charcoal);margin-top:14px}
+.news-media{position:relative;min-height:300px;background:var(--navy)}
+.news-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.news-form{margin-top:26px;max-width:640px}
+.interests{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px;border:0;padding:0;margin-inline:0}
+.interests legend{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--slate-d);margin-bottom:10px;padding:0}
+.int{padding:10px 17px;border-radius:999px;border:1.5px solid rgba(38,58,74,.24);font-size:14px;font-weight:600;transition:all .22s;color:var(--navy);background:rgba(255,255,255,.65);min-height:44px}
+.int[aria-pressed="true"]{background:var(--orange-d);color:#fff;border-color:var(--orange-d)}
+.int:hover{border-color:var(--navy)}
+.news-row{display:flex;gap:10px;background:#fff;border-radius:999px;padding:7px 7px 7px 22px;align-items:center;flex-wrap:wrap}
+.news-row input{flex:1;min-width:170px;border:0;background:none;outline:none;padding:12px 0;font-size:16px;color:var(--navy)}
+.news-note{margin-top:14px;font-size:13px;color:var(--slate-d)}
+.news-ok{display:none;margin-top:16px;font-weight:700;color:var(--navy)}
+.news-ok.show{display:block}
+.socials{display:flex;gap:8px}
+@media(max-width:860px){.news{grid-template-columns:1fr}.news-media{min-height:220px;order:-1}}
+@media(max-width:480px){.news-row{border-radius:22px;padding:10px}.news-row .btn{width:100%;justify-content:space-between}}
+
+/* ── 13 FOOTER ─────────────────────────────── */
+footer{position:relative;isolation:isolate;color:#fff;margin-top:clamp(48px,6vw,88px);border-radius:var(--r-lg) var(--r-lg) 0 0;
+  padding:clamp(40px,5vw,82px) 0 24px;overflow:hidden;background:#000}
+.foot-art{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:.5;pointer-events:none}
+.foot-art path{fill:none;stroke:rgba(232,135,95,.16);stroke-width:1.2}
+.foot-top{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:clamp(20px,3vw,40px)}
+.foot-brand img{height:52px;width:auto}
+.foot-brand p{color:#C9D6DB;font-size:14.5px;margin:20px 0 0;max-width:34ch;font-weight:300}
+.foot-brand address{font-style:normal;color:#C9D6DB;font-size:14px;margin-top:20px;line-height:1.75;font-weight:300}
+.foot-brand address b{color:#fff;font-weight:700}
+.foot-brand address a{color:var(--orange-lt)}
+.foot-col h2{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-lt);margin:0 0 16px;font-weight:700}
+.foot-col ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.foot-col a{font-size:14.5px;color:#fff;opacity:.88;transition:opacity .2s,color .2s}
+.foot-col a:hover{opacity:1;color:var(--ochre)}
+.foot-bottom{margin-top:clamp(32px,4vw,58px);padding-top:24px;border-top:1px solid var(--line-lt);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;font-size:13.5px;color:#C9D6DB}
+.socials a{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-lt);display:grid;place-items:center;transition:all .22s}
+.socials a:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.foot-legal{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.foot-legal a:hover{color:#fff;text-decoration:underline}
+.designed{display:flex;justify-content:flex-end;align-items:center;gap:14px;margin-top:22px;padding-top:22px;border-top:1px solid var(--line-lt);font-size:13px;font-weight:600;color:#fff;text-align:right;line-height:1.2}
+.designed img{height:34px;width:auto;filter:brightness(0) invert(1)}
+.wordmark{margin-top:clamp(18px,2.4vw,36px)}
+.wordmark svg{width:100%;height:auto;display:block;overflow:visible}
+.wordmark text{font-family:var(--display);font-weight:800;fill:#fff;opacity:.09;letter-spacing:-.04em}
+@media(max-width:980px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media(max-width:480px){.foot-top{grid-template-columns:1fr}.designed{justify-content:flex-start;text-align:left}}
+.credit{font-size:12px;color:#9AA3A7;text-align:center;padding:0 var(--pad) 26px;margin:0;background:#000}
+.credit span{display:block;max-width:900px;margin:0 auto;padding-top:4px}
+
+/* ── SEARCH OVERLAY ────────────────────────── */
+.search{position:fixed;inset:0;z-index:150;background:rgba(18,29,38,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;padding:clamp(70px,10vh,120px) var(--pad) 30px;overflow-y:auto}
+.search.open{display:block}
+.search-box{max-width:860px;margin:0 auto;background:#fff;border-radius:var(--r-lg);padding:clamp(18px,2.6vw,32px);box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}
+.searchbar{display:flex;align-items:center;gap:10px;background:var(--ivory);border-radius:999px;padding:7px 7px 7px 22px}
+.searchbar svg{flex:none;color:var(--slate-d)}
+.searchbar input{flex:1;min-width:0;border:0;background:none;outline:none;font-size:clamp(16px,1.5vw,19px);color:var(--navy);padding:12px 0}
+.searchbar input::placeholder{color:var(--slate-d)}
+.search .pops{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.search .pops .lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--slate-d);margin-right:4px}
+.results{margin-top:18px;display:grid;gap:18px}
+.rgroup h3{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brick-d);margin-bottom:8px}
+.rgroup ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.rgroup a{display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:14px;transition:background .2s}
+.rgroup a:hover,.rgroup a:focus-visible{background:var(--ivory)}
+.rgroup img{width:52px;height:52px;border-radius:12px;object-fit:cover;flex:none}
+.rgroup strong{display:block;color:var(--navy);font-size:15.5px}
+.rgroup small{display:block;color:var(--slate-d);font-size:13px}
+.r-empty{padding:26px;border-radius:var(--r-md);background:var(--ivory);color:var(--slate-d);text-align:center}
+.r-empty b{color:var(--navy)}
+.search-close{position:absolute;top:20px;right:20px;background:#fff;color:var(--navy);border:0}
+.search-close:hover{background:var(--ivory)}
+
+/* reveal */
+.js .rv{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv.in-view{opacity:1;transform:none}
+.to-top{position:fixed;right:18px;bottom:18px;z-index:70;width:50px;height:50px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;
+  box-shadow:0 12px 30px -10px rgba(18,29,38,.6);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .3s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .js .rv{opacity:1;transform:none}
+  .river-art .draw{stroke-dashoffset:0}
+}
+
+/* Homepage concept: remove unsupported travel-oriented controls without changing section containers */
+
+</style>
+<link href="assets/img/favicon-32.png" rel="icon" type="image/png"/><style>
+:root{--navy:#455766;--navy-d:#344553;--navy-dd:#263845;--navy-l:#596d7c;--orange:#FF8B2B;--orange-d:#B94D00;--orange-dd:#A84600;--orange-lt:#FFB16D;--orange-wash:#FFF1E5;--teal:#607b8a;--teal-d:#455766;--brick:#B94D00;--brick-d:#963E00;--ochre:#F6AC62;--ochre-lt:#FFF1E5;--ivory:#F5F8FA;--sage:#CBD8DE;--sage-lt:#E9EFF3;--mist:#C7D6DE;--mist-lt:#E9EFF3;--slate:#596B78;--slate-d:#455766;--charcoal:#263845;--rose:#E9B79B;--rose-lt:#FFF1E5}
+.topshell-bg img{display:block!important;width:100%;height:100%;object-fit:cover}.brand img{object-fit:contain;max-height:58px;width:auto}.nav .brand{min-width:190px}.on-dark .brand img{filter:none} .hero-side .k{font-size:clamp(28px,3vw,44px)} .float-pill{display:none!important}
+</style><style id="centralia-repair">
+/* Accessibility and resilient visibility fallback */
+.js .rv:not(.in-view){visibility:visible} .js .rv.in-view{visibility:visible}
+.centralia-hero-video,.centralia-hero-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.centralia-hero-video{z-index:1}.centralia-hero-fallback{z-index:0}
+.plan-media{background:#455766 url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85") center/cover no-repeat}.plan-media img{min-height:100%;object-fit:cover}.brand img,footer img[src*="port-centralia-white"]{object-fit:contain!important;object-position:left center}
+img{color:transparent}
+.designer-credit{display:inline-flex;align-items:center;gap:16px;color:#fff}.designer-credit img{display:inline-block;max-width:200px;width:200px;height:auto}.credit{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.app-badges{display:flex!important}.news-form .interests{display:flex!important;flex-wrap:wrap}.events{grid-template-columns:1.25fr 1fr 1fr}.ev.feature{grid-row:span 2}.centralia-hero-video{display:block;opacity:1;visibility:visible} @media(max-width:1080px){.events{grid-template-columns:1fr 1fr}.ev.feature{grid-row:auto;grid-column:1/-1}}@media(max-width:680px){.events{grid-template-columns:1fr}}
+</style><style>
+.topshell-bg .port-hero-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.topshell-bg{overflow:hidden}
+.hero-side .ph>img{display:block;width:100%;height:100%;object-fit:cover}
+</style></head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<a class="skip" href="#main">Skip to content</a>
+<div aria-hidden="true" id="progress"></div>
+<!-- SVG sprite -->
+<svg aria-hidden="true" height="0" style="position:absolute" width="0">
+<symbol id="i-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-arrow-l" viewbox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-chev" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-plus" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-search" viewbox="0 0 24 24"><circle cx="11" cy="11" fill="none" r="7" stroke="currentColor" stroke-width="2"></circle><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></symbol>
+<symbol id="i-pin" viewbox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" fill="none" r="2.5" stroke="currentColor" stroke-width="2"></circle></symbol>
+<symbol id="i-car" viewbox="0 0 24 24"><path d="M5 16V11l2-5h10l2 5v5M3 16h18v3H3zM7 19v1M17 19v1M5 11h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-walk" viewbox="0 0 24 24"><circle cx="13" cy="4.5" fill="none" r="2" stroke="currentColor" stroke-width="1.9"></circle><path d="M10 21l2-6 3 3v3M12 15l-1-5 4 2 2 3M11 10l-3 2v3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-clock" viewbox="0 0 24 24"><circle cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="1.9"></circle><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-book" viewbox="0 0 24 24"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 5v16M8 7h7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></symbol>
+<symbol id="i-x" viewbox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-pause" viewbox="0 0 24 24"><rect fill="currentColor" height="14" rx="1" width="4" x="6" y="5"></rect><rect fill="currentColor" height="14" rx="1" width="4" x="14" y="5"></rect></symbol>
+<symbol id="i-play" viewbox="0 0 24 24"><path d="M7 5l12 7-12 7z" fill="currentColor"></path></symbol>
+<symbol id="i-up" viewbox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></symbol>
+<symbol id="i-fb" viewbox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z" fill="currentColor"></path></symbol>
+<symbol id="i-ig" viewbox="0 0 24 24"><rect fill="none" height="17" rx="5" stroke="currentColor" stroke-width="2" width="17" x="3.5" y="3.5"></rect><circle cx="12" cy="12" fill="none" r="4" stroke="currentColor" stroke-width="2"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r="1.2"></circle></symbol>
+<symbol id="i-yt" viewbox="0 0 24 24"><rect fill="none" height="13" rx="4" stroke="currentColor" stroke-width="2" width="19" x="2.5" y="5.5"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"></path></symbol>
+<symbol id="i-tt" viewbox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 11-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></symbol>
+</svg>
+<!-- 01 + 02 HEADER -->
+<header class="nav" id="nav">
+<div class="wrap">
+<nav aria-label="Utility" class="utility">
+<span class="open" id="utilOpen"><i></i><span>Port Office · 3508 Galvin Road</span></span>
+<a href="#events">Meetings</a>
+<a href="#guide">Resources</a>
+<a href="#plan">Contact</a>
+</nav>
+<div class="nav-inner">
+<a aria-label="Port of Centralia — home" class="brand" href="#top"><img alt="Port of Centralia" height="123" src="assets/img/port-centralia-white.png" width="376"/></a>
+<ul class="nav-links" id="navLinks"><li><a href="#interests">About</a></li><li><a href="#local">Properties</a></li><li><a href="#events">Meetings</a></li><li><a href="#signature">Documents</a></li><li><a href="#getaway">News</a></li><li><a href="#plan">Contact</a></li></ul>
+<div class="nav-cta">
+<button aria-label="Search Port information" class="icon-btn" id="openSearch"><svg height="18" width="18"><use href="#i-search"></use></svg></button>
+<a class="btn" href="#guide">Contact</a>
+<button aria-controls="drawer" aria-expanded="false" aria-label="Open menu" class="icon-btn burger" id="burger"><svg height="20" width="20"><use href="#i-menu"></use></svg></button>
+</div>
+</div>
+</div>
+</header>
+<!-- Mobile drawer: same hierarchy -->
+<div aria-hidden="true" aria-label="Menu" class="drawer" id="drawer">
+<ul class="drawer-links"><li><a href="#interests">About</a></li><li><a href="#local">Properties</a></li><li><a href="#events">Meetings</a></li><li><a href="#signature">Documents</a></li><li><a href="#getaway">News</a></li><li><a href="#plan">Contact</a></li></ul>
+<div class="drawer-cta">
+<a class="btn" href="#guide">Contact</a>
+<a class="btn btn--glass" href="#plan">Port Office<i class="dot"><svg height="14" width="14"><use href="#i-arrow"></use></svg></i></a>
+</div>
+</div>
+<main id="main">
+<!-- 03 HERO + 04 QUICK START -->
+<section aria-labelledby="hero-h" class="topshell on-dark" id="top">
+<div class="topshell-bg"><video aria-label="Industrial development and infrastructure video" autoplay="" class="port-hero-background" loop="" muted="" playsinline="" poster="assets/video/hero-poster.jpg" preload="metadata"><source src="assets/video/centralia-hero.mp4" type="video/mp4"/></video></div>
+<div aria-hidden="true" class="topshell-grain"></div>
+<svg aria-hidden="true" class="river-art" preserveaspectratio="none" viewbox="0 0 1440 500">
+<path class="draw" d="M-20 380 C 180 300, 300 460, 520 380 S 860 250, 1040 330 S 1300 440, 1470 340"></path>
+<path class="draw" d="M-20 410 C 180 330, 300 490, 520 410 S 860 280, 1040 360 S 1300 470, 1470 370" style="animation-delay:.9s"></path>
+<path class="draw" d="M-20 440 C 180 360, 300 520, 520 440 S 860 310, 1040 390 S 1300 500, 1470 400" style="animation-delay:1.3s"></path>
+</svg>
+<span aria-hidden="true" class="float-pill fp1"><i></i><b>I-5</b> corridor in Washington</span>
+<div class="wrap hero">
+<div class="hero-pills">
+<span class="eyebrow">Centralia · Washington State</span>
+<span class="livepill" id="nextFF"><i></i><span>Economic Development · Lewis County</span></span>
+</div>
+<h1 id="hero-h">Building Opportunity <span class="it">In Centralia.</span></h1>
+<div class="hero-grid">
+<div>
+<p class="lede">The Port of Centralia advances economic development through master-planned industrial parks and mixed-use projects that support jobs, investment, and our community.</p>
+<div class="hero-actions">
+<a class="btn" href="#interests">About the Port Industrial Parks<i class="dot"><svg height="14" width="14"><use href="#i-arrow"></use></svg></i></a>
+<a class="btn btn--glass" href="#events">View Public Meetings<i class="dot"><svg height="14" width="14"><use href="#i-arrow"></use></svg></i></a>
+</div>
+</div>
+<aside aria-label="Featured signature event" class="hero-side">
+<div class="ph"><img alt="Industrial construction illustrating Centralia Station development — illustrative construction image" data-fallback="assets/img/section-media/card-01.svg" loading="eager" src="https://images.pexels.com/photos/37907538/pexels-photo-37907538.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/></div>
+<div class="in">
+<span class="n">Featured development</span>
+<div class="k">Centralia Station <span>Project</span></div>
+<p>Discover the Port’s mixed-use development and opportunities for businesses along Interstate 5.</p>
+<a href="#signature">About the Port development <svg height="14" width="14"><use href="#i-arrow"></use></svg></a>
+</div>
+</aside>
+</div>
+<nav aria-label="Quick start" class="quick">
+<a class="qcard" href="#interests"><img alt="Industrial Parks — illustrative warehouse image" data-fallback="assets/img/section-media/card-02.svg" loading="eager" src="https://images.pexels.com/photos/4825686/pexels-photo-4825686.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="num">01</span><span class="arrow"><svg height="15" width="15"><use href="#i-arrow"></use></svg></span><b>Industrial Parks</b><small>Park I, Park II &amp; Park 3</small></a>
+<a class="qcard" href="#events"><img alt="Commission Meetings — illustrative meeting image" data-fallback="assets/img/section-media/card-03.svg" loading="eager" src="https://images.pexels.com/photos/7643871/pexels-photo-7643871.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="num">02</span><span class="arrow"><svg height="15" width="15"><use href="#i-arrow"></use></svg></span><b>Commission Meetings</b><small>Agendas, minutes &amp; recordings</small></a>
+<a class="qcard" href="#local"><img alt="Public Documents — illustrative documents image" data-fallback="assets/img/section-media/card-04.svg" loading="eager" src="https://images.pexels.com/photos/7109315/pexels-photo-7109315.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="num">03</span><span class="arrow"><svg height="15" width="15"><use href="#i-arrow"></use></svg></span><b>Public Documents</b><small>Notices, reports &amp; forms</small></a>
+<a class="qcard" href="#local"><img alt="Business With the Port — illustrative business image" data-fallback="assets/img/section-media/card-05.svg" loading="eager" src="https://images.pexels.com/photos/8117473/pexels-photo-8117473.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="num">04</span><span class="arrow"><svg height="15" width="15"><use href="#i-arrow"></use></svg></span><b>Business With the Port</b><small>Properties, projects &amp; inquiries</small></a>
+</nav>
+</div>
+</section>
+ Marquee of what Centralia is known for 
+<div class="wrap" style="padding-top:clamp(28px,3vw,44px)">
+<div class="marquee-label">Our priorities</div>
+<div aria-label="Port of Centralia highlights" class="marquee">
+<div class="marquee-track" id="mqTrack"></div>
+</div>
+<div aria-hidden="true" class="mq-pop" id="mqPop"><img alt="Port business services — illustrative office image" data-fallback="assets/img/section-media/card-06.svg" src="https://images.pexels.com/photos/7433823/pexels-photo-7433823.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><b><svg height="15" width="15"><use href="#i-arrow"></use></svg></b></div>
+<div aria-hidden="true" class="rule"></div>
+</div>
+<!-- 05 WHAT'S HAPPENING -->
+<section aria-labelledby="ev-h" class="sec" id="events">
+<div class="wrap">
+<div class="sec-head rv">
+<div>
+<span class="n">01 — What's happening</span>
+<h2 id="ev-h">Commission meetings &amp; public records</h2>
+</div>
+<div class="head-r">
+<p class="lede">Find Port Commission agendas, minutes, recordings, public notices and published plans in one place.</p>
+</div>
+</div>
+<div aria-label="Filter events" class="filters rv" role="group">
+<button aria-pressed="true" class="path" data-f="all">All resources</button>
+<button aria-pressed="false" class="path" data-f="weekend">Meetings</button>
+<button aria-pressed="false" class="path" data-f="30">Documents</button>
+<button aria-pressed="false" class="path" data-f="recurring">Ongoing</button>
+</div>
+<div aria-live="polite" class="events rv" id="eventGrid"></div>
+<div class="events-foot rv">
+<a class="btn" href="https://portofcentralia.com/">Commission records</a>
+<a class="btn btn--ghost" href="https://portofcentralia.com/">Public documents</a>
+<small>Schedules can change — confirm details on each event listing.</small>
+</div>
+</div>
+</section>
+<!-- 06 FIND YOUR COLUMBIA -->
+<section aria-labelledby="int-h" class="sec bg-ivory" id="interests">
+<div class="wrap">
+<div class="sec-head rv">
+<div>
+<span class="n">02 — About the Port by interest</span>
+<h2 id="int-h">Explore Port resources</h2>
+</div>
+<div class="head-r">
+<p class="lede">Find industrial properties, economic development initiatives, Commission information and public documents.</p>
+<a class="btn btn--ghost" href="#interests">Explore resources<i class="dot"><svg height="14" width="14"><use href="#i-arrow"></use></svg></i></a>
+</div>
+</div>
+<div class="inits">
+<a class="init wide feature rv" href="#interests">
+<div class="pic ph"><img alt="Industrial Park I — illustrative factory image" data-fallback="assets/img/section-media/card-07.svg" loading="lazy" src="https://images.pexels.com/photos/36003983/pexels-photo-36003983.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="tag">Start here</span></div>
+<div class="in"><h3>Industrial Park I</h3><p>Explore the Port’s industrial property development and opportunities for businesses.</p><span class="go">Learn more <svg height="16" width="16"><use href="#i-arrow"></use></svg></span></div>
+</a>
+<a class="init wide accent rv" href="#interests">
+<div class="pic ph"><img alt="Industrial Park II — illustrative warehouse image" data-fallback="assets/img/section-media/card-08.svg" loading="lazy" src="https://images.pexels.com/photos/29395831/pexels-photo-29395831.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="tag">Industrial Park II</span></div>
+<div class="in"><h3>Industrial Park II</h3><p>Learn about the Port’s second industrial park and its role in regional economic development.</p><span class="go">Explore park <svg height="16" width="16"><use href="#i-arrow"></use></svg></span></div>
+</a>
+<a class="init rv" href="#interests">
+<div class="pic ph"><img alt="Centralia Station — illustrative construction image" data-fallback="assets/img/section-media/card-09.svg" loading="lazy" src="https://images.pexels.com/photos/38087616/pexels-photo-38087616.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="tag rose">Development</span></div>
+<div class="in"><h3>Centralia Station</h3><p>Learn about the Centralia Station development and community investment.</p><span class="go">View development <svg height="16" width="16"><use href="#i-arrow"></use></svg></span></div>
+</a>
+<a class="init rv" href="#interests">
+<div class="pic ph"><img alt="Commission &amp; Meetings — illustrative meeting image" data-fallback="assets/img/section-media/card-10.svg" loading="lazy" src="https://images.pexels.com/photos/7643900/pexels-photo-7643900.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="tag teal">Business updates</span></div>
+<div class="in"><h3>Commission &amp; Meetings</h3><p>Find commission meeting information, agendas, approved minutes and recordings.</p><span class="go">View meetings <svg height="16" width="16"><use href="#i-arrow"></use></svg></span></div>
+</a>
+<a class="init rv" href="#interests">
+<div class="pic ph"><img alt="Public Documents — illustrative documents image" data-fallback="assets/img/section-media/card-11.svg" loading="lazy" src="https://images.pexels.com/photos/7651657/pexels-photo-7651657.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="tag">Public Documents</span></div>
+<div class="in"><h3>Public Documents</h3><p>Browse public notices, reports, agendas, minutes and other official materials.</p><span class="go">Public meetings <svg height="16" width="16"><use href="#i-arrow"></use></svg></span></div>
+</a>
+<a class="init rv" href="#interests">
+<div class="pic ph"><img alt="Business Resources — illustrative business image" data-fallback="assets/img/section-media/card-12.svg" loading="lazy" src="https://images.pexels.com/photos/7869385/pexels-photo-7869385.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="tag teal">Business</span></div>
+<div class="in"><h3>Business Resources</h3><p>Explore resources and information for local businesses and Port tenants.</p><span class="go">Business resources <svg height="16" width="16"><use href="#i-arrow"></use></svg></span></div>
+</a>
+</div>
+</div>
+</section>
+<!-- 07 BUILD YOUR OWN GETAWAY -->
+<section aria-labelledby="get-h" class="sec" id="getaway">
+<div class="wrap">
+<div class="evidence rv">
+<div class="sec-head">
+<div>
+<span class="n">03 — Explore the Port</span>
+<h2 id="get-h">Explore Port priorities</h2>
+</div>
+<div class="head-r"><p class="lede" style="color:var(--charcoal)">Discover how the Port supports industrial development, local investment, transparent governance and access to public information.</p></div>
+</div>
+<div aria-label="Choose a day" class="daytabs" role="group">
+<button aria-pressed="true" class="path" data-day="1">Day 1 · Development</button>
+<button aria-pressed="false" class="path" data-day="2">Day 2 · Public resources</button>
+</div>
+<div aria-label="Itinerary stops" class="track" id="track" role="tablist"></div>
+<div aria-live="polite" class="case" id="case" role="tabpanel">
+<div class="case-tag"><div class="bg"><img alt="Economic development and community investment — illustrative stock image" id="caseImg" src="assets/img/explore-port/our-mission.webp"/></div>
+<div><div class="p" id="caseKicker">Day 1 · Morning</div><h3 id="caseTitle">Industrial Development</h3></div>
+<div class="prog" id="caseProg"></div>
+</div>
+<div class="case-body">
+<p class="quote" id="caseQuote"></p>
+<p class="detail" id="caseDetail"></p>
+<div class="also" id="caseAlso"></div>
+<div class="nextprev"><button aria-label="Previous stop" id="prevStop"><svg height="16" width="16"><use href="#i-arrow-l"></use></svg></button><button aria-label="Next stop" id="nextStop"><svg height="16" width="16"><use href="#i-arrow"></use></svg></button></div>
+</div>
+</div>
+<div class="itins">
+<span class="lbl">Explore more</span>
+<a class="chip" href="#getaway">Port Overview</a><a class="chip" href="#getaway">Business Opportunities</a><a class="chip" href="#getaway">Infrastructure</a><a class="chip" href="#getaway">Local Development</a><a class="chip" href="#getaway">Public Information</a><a class="chip" href="#getaway">Meeting Records</a><a class="chip" href="#getaway">Community Resources</a><a class="chip" href="#getaway">Port of Centralia</a>
+</div>
+</div>
+<div class="stories-head rv" id="stories">
+<div><span class="n">Get inspired · News</span><h3 style="margin-top:12px">Port news &amp; updates</h3></div>
+<a class="btn btn--ghost" href="https://portofcentralia.com/">View Port information</a>
+</div>
+<div class="posts">
+<a class="post rv" href="https://portofcentralia.com/"><div class="thumb ph"><img alt="Industrial Park I &amp; II: business development — illustrative factory image" data-fallback="assets/img/section-media/card-14.svg" loading="lazy" src="https://images.pexels.com/photos/29380850/pexels-photo-29380850.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="kicker">Industrial development</span></div>
+<div class="body"><h4>Industrial Park I &amp; II: business development</h4><span class="go">Read the story <svg height="15" width="15"><use href="#i-arrow"></use></svg></span></div></a>
+<a class="post rv" href="https://portofcentralia.com/"><div class="thumb ph"><img alt="Centralia Station: project overview — illustrative construction image" data-fallback="assets/img/section-media/card-15.svg" loading="lazy" src="https://images.pexels.com/photos/39896293/pexels-photo-39896293.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="kicker" style="background:var(--teal)">Port project</span></div>
+<div class="body"><h4>Centralia Station: project overview</h4><span class="go">Read the story <svg height="15" width="15"><use href="#i-arrow"></use></svg></span></div></a>
+<a class="post rv" href="https://portofcentralia.com/"><div class="thumb ph"><img alt="Port Commission: public information — illustrative meeting image" data-fallback="assets/img/section-media/card-16.svg" loading="lazy" src="https://images.pexels.com/photos/4872010/pexels-photo-4872010.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" style="object-position:center 35%"/><span class="kicker" style="background:var(--brick)">Public governance</span></div>
+<div class="body"><h4>Port Commission: public information</h4><span class="go">Read the story <svg height="15" width="15"><use href="#i-arrow"></use></svg></span></div></a>
+</div>
+</div>
+</section>
+<!-- 08 SIGNATURE EVENTS -->
+<section aria-labelledby="sig-h" class="impact on-dark" id="signature">
+<div class="impact-bg"><img alt="Public records — illustrative documents image" data-fallback="assets/img/section-media/card-17.svg" loading="lazy" src="https://images.pexels.com/photos/8847040/pexels-photo-8847040.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/></div>
+<div class="wrap">
+<div class="sec-head rv">
+<div><span class="eyebrow">04 — Port priorities</span><h2 id="sig-h" style="margin-top:18px">Development that serves Centralia</h2></div>
+<div class="head-r"><p class="lede">The Port supports economic opportunity through industrial properties, infrastructure, public governance and community-focused planning.</p></div>
+</div>
+<div class="impact-grid rv">
+<div class="stat"><b>I</b><span>Industrial Park I — established industrial development</span></div>
+<div class="stat"><b>II</b><span>Industrial Park II — additional business and industrial opportunities</span></div>
+<div class="stat"><b>I-5</b><span>Interstate 5 corridor — regional transportation access</span></div>
+<div class="stat"><b>WA</b><span>Centralia, Washington — serving Lewis County</span></div>
+</div>
+<div class="rail-wrap">
+<div class="rail-top rv">
+<h3>Explore Port initiatives</h3>
+<div class="rail-nav"><button aria-label="Scroll signature events left" class="icon-btn" data-rail="-1"><svg height="16" width="16"><use href="#i-arrow-l"></use></svg></button><button aria-label="Scroll signature events right" class="icon-btn" data-rail="1"><svg height="16" width="16"><use href="#i-arrow"></use></svg></button></div>
+</div>
+<div aria-label="Signature events" class="people-rail rv" id="rail" tabindex="0">
+<a class="person" href="https://portofcentralia.com/"><div class="bg"><img alt="Centralia Station — illustrative construction image" data-fallback="assets/img/section-media/card-18.svg" loading="lazy" src="https://images.pexels.com/photos/32212309/pexels-photo-32212309.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/></div><div class="in"><span class="season">Development</span><h4>Centralia Station</h4><span class="dt">Ongoing development</span><p>Explore the Port’s mixed-use development initiative.</p><span class="go">View details <svg height="14" width="14"><use href="#i-arrow"></use></svg></span></div></a>
+<a class="person" href="https://portofcentralia.com/"><div class="bg"><img alt="Industrial Parks — illustrative warehouse image" data-fallback="assets/img/section-media/card-19.svg" loading="lazy" src="https://images.pexels.com/photos/12069468/pexels-photo-12069468.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/></div><div class="in"><span class="season teal">Industrial development</span><h4>Industrial Parks</h4><span class="dt">See published meeting details</span><p>Learn about industrial property and infrastructure.</p><span class="go">Explore parks <svg height="14" width="14"><use href="#i-arrow"></use></svg></span></div></a>
+<a class="person" href="https://portofcentralia.com/"><div class="bg"><img alt="Commission &amp; Meetings — illustrative meeting image" data-fallback="assets/img/section-media/card-20.svg" loading="lazy" src="https://images.pexels.com/photos/7108700/pexels-photo-7108700.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/></div><div class="in"><span class="season rose">Public information</span><h4>Commission &amp; Meetings</h4><span class="dt">Explore official Port information</span><p>Find agendas, minutes and meeting recordings.</p><span class="go">Read public notices <svg height="14" width="14"><use href="#i-arrow"></use></svg></span></div></a>
+<a class="person" href="https://portofcentralia.com/"><div class="bg"><img alt="Public Documents — illustrative documents image" data-fallback="assets/img/section-media/card-21.svg" loading="lazy" src="https://images.pexels.com/photos/7640747/pexels-photo-7640747.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/></div><div class="in"><span class="season">Public records</span><h4>Public Documents</h4><span class="dt">Explore official Port information</span><p>Access public notices, plans and reports.</p><span class="go">View updates <svg height="14" width="14"><use href="#i-arrow"></use></svg></span></div></a>
+<a class="person" href="#signature"><div class="bg"><img alt="Public Resources — illustrative business image" data-fallback="assets/img/section-media/card-22.svg" loading="lazy" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="in"><span class="season teal">Resources</span><h4>Public Resources</h4><span class="dt">Explore official Port information</span><p>Explore public resources, documents, and information about the Port.</p><span class="go">Explore resources <svg height="14" width="14"><use href="#i-arrow"></use></svg></span></div></a>
+</div>
+</div>
+</div>
+</section>
+<!-- 09 EAT · SHOP · STAY -->
+<section aria-labelledby="loc-h" class="sec" id="local">
+<div class="wrap">
+<div class="sec-head rv">
+<div><span class="n">05 — Industrial parks · Public meetings · Business resources</span><h2 id="loc-h">Find the information you need</h2></div>
+<div class="head-r"><p class="lede">Quick access to Port property information, Commission materials and public records.</p></div>
+</div>
+<div class="pillars">
+<article class="pillar rv">
+<div class="pic"><img alt="Industrial properties — illustrative warehouse image" data-fallback="assets/img/section-media/card-23.svg" loading="lazy" src="https://images.pexels.com/photos/11363308/pexels-photo-11363308.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="no">Business</span></div>
+<div class="bar" style="background:var(--brick)"></div>
+<div class="in">
+<h3>Industrial properties</h3>
+<p>Learn about industrial parks, infrastructure and business development.</p>
+<ul class="listing">
+<li><a href="https://portofcentralia.com/"><span><strong>Industrial Park I</strong><em>Established industrial development</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Industrial Park II</strong><em>Industrial and business opportunities</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Centralia Station</strong><em>Mixed-use development initiative</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Business inquiries</strong><em>Contact the Port about opportunities</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+</ul>
+<div class="cats"><span>Industrial Park I</span><span>Industrial Park II</span><span>Centralia Station</span><span>Business</span></div>
+<a class="foot" href="https://portofcentralia.com/">Explore official resources</a>
+</div>
+</article>
+<article class="pillar rv">
+<div class="pic"><img alt="Commission &amp; meetings — illustrative meeting image" data-fallback="assets/img/section-media/card-24.svg" loading="lazy" src="https://images.pexels.com/photos/30781090/pexels-photo-30781090.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="no">Public Documents</span></div>
+<div class="bar" style="background:var(--teal)"></div>
+<div class="in">
+<h3>Commission &amp; meetings</h3>
+<p>Find public meeting information and records.</p>
+<ul class="listing">
+<li><a href="https://portofcentralia.com/"><span><strong>Port Commission</strong><em>Governance and public meetings</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Meeting agendas</strong><em>Published meeting materials</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Approved minutes</strong><em>Official meeting records</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Meeting recordings</strong><em>Audio and video when published</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+</ul>
+<div class="cats"><span>Commission</span><span>Agendas</span><span>Minutes</span></div>
+<a class="foot" href="https://portofcentralia.com/">Explore official resources</a>
+</div>
+</article>
+<article class="pillar rv">
+<div class="pic"><img alt="Documents &amp; notices — illustrative documents image" data-fallback="assets/img/section-media/card-25.svg" loading="lazy" src="https://images.pexels.com/photos/17373527/pexels-photo-17373527.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/><span class="no">Documents</span></div>
+<div class="bar" style="background:var(--ochre)"></div>
+<div class="in">
+<h3>Documents &amp; notices</h3>
+<p>Access official Port documents and public information.</p>
+<ul class="listing">
+<li><a href="https://portofcentralia.com/"><span><strong>Public notices</strong><em>Official announcements</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Reports and plans</strong><em>Published planning documents</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Resolutions</strong><em>Commission actions and records</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+<li><a href="https://portofcentralia.com/"><span><strong>Records assistance</strong><em>Contact the Port for help</em></span><svg height="16" width="16"><use href="#i-arrow"></use></svg></a></li>
+</ul>
+<div class="cats"><span>Notices</span><span>Reports</span></div>
+<a class="foot" href="https://portofcentralia.com/">Explore official resources</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- 10 PLAN THE PRACTICAL DETAILS -->
+<section aria-labelledby="plan-h" class="sec bg-ivory" id="plan">
+<div class="wrap">
+<div class="sec-head rv">
+<div><span class="n">06 — Contact the Port</span><h2 id="plan-h">The <span class="it u">practical</span> details</h2></div>
+<div class="head-r"><p class="lede">Find our office, contact information, and answers to common questions about doing business with the Port.</p></div>
+</div>
+<div aria-label="Planning topics" class="plan-tabs rv" role="tablist">
+<button aria-controls="pp" aria-pressed="true" aria-selected="true" class="path" data-p="0" id="pt-0" role="tab">Getting here</button>
+<button aria-controls="pp" aria-pressed="false" aria-selected="false" class="path" data-p="1" id="pt-1" role="tab">Port Office &amp; hours</button>
+<button aria-controls="pp" aria-pressed="false" aria-selected="false" class="path" data-p="2" id="pt-2" role="tab">FAQs</button>
+</div>
+<div aria-labelledby="pt-0" class="plan-panel rv" id="pp" role="tabpanel">
+<div class="plan-media"><img alt="Illustrative exterior of an administrative office building — illustrative office image" data-fallback="assets/img/section-media/card-26.svg" id="ppImg" loading="lazy" src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/><div class="cop"><div class="who" id="ppWho">In the heart of Washington State.</div><p id="ppSub">Located in Centralia, Washington, with access to regional transportation connections.</p></div></div>
+<div class="plan-body" id="ppBody"></div>
+</div>
+</div>
+</section>
+ 11 VISITOR GUIDE 
+<section aria-labelledby="guide-h" class="sec" id="guide">
+<div class="wrap">
+<div class="press">
+<div class="press-card a rv">
+<div class="bg"><img alt="Industrial transportation — illustrative logistics image" data-fallback="assets/img/section-media/card-27.svg" loading="lazy" src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div>
+<span class="n">07 — Port resources</span>
+<h2 id="guide-h" style="margin-top:14px">Find Port information</h2>
+<p>Access Commission records, public documents, project information and business resources from the official Port website.</p>
+<div class="mini"><span>Commission records</span><span>Public documents</span><span>Business information</span></div>
+</div>
+<p class="guide-ok" id="guideOk" role="status">For questions, contact the Port directly at (360) 736-3527.</p>
+</div>
+<div class="press-card b rv">
+<div>
+<span class="n">Port resources on the go</span>
+<h3 style="margin-top:14px">Public information anywhere</h3>
+<p>Use the Port website on your phone to access meeting records, development information and contact details.</p>
+</div>
+<div>
+<div class="app-badges">
+<a aria-label="Commission records on the official Port website" href="https://portofcentralia.com/" title="Open official Port website"><span><small>Browse online</small><b>Commission records</b></span></a>
+<a aria-label="Public documents on the official Port website" href="https://portofcentralia.com/" title="Open official Port website"><span><small>Browse online</small><b>Public documents</b></span></a>
+</div>
+<a class="btn btn--ghost" href="#plan">Or stop by the Port Office<i class="dot"><svg height="14" width="14"><use href="#i-arrow"></use></svg></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 12 NEWSLETTER -->
+<section aria-labelledby="news-h">
+<div class="wrap">
+<div class="news rv">
+<div class="in">
+<span class="n">08 — Documents in the loop</span>
+<h2 id="news-h">Hear what's <span class="it">happening</span> first.</h2>
+<p class="lede">Select the Port topics that interest you. Newsletter sign-up is a prototype and requires integration before launch.</p>
+<form class="news-form" id="newsForm" novalidate="">
+<fieldset class="interests">
+<legend>I'm interested in</legend>
+<button aria-pressed="true" class="int" type="button">Commission meetings</button>
+<button aria-pressed="false" class="int" type="button">Public notices</button>
+<button aria-pressed="false" class="int" type="button">Reports &amp; plans</button>
+<button aria-pressed="false" class="int" type="button">Business updates</button>
+<button aria-pressed="false" class="int" type="button">Port projects</button>
+</fieldset>
+<div class="news-row">
+<label class="sr-only" for="nEmail">Email address</label>
+<input autocomplete="email" id="nEmail" placeholder="you@email.com" required="" type="email"/>
+<button class="btn" type="submit">Subscribe<i class="dot"><svg height="14" width="14"><use href="#i-arrow"></use></svg></i></button>
+</div>
+<p class="news-note">Unsubscribe in one click. We never share your address.</p>
+<p class="news-ok" id="newsOk" role="status">Prototype only — subscriptions are not yet connected.</p>
+</form>
+</div>
+<div class="news-media"><img alt="Public documents — illustrative documents image" data-fallback="assets/img/section-media/card-28.svg" loading="lazy" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+</div>
+</div>
+</section>
+</main>
+<!-- 13 FOOTER -->
+<footer class="on-dark" id="footer">
+<svg aria-hidden="true" class="foot-art" preserveaspectratio="none" viewbox="0 0 1440 600">
+<path d="M-20 120 C 220 60, 380 200, 620 140 S 1000 40, 1200 120 S 1400 220, 1470 160"></path>
+<path d="M-20 150 C 220 90, 380 230, 620 170 S 1000 70, 1200 150 S 1400 250, 1470 190"></path>
+<path d="M-20 180 C 220 120, 380 260, 620 200 S 1000 100, 1200 180 S 1400 280, 1470 220"></path>
+<path d="M-20 520 C 260 470, 420 580, 700 520 S 1080 440, 1470 520"></path>
+</svg>
+<div class="wrap">
+<div class="foot-top">
+<div class="foot-brand">
+<img alt="Port of Centralia" height="123" loading="lazy" src="assets/img/port-centralia-white.png" width="376"/>
+<p>Supporting economic development, public transparency and the Centralia community.</p>
+<address><b>Centralia Port Office</b><br/>3508 Galvin Road<br/>Centralia, WA 98531<br/><a href="tel:+13607363527">(360) 736-3527</a></address>
+</div>
+<nav aria-labelledby="f1" class="foot-col"><h2 id="f1">About the Port</h2><ul>
+<li><a href="#interests">Properties</a></li><li><a href="#interests">Industrial Park II</a></li><li><a href="#interests">Centralia Station</a></li><li><a href="#interests">Business updates</a></li><li><a href="#interests">Documents</a></li><li><a href="#getaway">News</a></li></ul></nav>
+<nav aria-labelledby="f2" class="foot-col"><h2 id="f2">Meetings</h2><ul>
+<li><a href="#events">Upcoming Meetings</a></li><li><a href="#signature">Centralia Station</a></li><li><a href="#signature">Commission Meetings</a></li><li><a href="#events">Farmers Market</a></li><li><a href="#events">Submit an Event</a></li></ul></nav>
+<nav aria-labelledby="f3" class="foot-col"><h2 id="f3">Industrial Parks</h2><ul>
+<li><a href="#local">Documents</a></li><li><a href="#local">Properties</a></li><li><a href="#local">Business Resources</a></li><li><a href="#events">Commission Records</a></li><li><a href="#events">Public Notices</a></li></ul></nav>
+<nav aria-labelledby="f4" class="foot-col"><h2 id="f4">Contact</h2><ul>
+<li><a href="#getaway">Trip Itineraries</a></li><li><a href="#guide">Port Resources</a></li><li><a href="#plan">Getting Here</a></li><li><a href="#plan">Port Office</a></li><li><a href="#plan">FAQs</a></li></ul></nav>
+</div>
+<div class="foot-bottom">
+<div class="socials">
+<a aria-label="Facebook" href="#footer"><svg height="17" width="17"><use href="#i-fb"></use></svg></a>
+<a aria-label="Instagram" href="#footer"><svg height="17" width="17"><use href="#i-ig"></use></svg></a>
+<a aria-label="YouTube" href="#footer"><svg height="17" width="17"><use href="#i-yt"></use></svg></a>
+<a aria-label="TikTok" href="#footer"><svg height="17" width="17"><use href="#i-tt"></use></svg></a>
+</div>
+<div class="foot-legal"><a href="#footer">Accessibility</a><a href="#footer">Privacy policy</a><a href="#footer">Terms of use</a><span>© 2026 Port of Centralia, WA</span></div>
+</div>
+<div aria-hidden="true" class="wordmark"><svg viewbox="0 0 1200 210"><text font-size="236" lengthadjust="spacingAndGlyphs" text-anchor="middle" textlength="1190" x="600" y="178">Centralia</text></svg></div>
+</div>
+</footer>
+<p class="credit"><span>Port of Centralia website redesign concept. Stock imagery is illustrative. Verify official content, links and accessibility before publication.</span><span class="designer-credit"><img alt="Website designed by Compunnel Digital" height="40" src="assets/img/compunnel-digital.svg" width="200"/></span></p>
+<button aria-label="Back to top" class="to-top" id="toTop"><svg height="18" width="18"><use href="#i-up"></use></svg></button>
+<!-- SEARCH -->
+<div aria-labelledby="search-h" aria-modal="true" class="search" id="search" role="dialog">
+<button aria-label="Close search" class="icon-btn search-close" id="closeSearch"><svg height="18" width="18"><use href="#i-x"></use></svg></button>
+<div class="search-box">
+<h2 class="sr-only" id="search-h">Search Port of Centralia</h2>
+<div class="searchbar"><svg height="20" width="20"><use href="#i-search"></use></svg><label class="sr-only" for="q">Search Port information</label><input autocomplete="off" id="q" placeholder="Search Port projects, meetings, documents…" type="search"/></div>
+<div class="pops"><span class="lbl">Popular</span><button class="chip" data-q="Industrial Parks">Industrial Parks</button><button class="chip" data-q="Centralia Station">Centralia Station</button><button class="chip" data-q="Commission Meetings">Commission Meetings</button><button class="chip" data-q="Meeting Minutes">Meeting Minutes</button><button class="chip" data-q="Public Documents">Public Documents</button><button class="chip" data-q="Contact">Contact</button></div>
+<div aria-live="polite" class="results" id="results"></div>
+</div>
+</div>
+<script>
+(function(){
+/* ═════════ DATA LAYER — every string and asset used by scripted modules ═════════ */
+const FREE_IMAGES = {"arts-mural.jpg": "https://images.unsplash.com/photo-1565793298595-6ba8977b07d4?auto=format&fit=crop&w=1200&q=80", "barinos.jpg": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80", "brewery-pour.jpg": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80", "christmas-tree.jpg": "https://images.unsplash.com/photo-1531835551805-16d864c8d311?auto=format&fit=crop&w=1200&q=80", "courthouse-steeple.jpg": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80", "downtown-festival.jpg": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80", "duck-river-books.jpg": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80", "duck-river-paddle.jpg": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1200&q=80", "farmers-market.jpg": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80", "first-fridays.jpg": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80", "hero-river-poster.jpg": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80", "mule-day-parade.jpg": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80", "mule-day.jpg": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80", "muletown-coffee.jpg": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80", "polk-museum.jpg": "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80", "riverwalk-park.jpg": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80", "shopping-downtown.jpg": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80", "spring-courthouse.jpg": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80", "stay-rental.jpg": "https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=1200&q=80", "stay-room.jpg": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80", "town-square.jpg": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80", "whiskey-alley.jpg": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"};
+const IMG = n => n.startsWith('assets/') ? n : (FREE_IMAGES[n] || FREE_IMAGES['arts-mural.jpg']);
+const TZ = 'America/Los_Angeles';
+
+/* Events. type: one-time | recurring | ongoing.  Recurring events compute their next occurrence. */
+const EVENTS = [
+{id:'meetings',title:'Commission Meeting Agendas',type:'ongoing',start:'2026-01-01',end:'2028-12-31',where:'Port of Centralia',time:'Public records',blurb:'Browse published commission agendas and meeting information.',img:'first-fridays.jpg'},
+{id:'minutes',title:'Commission Meeting Minutes',type:'ongoing',start:'2026-01-01',end:'2028-12-31',where:'Port of Centralia',time:'Public records',blurb:'Review approved meeting minutes by year.',img:'town-square.jpg'},
+{id:'recordings',title:'Audio & Video Recordings',type:'ongoing',start:'2026-01-01',end:'2028-12-31',where:'Port of Centralia',time:'Meeting archive',blurb:'Access published audio and video meeting recordings.',img:'arts-mural.jpg'},
+{id:'reports',title:'Port Reports & Plans',type:'ongoing',start:'2026-01-01',end:'2028-12-31',where:'Port of Centralia',time:'Reports and plans',blurb:'Explore published plans, reports and supporting information.',img:'courthouse-steeple.jpg'},
+{id:'notices',title:'Public Notices & Documents',type:'ongoing',start:'2026-01-01',end:'2028-12-31',where:'Port of Centralia',time:'Official publications',blurb:'Find public notices, reports, resolutions and documents.',img:'farmers-market.jpg'}
+];
+
+/* Port project and public-information tabs — existing interactive layout */
+const STOPS = [
+{day:1,slot:'Overview',title:'Our Mission',short:'Economic development for Centralia and Lewis County.',img:'assets/img/explore-port/our-mission.webp',quote:'Creating opportunities for jobs, investment and the community.',detail:'The Port supports economic development through industrial parks and mixed-use projects.',also:['Economic development','Community']},
+{day:1,slot:'Industrial',title:'Industrial Park I',short:'Master-planned industrial development.',img:'assets/img/explore-port/industrial-park-i.webp',quote:'Supporting industry and local employment.',detail:'Explore the Port’s established industrial park and business opportunities.',also:['Industrial parks','Business']},
+{day:1,slot:'Industrial',title:'Industrial Park II',short:'Businesses near Interstate 5.',img:'assets/img/explore-port/industrial-park-ii.webp',quote:'Transportation access for growing businesses.',detail:'Park II supports large industrial tenants along the I-5 corridor.',also:['I-5','Industry']},
+{day:1,slot:'Infrastructure',title:'Transportation Access',short:'Regional connections for industry and commerce.',img:'assets/img/explore-port/transportation-access.webp',quote:'Strategically located for business.',detail:'The Port serves the Centralia region and supports access to industrial infrastructure.',also:['Infrastructure','Industry']},
+{day:1,slot:'Development',title:'Centralia Station',short:'A mixed-use development.',img:'assets/img/explore-port/centralia-station.webp',quote:'Connecting economic opportunity and community growth.',detail:'Explore the Port’s latest mixed-use development.',also:['Mixed-use','Development']},
+{day:2,slot:'Governance',title:'Port Commission',short:'Public leadership and meetings.',img:'courthouse-steeple.jpg',quote:'Transparent public governance.',detail:'Find commission information, agendas, minutes and recordings.',also:['Meetings','Documents']},
+{day:2,slot:'Resources',title:'Public Documents',short:'Notices, reports and forms.',img:'duck-river-books.jpg',quote:'Public information, made easier to find.',detail:'Explore the official documents center.',also:['Notices','Reports']}
+];
+
+/* Office hours not verified; contact the Port directly */
+const HOURS = { 0:null, 1:null, 2:null, 3:null, 4:null, 5:null, 6:null };
+const DAYNAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+const FAQ = [
+ ['Where is the Port office?','3508 Galvin Road, Centralia, WA 98531.'],
+ ['Where can I find meeting agendas and minutes?','Use the Commission & Meetings and Public Documents sections to find published records.'],
+ ['How can I access meeting recordings?','The Port publishes meeting audio and video materials with related public records.'],
+ ['How can businesses contact the Port?','Call (360) 736-3527 or use the official Port website for current contact options.'],
+ ['How can I request accessible documents?','Contact the Port office for assistance with accessible public information.']
+];
+
+const SEARCH = [
+ ...EVENTS.map(e=>({type:"Public records",t:e.title,s:e.where,img:e.img,href:"#events",k:e.blurb})),
+{"type": "Port resources", "t": "Industrial Park I", "s": "Industrial development", "img": "arts-mural.jpg", "href": "#interests", "k": "Industrial Park I Industrial development"},
+{"type": "Port resources", "t": "Industrial Park II", "s": "Industrial property", "img": "barinos.jpg", "href": "#interests", "k": "Industrial Park II Industrial property"},
+{"type": "Port resources", "t": "Centralia Station", "s": "Mixed-use development", "img": "brewery-pour.jpg", "href": "#interests", "k": "Centralia Station Mixed-use development"},
+{"type": "Port resources", "t": "Port Commission", "s": "Governance and public meetings", "img": "christmas-tree.jpg", "href": "#events", "k": "Port Commission Governance and public meetings"},
+{"type": "Port resources", "t": "Commission agendas", "s": "Meeting documents", "img": "courthouse-steeple.jpg", "href": "#events", "k": "Commission agendas Meeting documents"},
+{"type": "Port resources", "t": "Commission minutes", "s": "Approved public records", "img": "downtown-festival.jpg", "href": "#events", "k": "Commission minutes Approved public records"},
+{"type": "Port resources", "t": "Meeting recordings", "s": "Published audio and video", "img": "duck-river-books.jpg", "href": "#events", "k": "Meeting recordings Published audio and video"},
+{"type": "Port resources", "t": "Public notices", "s": "Official announcements", "img": "duck-river-paddle.jpg", "href": "#local", "k": "Public notices Official announcements"},
+{"type": "Port resources", "t": "Reports and plans", "s": "Port publications", "img": "farmers-market.jpg", "href": "#local", "k": "Reports and plans Port publications"},
+{"type": "Port resources", "t": "Business opportunities", "s": "Economic development", "img": "first-fridays.jpg", "href": "#local", "k": "Business opportunities Economic development"},
+{"type": "Port resources", "t": "Contact the Port", "s": "3508 Galvin Road, Centralia WA", "img": "hero-river-poster.jpg", "href": "#plan", "k": "Contact the Port 3508 Galvin Road, Centralia WA"}
+];
+
+/* "Known for" ribbon — each item previews its own photo on hover */
+const KNOWN = [['Industrial Park I','town-square.jpg','#interests'],['Industrial Park II','arts-mural.jpg','#interests'],['Centralia Station','stay-room.jpg','#interests'],['Public Meetings','courthouse-steeple.jpg','#events'],['Public Documents','duck-river-books.jpg','#signature'],['Business Opportunities','shopping-downtown.jpg','#local']];
+
+/* ═════════ HELPERS ═════════ */
+const $ = (s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const svgUse=(id,s=16)=>`<svg width="${s}" height="${s}" aria-hidden="true"><use href="#${id}"/></svg>`;
+function localNow(){ // current date/time in Columbia (Central time)
+  const p=new Intl.DateTimeFormat('en-US',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false,weekday:'short'}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value;
+  const d=new Date(+g('year'),+g('month')-1,+g('day'));
+  return {date:d,hour:+g('hour')%24,min:+g('minute'),dow:d.getDay()};
+}
+const D=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
+const addDays=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const WD=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function firstFriday(y,m){const d=new Date(y,m,1);return new Date(y,m,1+((5-d.getDay()+7)%7));}
+function nextOccurrence(e,today){
+  if(e.type==='recurring'){
+    if(e.rule==='weekly'){return addDays(today,(e.dow-today.getDay()+7)%7);}
+    if(e.rule==='firstFriday'){
+      for(let i=0;i<14;i++){const y=today.getFullYear()+Math.floor((today.getMonth()+i)/12),m=(today.getMonth()+i)%12;
+        if(!e.months.includes(m+1))continue;const f=firstFriday(y,m);if(f>=today)return f;}
+    }
+    return null;
+  }
+  const s=D(e.start), en=e.end?D(e.end):s;
+  if(en<today) return null;                 // expired: drop automatically
+  return s<today?today:s;                   // ongoing / in progress shows today
+}
+function fmtRange(e,next){
+  if(e.type==='recurring') return `${WD[next.getDay()]}, ${MON[next.getMonth()]} ${next.getDate()} · ${e.time}`;
+  if(e.type==='ongoing') return `${e.time}`;
+  const s=D(e.start);
+  if(e.end){const en=D(e.end);return `${MON[s.getMonth()]} ${s.getDate()}–${s.getMonth()===en.getMonth()?'':MON[en.getMonth()]+' '}${en.getDate()}, ${en.getFullYear()}`;}
+  return `${WD[s.getDay()]}, ${MON[s.getMonth()]} ${s.getDate()}, ${s.getFullYear()}`;
+}
+
+/* Static hero image replaces prior video. Original scroll and navigation animations remain. */
+
+/* ═════════ KNOWN-FOR RIBBON ═════════ */
+(function(){
+  const tr=$('#mqTrack'), pop=$('#mqPop'), pimg=pop.querySelector('img');
+  const item=([t,img,href],dup)=>`<a class="mq" href="${href}" data-img="${img}"${dup?' aria-hidden="true" tabindex="-1"':''}><span>${t.replace('&','&amp;')}</span></a>`;
+  tr.innerHTML=KNOWN.map(k=>item(k,false)).join('')+KNOWN.map(k=>item(k,true)).join('');
+  KNOWN.forEach(k=>{const i=new Image();i.src=IMG(k[1]);}); // preload so the preview is instant
+  let cur=null;
+  const place=el=>{const r=el.getBoundingClientRect();pop.style.left=(r.left+r.width/2-22)+'px';pop.style.top=r.top+'px';};
+  const show=el=>{cur=el;pimg.src=IMG(el.dataset.img);place(el);pop.classList.add('show');};
+  const hide=()=>{cur=null;pop.classList.remove('show');};
+  $$('.mq',tr).forEach(a=>{a.addEventListener('mouseenter',()=>show(a));a.addEventListener('mouseleave',hide);a.addEventListener('focus',()=>show(a));a.addEventListener('blur',hide);});
+  addEventListener('scroll',()=>{if(cur)place(cur);},{passive:true});
+})();
+
+/* ═════════ 05 EVENTS ═════════ */
+const grid=$('#eventGrid');
+function renderEvents(filter){
+  const today=localNow().date;
+  let list=EVENTS.map(e=>({...e,next:nextOccurrence(e,today)})).filter(e=>e.next);
+  // weekend window: today → coming Sunday (Fri–Sun focus)
+  const sat=addDays(today,(6-today.getDay()+7)%7), sun=addDays(sat,1), fri=addDays(sat,-1);
+  if(filter==='weekend') list=list.filter(e=>{const s=e.next,en=e.end?D(e.end):s;return (s<=sun&&en>=(fri<today?today:fri))||(e.type==='ongoing')});
+  if(filter==='30') list=list.filter(e=>e.next<=addDays(today,30));
+  if(filter==='recurring') list=list.filter(e=>e.type!=='one-time');
+  list.sort((a,b)=>a.next-b.next);
+  list=list.slice(0,5);
+  if(!list.length){grid.innerHTML='<div class="events-empty"><b>Nothing listed for that window yet.</b><br>Try “All upcoming”, or browse the full events calendar.</div>';return;}
+  // feature: first recurring signature (Commission Meetings) when present, else the soonest
+  let fi=list.findIndex(e=>e.feature); if(fi<0) fi=0;
+  const feat=list.splice(fi,1)[0]; list.unshift(feat);
+  grid.innerHTML=list.map((e,i)=>{
+    const kind=e.type==='recurring'?'<span class="kind rec">Recurring</span>':e.type==='ongoing'?'<span class="kind ongo">Ongoing</span>':'<span class="kind">One-time</span>';
+    const n=e.next;
+    return `<a class="ev${i===0?' feature':''}" href="#events">
+      <div class="thumb ph"><img src="${IMG(e.img)}" alt="" loading="lazy">${kind}</div>
+      <div class="body"><div class="date" aria-hidden="true"><span class="d">${n.getDate()}</span><span class="m">${MON[n.getMonth()]}</span><span class="w">${WD[n.getDay()]}</span></div>
+      <div class="meta"><h3>${e.title}</h3><span class="when">${e.type==='recurring'?'Next: ':''}${fmtRange(e,n)}</span>
+      <span class="where">${svgUse('i-pin',14)} ${e.where}</span>${i===0||list.length<4?`<p>${e.blurb}</p>`:''}
+      <span class="go">Event details ${svgUse('i-arrow',15)}</span></div></div></a>`;
+  }).join('');
+}
+$$('.filters .path').forEach(b=>b.addEventListener('click',()=>{
+  $$('.filters .path').forEach(x=>x.setAttribute('aria-pressed',x===b));renderEvents(b.dataset.f);
+}));
+renderEvents('all');
+
+// hero pill: next First Friday
+(function(){const ff=EVENTS.find(e=>e.id==='ff');const n=ff?nextOccurrence(ff,localNow().date):null;
+  if(n) $('#nextFF span').textContent=`Commission Meetings · Next on ${WD[n.getDay()]}, ${MON[n.getMonth()]} ${n.getDate()}`; else $('#nextFF').hidden=true;})();
+
+/* ═════════ 07 ITINERARY TRACK ═════════ */
+let day=1, cur=0;
+const track=$('#track');
+function dayStops(){return STOPS.filter(s=>s.day===day);}
+function renderTrack(){
+  const st=dayStops();
+  track.innerHTML=st.map((s,i)=>`<button class="stage" role="tab" aria-selected="${i===cur}" id="st-${i}" aria-controls="case" data-i="${i}">
+    <span class="tick">Stop 0${i+1} · ${s.slot}</span><span class="bulb"><img src="${IMG(s.img)}" alt="" loading="lazy"></span>
+    <h4>${s.title}</h4><p>${s.short}</p></button>`).join('');
+  if(matchMedia('(min-width:1081px)').matches) track.style.gridTemplateColumns=`repeat(${st.length},1fr)`; else track.style.gridTemplateColumns='';
+  $$('.stage',track).forEach(b=>b.addEventListener('click',()=>{cur=+b.dataset.i;renderCase();}));
+  renderCase();
+}
+function renderCase(){
+  const st=dayStops(), s=st[cur];
+  $$('.stage',track).forEach((b,i)=>{b.setAttribute('aria-selected',i===cur);b.tabIndex=i===cur?0:-1;});
+  $('#caseImg').src=IMG(s.img);
+  $('#caseKicker').textContent=`Day ${s.day} · ${s.slot}`;
+  $('#caseTitle').textContent=s.title;
+  $('#caseQuote').textContent='“'+s.quote+'”';
+  $('#caseDetail').textContent=s.detail;
+  $('#caseAlso').innerHTML=(s.also || [s.slot, 'Port of Centralia']).map(a=>`<span>${a}</span>`).join('');
+  $('#caseProg').innerHTML=st.map((_,i)=>`<i class="${i<=cur?'on':''}"></i>`).join('');
+}
+track.addEventListener('keydown',e=>{
+  const n=dayStops().length;
+  if(e.key==='ArrowRight'){cur=(cur+1)%n;renderCase();$('#st-'+cur).focus();}
+  if(e.key==='ArrowLeft'){cur=(cur-1+n)%n;renderCase();$('#st-'+cur).focus();}
+});
+$('#nextStop').addEventListener('click',()=>{const n=dayStops().length;if(cur<n-1){cur++;}else{day=day===1?2:1;cur=0;syncDay();renderTrack();return;}renderCase();});
+$('#prevStop').addEventListener('click',()=>{if(cur>0){cur--;renderCase();}else{day=day===1?2:1;syncDay();cur=dayStops().length-1;renderTrack();}});
+function syncDay(){$$('.daytabs .path').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.day===day));}
+$$('.daytabs .path').forEach(b=>b.addEventListener('click',()=>{day=+b.dataset.day;cur=0;syncDay();renderTrack();}));
+renderTrack();
+
+/* ═════════ 10 PLAN PANEL ═════════ */
+function wcStatus(){
+  const t=localNow(),h=HOURS[t.dow],now=t.hour+t.min/60;
+  const open=h&&now>=h[0]&&now<h[1];
+  const f=x=>{const hh=Math.floor(x),ap=hh>=12?'pm':'am';return ((hh+11)%12+1)+(ap)};
+  return {open,text:open?`Open now · until ${f(h[1])}`:`Closed now · ${now<h[0]?'opens today at '+f(h[0]):'opens '+DAYNAMES[(t.dow+1)%7]+' at '+f(HOURS[(t.dow+1)%7][0])}`,dow:t.dow};
+}
+const PANELS=[
+ {img:'town-square.jpg',who:'Centralia, Washington',sub:'The Port serves businesses, tenants and the community in the Centralia region.',body:()=>`<div class="fact"><span class="ic">${svgUse('i-pin',20)}</span><div><strong>Port Administrative Office</strong><span>3508 Galvin Road, Centralia, WA 98531</span></div></div><div class="fact"><span class="ic">${svgUse('i-car',20)}</span><div><strong>Directions</strong><span>Contact the Port for information about visiting its office.</span></div></div><div class="fact"><span class="ic">${svgUse('i-arrow',20)}</span><div><strong>Map & directions</strong><span><a href="https://www.google.com/maps/search/?api=1&query=3508+Galvin+Road+Centralia+WA+98531" target="_blank" rel="noopener noreferrer">View office location on Google Maps</a></span></div></div>`},
+ {img:'barinos.jpg',who:'Contact the Port office',sub:'Reach the Port directly for office hours and assistance.',body:()=>`<div class="fact"><span class="ic">${svgUse('i-pin',20)}</span><div><strong>3508 Galvin Road</strong><span>Centralia, WA 98531</span></div></div><div class="fact"><span class="ic">${svgUse('i-clock',20)}</span><div><strong>Office inquiries</strong><span><a href="tel:+13607363527">(360) 736-3527</a> · Please call to confirm office hours.</span></div></div><div class="fact"><span class="ic">${svgUse('i-arrow',20)}</span><div><strong>Email the Port</strong><span><a href="mailto:emaloney@portofcentralia.com">emaloney@portofcentralia.com</a></span></div></div>`},
+ {img:'courthouse-steeple.jpg',who:'Frequently asked questions',sub:'Find information about Port meetings, documents and business resources.',body:()=>`<div class="faq">${FAQ.map(([q,a],i)=>`<details${i===0?' open':''}><summary>${q}<span>${svgUse('i-plus',14)}</span></summary><p>${a}</p></details>`).join('')}</div>`}
+];
+function renderPanel(i){
+  const p=PANELS[i];
+  $$('.plan-tabs .path').forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.setAttribute('aria-pressed',j===i);b.tabIndex=j===i?0:-1;});
+  $('#pp').setAttribute('aria-labelledby','pt-'+i);
+  $('#ppImg').src=IMG(p.img);$('#ppWho').textContent=p.who;$('#ppSub').textContent=p.sub;$('#ppBody').innerHTML=p.body();
+}
+$$('.plan-tabs .path').forEach(b=>b.addEventListener('click',()=>renderPanel(+b.dataset.p)));
+$('.plan-tabs').addEventListener('keydown',e=>{const tabs=$$('.plan-tabs .path'),i=tabs.indexOf(document.activeElement);if(i<0)return;
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const j=(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;renderPanel(j);tabs[j].focus();}});
+renderPanel(0);
+// utility bar status
+(function(){const u=$('#utilOpen');if(u)u.querySelector('span').textContent='Port Office · 3508 Galvin Road';})();
+// direct links into specific tabs
+$$('a[href="#plan"]').forEach(a=>a.addEventListener('click',()=>{const t=a.textContent.toLowerCase();renderPanel(t.includes('faq')?2:t.includes('welcome')||t.includes('hours')?1:t.includes('getting')?0:1);}));
+
+/* ═════════ HEADER: mega menus, drawer, scroll ═════════ */
+const nav=$('#nav');
+// Top-level navigation is intentionally inert until the dedicated pages are built.
+$$('[data-soon]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();toggleDrawer(false);}});
+
+const drawer=$('#drawer'), burger=$('#burger');
+function toggleDrawer(on){drawer.classList.toggle('open',on);drawer.setAttribute('aria-hidden',!on);burger.setAttribute('aria-expanded',on);nav.classList.toggle('menu-open',on);
+  burger.innerHTML=svgUse(on?'i-x':'i-menu',20);burger.setAttribute('aria-label',on?'Close menu':'Open menu');document.body.style.overflow=on?'hidden':'';}
+burger.addEventListener('click',()=>toggleDrawer(!drawer.classList.contains('open')));
+$$('a',drawer).forEach(a=>a.addEventListener('click',()=>toggleDrawer(false)));
+
+const prog=$('#progress'), toTop=$('#toTop');
+function onScroll(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  nav.classList.toggle('solid',y>40);prog.style.width=(h>0?y/h*100:0)+'%';toTop.classList.toggle('show',y>900);}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+toTop.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+
+/* ═════════ SEARCH ═════════ */
+const sOv=$('#search'), q=$('#q'), res=$('#results'); let lastFocus;
+function openSearch(){lastFocus=document.activeElement;sOv.classList.add('open');document.body.style.overflow='hidden';q.value='';runSearch('');setTimeout(()=>q.focus(),30);}
+function closeSearch(){if(!sOv.classList.contains('open'))return;sOv.classList.remove('open');document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
+$('#openSearch').addEventListener('click',openSearch);$('#closeSearch').addEventListener('click',closeSearch);
+sOv.addEventListener('click',e=>{if(e.target===sOv)closeSearch();});
+document.addEventListener('keydown',e=>{if((e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName))){e.preventDefault();openSearch();}});
+sOv.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=$$('button,input,a',sOv).filter(x=>x.offsetParent);const a=f[0],z=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}});
+function runSearch(v){
+  v=v.trim().toLowerCase();
+  if(!v){res.innerHTML='';return;}
+  const terms=v.split(/\s+/);
+  const hits=SEARCH.filter(it=>{const hay=(it.t+' '+it.s+' '+(it.k||'')+' '+it.type).toLowerCase();return terms.every(t=>hay.includes(t));});
+  if(!hits.length){res.innerHTML=`<div class="r-empty"><b>No results for “${v.replace(/[<>&"]/g,'')}”.</b><br>Try a broader word like “food”, “history” or “events” — or <a href="#plan" style="color:var(--brick-d);text-decoration:underline">ask the Port Office</a>.</div>`;return;}
+  const groups=['Events','Places','Itineraries','Articles','Visitor info'];
+  res.innerHTML=groups.map(g=>{const h=hits.filter(x=>x.type===g);if(!h.length)return '';
+    return `<div class="rgroup"><h3>${g} <span style="color:var(--slate-d)">(${h.length})</span></h3><ul>${h.map(x=>`<li><a href="${x.href}"><img src="${IMG(x.img)}" alt=""><span><strong>${x.t}</strong><small>${x.s}</small></span></a></li>`).join('')}</ul></div>`}).join('');
+  $$('a',res).forEach(a=>a.addEventListener('click',closeSearch));
+}
+q.addEventListener('input',()=>runSearch(q.value));
+$$('.search .pops .chip').forEach(c=>c.addEventListener('click',()=>{q.value=c.dataset.q;runSearch(q.value);q.focus();}));
+
+/* ═════════ RAIL ═════════ */
+const rail=$('#rail');
+$$('[data-rail]').forEach(b=>b.addEventListener('click',()=>rail.scrollBy({left:+b.dataset.rail*rail.clientWidth*.8,behavior:'smooth'})));
+
+/* ═════════ FORMS (concept — no submission) ═════════ */
+$$('.int').forEach(b=>b.addEventListener('click',()=>b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true')));
+function fakeSubmit(form,input,ok){form.addEventListener('submit',e=>{e.preventDefault();
+  if(!input.value||!input.checkValidity()){input.setAttribute('aria-invalid','true');input.focus();input.placeholder='Please enter a valid email';return;}
+  input.removeAttribute('aria-invalid');ok.classList.add('show');form.querySelectorAll('input,button').forEach(x=>x.disabled=true);});}
+fakeSubmit($('#guideForm'),$('#gEmail'),$('#guideOk'));
+fakeSubmit($('#newsForm'),$('#nEmail'),$('#newsOk'));
+
+/* ═════════ REVEAL ═════════ */
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in-view');io.unobserve(en.target);}}),{rootMargin:'0px 0px -8% 0px'});
+  $$('.rv').forEach(el=>io.observe(el));
+}else{$$('.rv').forEach(el=>el.classList.add('in-view'));}
+})();
+</script>
+<script>document.querySelectorAll('.centralia-hero-video').forEach(v=>{v.addEventListener('error',()=>v.remove());v.querySelector('source')?.addEventListener('error',()=>v.remove());});</script><script>(function(){
+const dynamicFallbacks = {"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-01.svg", "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-02.svg", "https://images.unsplash.com/photo-1497366858526-0766cadbe8fa?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-03.svg", "https://images.unsplash.com/photo-1531835551805-16d864c8d311?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-04.svg", "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-05.svg", "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-06.svg", "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-07.svg", "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-08.svg", "https://images.unsplash.com/photo-1562564055-71e051d33c19?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-09.svg", "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-10.svg", "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-11.svg", "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-12.svg", "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-13.svg", "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-14.svg", "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-15.svg", "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-16.svg", "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-17.svg", "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-18.svg", "https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=1200&q=80": "assets/img/section-media/dynamic-19.svg", "assets/img/section-media/dynamic-20.svg": "assets/img/section-media/dynamic-20.svg", "assets/img/section-media/dynamic-21.svg": "assets/img/section-media/dynamic-21.svg", "assets/img/section-media/dynamic-22.svg": "assets/img/section-media/dynamic-22.svg"};
+function recover(img){
+ if(img.dataset.mediaRecovered==='1')return;
+ img.dataset.mediaRecovered='1';
+ const original=img.getAttribute('src')||'';
+ const fallback=img.dataset.fallback||dynamicFallbacks[original];
+ if(fallback){img.src=fallback;return;}
+ // In-page image fallback is a local branded illustration rather than a missing image icon.
+ img.src='assets/img/section-media/card-01.svg';
+}
+document.addEventListener('error',e=>{if(e.target&&e.target.tagName==='IMG')recover(e.target)},true);
+})();</script></body>
+</html>

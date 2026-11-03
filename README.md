@@ -1,0 +1,1 @@
+This build preserves the approved page layout and includes the supplied local hero video. All image slots have bundled local fallbacks if the remote stock image fails. No static image source ID is repeated. Stock photos are illustrative and should be replaced with approved Port photography before production. Open index.html with assets/ beside it.
