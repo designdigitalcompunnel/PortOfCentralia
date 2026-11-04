@@ -171,7 +171,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:800;letter-spacing:-.035em;li
 .river-art .draw{stroke-dasharray:2200;stroke-dashoffset:2200;animation:draw 7s cubic-bezier(.4,0,.2,1) .5s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 .hero{position:relative;z-index:4}
-.hero h1,.hero .lede{text-shadow:0 2px 18px rgba(18,29,38,.7),0 1px 3px rgba(18,29,38,.5)}
+.hero h1,.hero .lede{text-shadow:0 1px 2px rgba(0,0,0,.22)}
 .hero-pills{display:flex;gap:10px;flex-wrap:wrap}
 .livepill{display:inline-flex;align-items:center;gap:9px;padding:7px 15px 7px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   background:rgba(198,83,47,.22);border:1px solid rgba(232,135,95,.6);color:#F8D2C1}
@@ -626,19 +626,19 @@ img{color:transparent}
 /* hero with breadcrumb inside */
 .ip-hero{position:relative;color:#fff;background:#263845;padding-top:clamp(132px,14vh,140px);padding-bottom:clamp(36px,4vw,44px);overflow:hidden;isolation:isolate}
 .ip-hero-art{display:none}.ip-hero{background:#263845 url("assets/img/industrial-park-i/hero-industrial.webp") center 46%/cover no-repeat}.ip-hero-art{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
-.ip-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(38,56,69,.97) 0%,rgba(38,56,69,.9) 45%,rgba(38,56,69,.55) 100%)}
+.ip-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(85% 85% at 12% 55%,rgba(10,16,22,.78) 0%,rgba(14,22,30,.38) 50%,rgba(18,29,38,.06) 85%),linear-gradient(90deg,rgba(10,16,22,.36) 0%,rgba(10,16,22,0) 70%),linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(18,29,38,.05) 42%,rgba(12,20,27,.7) 100%)}
 .ip-crumb{margin-top:6px}
 .ip-crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;font-size:15px;color:#E6EDF2}
 .ip-crumb li+li::before{content:"/";margin-right:8px;color:#AFC3CE}
 .ip-crumb a{color:#FFD2AA;text-decoration:underline;text-underline-offset:3px}
 .ip-crumb a:hover{color:#fff}
 .ip-crumb [aria-current]{color:#fff;font-weight:600}
-.ip-hero-body{margin-top:clamp(18px,2.4vw,28px);display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,4vw,56px);align-items:end}
+.ip-hero-body{margin-top:clamp(18px,2.4vw,28px);display:grid;grid-template-columns:1fr;gap:0;align-items:start}
 .ip-eyebrow{display:inline-block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#FFC48A;margin-bottom:10px}
 .ip-hero h1{font-size:clamp(40px,5vw,68px);white-space:nowrap;line-height:1;margin:0;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.25)}
-.ip-intro{font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:#F2F6F8;margin:0;max-width:52ch}
-.ip-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:clamp(20px,3vw,30px) 0 0;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.28);border-radius:14px;overflow:hidden;grid-column:1/-1}
-.ip-facts div{background:rgba(29,42,52,.88);padding:14px 18px}
+.ip-intro{font-size:clamp(17px,1.45vw,21px);line-height:1.65;font-weight:300;color:#E2E9EC;margin:16px 0 0;max-width:46ch;padding:0;border-radius:0;background:none;text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.ip-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:clamp(20px,3vw,30px) 0 0;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:14px;overflow:hidden;grid-column:1/-1;box-shadow:0 10px 30px rgba(0,0,0,.16)}
+.ip-facts div{background:rgba(0,0,0,.76);padding:14px 18px}
 .ip-facts dt{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#FFC48A;font-weight:700}
 .ip-facts dd{margin:4px 0 0;font-size:16px;color:#fff;font-weight:600}
 
@@ -668,6 +668,7 @@ img{color:transparent}
 .ip-card{display:flex;flex-direction:column;padding:30px;border-radius:20px;background:#fff;border:1px solid #C9D6DE;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
 .ip-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(38,56,69,.12);border-color:#FF8B2B}
 .ip-card .n{font-size:14px;font-weight:700;color:#8A3F00;letter-spacing:.08em}
+.ip-op-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:#E9EFF3;color:#455766}.ip-op-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .ip-card h3{font-size:22px;line-height:1.2;margin:10px 0 10px;color:#1F2E38}
 .ip-card p{margin:0;color:#2B3D49;font-size:16px;line-height:1.55}
 
@@ -713,7 +714,7 @@ img{color:transparent}
 .ip-band h2{color:#fff;margin:0 0 16px;max-width:18ch;font-size:clamp(30px,4vw,50px);line-height:1.08}
 .ip-band .ip-kicker{color:#FFC48A}
 .ip-band p{color:#EEF3F6;font-size:17px;line-height:1.6;margin:0 0 24px;max-width:52ch}
-.ip-band-side{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:clamp(22px,2.6vw,30px)}
+.ip-band-side{background:#000;border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:clamp(22px,2.6vw,30px)}
 .ip-band-side h3{margin:0 0 12px;font-size:20px;color:#fff}
 .ip-band-side ul{list-style:none;margin:0;padding:0}
 .ip-band-side li{padding:12px 0;border-top:1px solid rgba(255,255,255,.2);color:#EEF3F6;font-size:16px}
@@ -785,6 +786,7 @@ img{color:transparent}
 <symbol id="i-pin" viewbox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" fill="none" r="2.5" stroke="currentColor" stroke-width="2"></circle></symbol>
 <symbol id="i-car" viewbox="0 0 24 24"><path d="M5 16V11l2-5h10l2 5v5M3 16h18v3H3zM7 19v1M17 19v1M5 11h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
 <symbol id="i-walk" viewbox="0 0 24 24"><circle cx="13" cy="4.5" fill="none" r="2" stroke="currentColor" stroke-width="1.9"></circle><path d="M10 21l2-6 3 3v3M12 15l-1-5 4 2 2 3M11 10l-3 2v3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
+<symbol id="i-mail" viewbox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></symbol>
 <symbol id="i-clock" viewbox="0 0 24 24"><circle cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="1.9"></circle><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.9"></path></symbol>
 <symbol id="i-book" viewbox="0 0 24 24"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 5v16M8 7h7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></symbol>
 <symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></symbol>
@@ -862,8 +864,8 @@ img{color:transparent}
 <div>
 <span class="ip-eyebrow">Industrial development · Port of Centralia</span>
 <h1 id="ip-h">Industrial Park I</h1>
+<p class="ip-intro">Explore industrial property and business opportunities in Centralia, Lewis County.</p>
 </div>
-<p class="ip-intro">Discover Industrial Park I, part of the Port of Centralia’s commitment to supporting business growth, industrial development, and economic opportunity in Centralia and Lewis County, Washington.</p>
 <dl class="ip-facts">
 <div><dt>Location</dt><dd>Centralia, WA</dd></div>
 <div><dt>Region</dt><dd>Lewis County</dd></div>
@@ -896,9 +898,9 @@ img{color:transparent}
 <p class="ip-lede">The Port works to support a strong environment for business and industrial activity. Explore property information, development opportunities, and how to connect with the Port for further help.</p>
 </div>
 <div class="ip-cards">
-<article class="ip-card ip-rv"><span class="n">01</span><h3>Industrial property and site development</h3><p>Sites planned for industrial activity, with the Port’s development guidance for the park.</p></article>
-<article class="ip-card ip-rv"><span class="n">02</span><h3>Business accessibility</h3><p>Access for employees, suppliers and visitors, an important factor for industrial tenants.</p></article>
-<article class="ip-card ip-rv"><span class="n">03</span><h3>Regional economic development</h3><p>Opportunities that contribute to employment and investment across Lewis County.</p></article>
+<article class="ip-card ip-rv"><span class="ip-op-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h2m2 0h2m-6 4h2m2 0h2M10 21v-4h4v4"/></svg></span><h3>Industrial property and site development</h3><p>Sites planned for industrial activity, with the Port’s development guidance for the park.</p></article>
+<article class="ip-card ip-rv"><span class="ip-op-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 17h18M5 17l2-7h10l2 7M7 10l2-5h6l2 5M7 17v2m10-2v2M8 14h.01M16 14h.01"/></svg></span><h3>Business accessibility</h3><p>Access for employees, suppliers and visitors, an important factor for industrial tenants.</p></article>
+<article class="ip-card ip-rv"><span class="ip-op-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 20h18M6 17v-5m6 5V8m6 9V4M4 10l6-4 4 2 6-5"/></svg></span><h3>Regional economic development</h3><p>Opportunities that contribute to employment and investment across Lewis County.</p></article>
 </div>
 </div>
 </section>
@@ -979,9 +981,9 @@ img{color:transparent}
 </div>
 <div class="ip-rv">
 <div class="ip-contact-card">
-<div class="ip-row"><span class="ic"><svg aria-hidden="true" focusable="false" height="20" width="20"><use href="#i-pin"></use></svg></span><div><b>Address</b><span>Port of Centralia<br/>3508 Galvin Road<br/>Centralia, WA 98531</span></div></div>
+<div class="ip-row"><span class="ic"><svg aria-hidden="true" focusable="false" height="20" width="20"><use href="#i-pin"></use></svg></span><div><b>Address</b><span>Port of Centralia<br/>3508 Galvin Road, Centralia, WA 98531</span></div></div>
 <div class="ip-row"><span class="ic"><svg aria-hidden="true" focusable="false" height="20" width="20"><use href="#i-clock"></use></svg></span><div><b>Phone</b><a href="tel:+13607363527">(360) 736-3527</a></div></div>
-<div class="ip-row"><span class="ic"><svg aria-hidden="true" focusable="false" height="20" width="20"><use href="#i-arrow"></use></svg></span><div><b>Email</b><a href="mailto:emaloney@portofcentralia.com">emaloney@portofcentralia.com</a></div></div>
+<div class="ip-row"><span class="ic"><svg aria-hidden="true" focusable="false" height="20" width="20"><use href="#i-mail"></use></svg></span><div><b>Email</b><a href="mailto:emaloney@portofcentralia.com">emaloney@portofcentralia.com</a></div></div>
 </div>
 </div>
 </div>
